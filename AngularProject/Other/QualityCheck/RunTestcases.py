@@ -8,12 +8,12 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 @GeneralUtilities.check_arguments
-def standardized_tasks_run_testcases_for_node_project_in_common_project_structure(s: TasksForCommonProjectStructure, build_script_file: str,
+def standardized_tasks_run_testcases_for_node_project_in_common_project_structure(s: TasksForCommonProjectStructure, runtestcases_script_file: str,
                                                                                   buildenvironment: str, generate_badges: bool, verbosity: int,
                                                                                   commandline_arguments: list):
     sc = ScriptCollectionCore()
     sc.program_runner = ProgramRunnerEpew()
-    build_script_folder = os.path.dirname(build_script_file)
+    build_script_folder = os.path.dirname(runtestcases_script_file)
     codeunit_folder = GeneralUtilities.resolve_relative_path("../..", build_script_folder)
     sc.run_program("npm", "run test", codeunit_folder)
     coverage_folder = os.path.join(codeunit_folder, "Other", "Artifacts", "TestCoverage")
