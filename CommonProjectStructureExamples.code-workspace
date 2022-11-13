@@ -1,8 +1,49 @@
 {
 	"folders": [
 		{
-			"path": "."
-		}
+			"path": "./AngularProject",
+			"name": "AngularProject"
+		},
+		{
+			"path": "./DotNetConsoleProject",
+			"name": "DotNetConsoleProject"
+		},
+		{
+			"path": "./DotNetLibraryProject",
+			"name": "DotNetLibraryProject"
+		},
+		{
+			"path": "./DotNetWebAPIProject",
+			"name": "DotNetWebAPIProject"
+		},
+		{
+			"path": "./PythonLibraryProject",
+			"name": "PythonLibraryProject"
+		},
+		{
+			"path": "./ReactProject",
+			"name": "ReactProject"
+		},
+		{
+			"path": "./SpringProject",
+			"name": "SpringProject"
+		},
+		{
+			"path": "./VueJSProject",
+			"name": "VueJSProject"
+		},
 	],
-	"settings": {}
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug current file",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal"
+			}
+		]
+	},
 }
