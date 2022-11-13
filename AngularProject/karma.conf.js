@@ -28,8 +28,7 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/angular-project'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'cobertura', dir: './Other/Artifacts/TestCoverage' }
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -37,7 +36,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'ChromeHeadless'],
     singleRun: false,
     restartOnFileChange: true
   });
