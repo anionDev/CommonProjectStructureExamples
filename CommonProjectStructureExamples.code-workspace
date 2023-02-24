@@ -1,36 +1,52 @@
 {
 	"folders": [
 		{
-			"path": "./AngularProject",
-			"name": "AngularProject"
+			"path": ".",
+			"name": "Entire project"
 		},
 		{
-			"path": "./DotNetConsoleProject",
-			"name": "DotNetConsoleProject"
+			"path": "./AngularCodeUnit",
+			"name": "AngularCodeUnit"
 		},
 		{
-			"path": "./DotNetLibraryProject",
-			"name": "DotNetLibraryProject"
+			"path": "./ContainerCodeUnit",
+			"name": "ContainerCodeUnit"
 		},
 		{
-			"path": "./DotNetWebAPIProject",
-			"name": "DotNetWebAPIProject"
+			"path": "./DotNetConsoleCodeUnit",
+			"name": "DotNetConsoleCodeUnit"
 		},
 		{
-			"path": "./PythonLibraryProject",
-			"name": "PythonLibraryProject"
+			"path": "./DotNetLibraryCodeUnit",
+			"name": "DotNetLibraryCodeUnit"
 		},
 		{
-			"path": "./ReactProject",
-			"name": "ReactProject"
+			"path": "./DotNetWebAPICodeUnit",
+			"name": "DotNetWebAPICodeUnit"
 		},
 		{
-			"path": "./SpringProject",
-			"name": "SpringProject"
+			"path": "./JavaCodeUnit",
+			"name": "JavaCodeUnit"
 		},
 		{
-			"path": "./VueJSProject",
-			"name": "VueJSProject"
+			"path": "./KotlinCodeUnit",
+			"name": "KotlinCodeUnit"
+		},
+		{
+			"path": "./PythonLibraryCodeUnit",
+			"name": "PythonLibraryCodeUnit"
+		},
+		{
+			"path": "./ReactCodeUnit",
+			"name": "ReactCodeUnit"
+		},
+		{
+			"path": "./SpringCodeUnit",
+			"name": "SpringCodeUnit"
+		},
+		{
+			"path": "./VueJSCodeUnit",
+			"name": "VueJSCodeUnit"
 		},
 	],
 	"settings": {},

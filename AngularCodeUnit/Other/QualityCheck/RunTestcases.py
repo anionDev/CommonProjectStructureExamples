@@ -5,7 +5,7 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 def run_testcases():
-    TasksForCommonProjectStructure().standardized_tasks_run_testcases_for_node_project_in_common_project_structure(
+    TasksForCommonProjectStructure().standardized_tasks_run_testcases_for_node_project(
         str(Path(__file__).absolute()), "QualityCheck", True, 1, sys.argv)
 
 

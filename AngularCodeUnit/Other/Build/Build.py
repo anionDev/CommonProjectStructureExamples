@@ -5,7 +5,7 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 def build():
-    TasksForCommonProjectStructure().standardized_tasks_build_for_node_library_project_in_common_project_structure(
+    TasksForCommonProjectStructure().standardized_tasks_build_for_node_project(
         str(Path(__file__).absolute()), "QualityCheck",  1, sys.argv)
 
 
