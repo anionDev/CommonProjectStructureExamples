@@ -25,6 +25,10 @@
 			"name": "DotNetWebAPICodeUnit"
 		},
 		{
+			"path": "./FlutterCodeUnit",
+			"name": "FlutterCodeUnit"
+		},
+		{
 			"path": "./JavaCodeUnit",
 			"name": "JavaCodeUnit"
 		},
