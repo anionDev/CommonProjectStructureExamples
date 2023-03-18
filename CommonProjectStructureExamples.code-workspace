@@ -59,7 +59,10 @@
 			{
 				"label": "Build all codeunits",
 				"command": "SCBuildCodeunits",
-				"args": [],
+				"args": [
+					"--buildenvironment",
+					"Development"
+				],
 				"type": "shell",
 				"options": {
 					"cwd": "${workspaceFolder}",
