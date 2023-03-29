@@ -10,3 +10,4 @@ Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
 Resources/DotNetLibraryCodeUnit.sarif
 Resources/DotNetLibraryCodeUnitTests.sarif
+Resources/GRYLibrary

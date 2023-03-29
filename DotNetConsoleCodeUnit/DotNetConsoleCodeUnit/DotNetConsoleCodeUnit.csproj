@@ -11,7 +11,7 @@
 		<PreserveCompilationContext>false</PreserveCompilationContext>
 		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 		<Copyright>Copyright © 2023 Marius Göcke</Copyright>
-		<Description>DotNetConsoleCodeUnit is an example of implementing the CommonProjectStructure for a .NET-library.</Description>
+		<Description>DotNetConsoleCodeUnit is an example of implementing the CommonProjectStructure for a .NET-console-application.</Description>
 		<PackageProjectUrl>https://github.com/anionDev/DotNetConsoleCodeUnit</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/anionDev/DotNetConsoleCodeUnit</RepositoryUrl>
 		<RootNamespace>DotNetConsoleCodeUnit.Core</RootNamespace>
@@ -30,8 +30,9 @@
 		<NoWarn>1701;1702;CA1822;CS1591;CS1573;IDE0045;IDE0046;IDE0054;IDE0058;IDE0074;IDE0090</NoWarn>
 		<WarningsAsErrors>NU1605</WarningsAsErrors>
 		<ErrorLog>..\Other\Resources\DotNetConsoleCodeUnit.sarif</ErrorLog>
-		<OutputType>Library</OutputType>
+		<OutputType>Exe</OutputType>
 		<DocumentationFile>..\Other\Artifacts\MetaInformation\DotNetConsoleCodeUnit.xml</DocumentationFile>
+		<StartupObject>DotNetConsoleCodeUnit.Core.Program</StartupObject>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Development'">

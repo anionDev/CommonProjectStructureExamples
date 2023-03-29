@@ -5,6 +5,7 @@
     <cps:version>0.1.0</cps:version>
     <cps:minimalcodecoverageinpercent>1</cps:minimalcodecoverageinpercent>
     <cps:dependentcodeunits>
+        <cps:dependentcodeunit>DotNetLibraryCodeUnit</cps:dependentcodeunit>
     </cps:dependentcodeunits>
     <cps:developerteam>
         <cps:developer>
