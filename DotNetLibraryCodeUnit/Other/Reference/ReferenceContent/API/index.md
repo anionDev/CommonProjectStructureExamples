@@ -1,3 +1,3 @@
 # API Documentation
 
-This is the class-reference of the DotNetLibraryCodeUnit.
+This is the class-reference.
