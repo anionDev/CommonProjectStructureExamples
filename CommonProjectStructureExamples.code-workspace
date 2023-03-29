@@ -29,6 +29,10 @@
 			"name": "FlutterCodeUnit"
 		},
 		{
+			"path": "./GoCodeUnit",
+			"name": "GoCodeUnit"
+		},
+		{
 			"path": "./JavaCodeUnit",
 			"name": "JavaCodeUnit"
 		},
