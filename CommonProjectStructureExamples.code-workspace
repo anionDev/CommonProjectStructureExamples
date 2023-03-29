@@ -37,8 +37,8 @@
 			"name": "KotlinCodeUnit"
 		},
 		{
-			"path": "./PythonLibraryCodeUnit",
-			"name": "PythonLibraryCodeUnit"
+			"path": "./PythonPackageCodeUnit",
+			"name": "PythonPackageCodeUnit"
 		},
 		{
 			"path": "./ReactCodeUnit",
