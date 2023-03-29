@@ -1,7 +1,7 @@
-﻿using DotNetLibraryCodeUnit.Core.Components;
+﻿using DotNetConsoleCodeUnit.Core.Components;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DotNetLibraryCodeUnit.Tests.Testcases.Components
+namespace DotNetConsoleCodeUnit.Tests.Testcases.Components
 {
     [TestClass]
     public class FooTests

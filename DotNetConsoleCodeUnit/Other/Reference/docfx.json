@@ -4,14 +4,14 @@
       "src": [
         {
           "files": [
-            "DotNetLibraryCodeUnit.csproj"
+            "DotNetConsoleCodeUnit.csproj"
           ],
           "exclude": [
             "**/bin/**",
             "**/obj/**",
             "_site/**"
           ],
-          "src": "../../DotNetLibraryCodeUnit"
+          "src": "../../DotNetConsoleCodeUnit"
         }
       ],
       "dest": "./ReferenceContent/API",
