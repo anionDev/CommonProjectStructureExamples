@@ -10,7 +10,8 @@ namespace DotNetConsoleCodeUnit.Core
     {
         public static int Main(string[] arguments)
         {
-            Console.WriteLine("Hello World");
+            Console.WriteLine("Hello World!");
+            Console.WriteLine($"This codeunit uses {DotNetLibraryCodeUnit.Core.Constants.PublicConstants.CodeUnitName} v{DotNetLibraryCodeUnit.Core.Constants.PublicConstants.CodeUnitVersion}.");
             return 0;
         }
     }

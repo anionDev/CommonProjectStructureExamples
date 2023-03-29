@@ -74,4 +74,10 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="DotNetLibraryCodeUnit">
+	    <HintPath>..\Other\Resources\DependentCodeUnits\DotNetLibraryCodeUnit\BuildResult_DotNet_win-x64\DotNetLibraryCodeUnit.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
