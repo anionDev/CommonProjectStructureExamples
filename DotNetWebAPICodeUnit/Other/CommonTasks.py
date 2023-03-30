@@ -25,6 +25,7 @@ def common_tasks():
     t.standardized_tasks_do_common_tasks(file, codeunit_version, verbosity, build_environment, True, additional_arguments_file, False, cmd_args)
     t.ensure_grylibrary_is_available(codeunit_folder)
     t.t4_transform(file, verbosity)
+    t.standardized_task_verify_standard_format_csproj_files(codeunit_folder)
 
 
 if __name__ == "__main__":

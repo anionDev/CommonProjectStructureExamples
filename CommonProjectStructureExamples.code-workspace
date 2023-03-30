@@ -71,6 +71,15 @@
 				"options": {
 					"cwd": "${workspaceFolder}",
 				},
+			},
+			{
+				"label": "ContainerCodeUnit: Run example",
+				"command": "python ContainerCodeUnit/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile/RunExample.py",
+				"args": [],
+				"type": "shell",
+				"options": {
+					"cwd": "${workspaceFolder}",
+				},
 			}
 		]
 	},
@@ -87,12 +96,17 @@
 		]
 	},
 	"settings": {
+		"files.exclude": {
+			".coverage": true,
+			"TestResults": true,
+			".vs": true,
+		},
+		"spellright.language": [
+			"en",
+		],
 		"spellright.documentTypes": [
 			"markdown",
 			"plaintext",
-		],
-		"spellright.language": [
-			"en",
 		],
 	}
 }
