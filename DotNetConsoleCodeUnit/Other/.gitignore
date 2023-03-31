@@ -8,5 +8,4 @@ Resources/Constants/CodeUnitName.*
 Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
-Resources/DotNetConsoleCodeUnit.sarif
-Resources/DotNetConsoleCodeUnitTests.sarif
+Resources/*.sarif

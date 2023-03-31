@@ -8,6 +8,5 @@ Resources/Constants/CodeUnitName.*
 Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
-Resources/DotNetWebAPICodeUnit.sarif
-Resources/DotNetWebAPICodeUnitTests.sarif
+Resources/*.sarif
 Resources/GRYLibrary
