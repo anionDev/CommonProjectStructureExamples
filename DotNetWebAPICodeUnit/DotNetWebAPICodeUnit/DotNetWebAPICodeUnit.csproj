@@ -12,8 +12,8 @@
 		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 		<Copyright>Copyright © 2023 Marius Göcke</Copyright>
 		<Description>DotNetWebAPICodeUnit represents an example for a simple WebAPI.</Description>
-		<PackageProjectUrl>https://github.com/TODO</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/TODO</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
 		<RootNamespace>DotNetWebAPICodeUnit.Core</RootNamespace>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<Nullable>disable</Nullable>

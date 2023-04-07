@@ -13,7 +13,7 @@
 		<Copyright>Copyright © 2023 Marius Göcke</Copyright>
 		<Description>DotNetConsoleCodeUnit is an example of implementing the CommonProjectStructure for a .NET-console-application.</Description>
 		<PackageProjectUrl>https://github.com/anionDev/DotNetConsoleCodeUnit</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/anionDev/DotNetConsoleCodeUnit</RepositoryUrl>
+		<RepositoryUrl>https://github.com/anionDev/DotNetConsoleCodeUnit.git</RepositoryUrl>
 		<RootNamespace>DotNetConsoleCodeUnit.Core</RootNamespace>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<Nullable>disable</Nullable>

@@ -13,7 +13,7 @@
 		<Copyright>Copyright © 2023 Marius Göcke</Copyright>
 		<Description>DotNetConsoleCodeUnitTests is the test-project for DotNetConsoleCodeUnit.</Description>
 		<PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples</RepositoryUrl>
+		<RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
 		<RootNamespace>DotNetConsoleCodeUnit.Tests</RootNamespace>
 		<ProduceReferenceAssembly>false</ProduceReferenceAssembly>
 		<Nullable>disable</Nullable>
