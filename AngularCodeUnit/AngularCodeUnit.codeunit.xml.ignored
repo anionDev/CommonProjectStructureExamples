@@ -3,6 +3,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/raw/main/Conventions/RepositoryStructure/CommonProjectStructure/codeunit.xsd">
     <cps:name>AngularCodeUnit</cps:name>
     <cps:version>0.1.0</cps:version>
-    <cps:minimalcodecoverageinpercent>40</cps:minimalcodecoverageinpercent>
-    <cps:dependentcodeunits></cps:dependentcodeunits>
+    <cps:properties codeunithastestablesourcecode="true">
+        <cps:testsettings>
+            <cps:minimalcodecoverageinpercent>70</cps:minimalcodecoverageinpercent>
+        </cps:testsettings>
+    </cps:properties>
+    <cps:dependentcodeunits>
+    </cps:dependentcodeunits>
+    <cps:developerteam>
+        <cps:developer>
+            <cps:developername>Marius Göcke</cps:developername>
+            <cps:developeremailaddress>marius.goecke@gmail.com</cps:developeremailaddress>
+        </cps:developer>
+    </cps:developerteam>
 </cps:codeunit>
