@@ -10,6 +10,9 @@ using GRYLibrary.Core.GenericWebAPIServer;
 using GRYLibrary.Core.Log;
 using GRYLibrary.Core.Miscellaneous;
 using DotNetWebAPICodeUnit.Core.Constants;
+using GRYLibrary.Core.GenericWebAPIServer.Settings.CommonRoutes;
+using GRYLibrary.Core.GenericWebAPIServer.Utilities;
+using GRYLibrary.Core.Miscellaneous.ConsoleApplication;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -17,74 +20,10 @@ namespace DotNetWebAPICodeUnit.Core
     {
         internal static int Main(string[] commandlineArguments)
         {
-            GRYConsoleApplication<CommandlineParameter> gryConsoleApplication = new GRYConsoleApplication<CommandlineParameter>(Main,
-                GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitVersion, null, false);
-            return gryConsoleApplication.Main(commandlineArguments);
-        }
-        private static int Main(CommandlineParameter commandlineArguments)
-        {
-            GRYEnvironment targetEnvironmentType = GetEnvironmentTargetType();
-            ExecutionMode executionMode = GenericWebAPIServer.GetExecutionMode();
-            string domain = commandlineArguments.Domain;
-            string programFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
-            string baseFolder = GenericWebAPIServer.GetBaseFolderForProjectInCommonProjectStructure(targetEnvironmentType, programFolder);
-            string configurationFolder = Path.Combine(baseFolder, "Configuration");
-            string logFolder = Path.Combine(baseFolder, "Log");
-            string logFile = Path.Join(logFolder, $"{GeneralConstants.CodeUnitName}.Core.log");
-            string certificateFolder = Path.Combine(configurationFolder, "Certificate");
-            AppConstants.DataFolder = Path.Combine(baseFolder, "Data");
-            GRYLogConfiguration logConfiguration = GenericWebAPIServer.GetDefaultLogConfiguration(logFile, true, targetEnvironmentType);
-            ApplicationSettings applicationSettings = new ApplicationSettings()
-            {
-                TermsOfServiceURL = commandlineArguments.TermsOfServiceURL,
-                ContactURL = commandlineArguments.ContactURL,
-                LicenseURL = commandlineArguments.LicenseURL,
-                AppDescription = AppConstants.AppDescription,
-                LogConfiguration = logConfiguration
-            };
-            WebServerSettings webServerSettings = new WebServerSettings()
-            {
-                Port = 443,
-                TLSCertificatePasswordFile = Path.Join(certificateFolder, $"{domain}.password"),
-                TLSCertificatePFXFilePath = Path.Join(certificateFolder, $"{domain}.pfx"),
-                BlackListProvider = new BlacklistProvider(),
-                DDOSProtectionSettings = new DDOSProtectionSettings(),
-                ObfuscationSettings = new ObfuscationSettings(),
-                ExceptionManagerSettings = new ExceptionManagerSettings(),
-                RequestCounterSettings = new RequestCounterSettings(),
-                RequestLoggingSettings = new RequestLoggingSettings() { WebServerAccessLogFile = Path.Join(logFolder, $"{GeneralConstants.CodeUnitName}.WebServerAccess.log") },
-                WebApplicationFirewallSettings = new WebApplicationFirewallSettings(),
-                APIKeyValidatorSettings = new APIKeyValidatorSettings(),
-            };
-            WebAPIConfigurationVariables webAPIConfigurationVariables = new WebAPIConfigurationVariables()
-            {
-                ApplicationSettings = applicationSettings,
-                WebServerSettings = webServerSettings
-            };
-
-            void configureServices(IServiceCollection services)
-            { }
-            WebAPIConfigurationConstants webAPIConfigurationConstants = new WebAPIConfigurationConstants(
-                        targetEnvironmentType,
-                        GeneralConstants.CodeUnitName,
-                        GeneralConstants.CodeUnitVersion,
-                        Path.Combine(configurationFolder, "WebAPIServerSettings.xml"),
-                        configureServices
-            );
-            WebAPIConfigurationValues<WebAPIConfigurationConstants, WebAPIConfigurationVariables> webAPIConfigurationValues = new WebAPIConfigurationValues<WebAPIConfigurationConstants, WebAPIConfigurationVariables>()
-            {
-                WebAPIConfigurationConstants = webAPIConfigurationConstants,
-                WebAPIConfigurationVariables = webAPIConfigurationVariables,
-                RethrowInitializationExceptions = true,
-                CommandlineArguments = Array.Empty<string>(),
-                ExecutionMode = executionMode
-            };
-            WebAPIConfiguration<WebAPIConfigurationConstants, WebAPIConfigurationVariables> webAPIConfiguration = new()
-            {
-                WebAPIConfigurationValues = webAPIConfigurationValues,
-            };
-            webAPIConfiguration.WebAPIConfigurationValues.ExecutionMode.Accept(new GenericWebAPIServer.CreateFolderVisitor(baseFolder, configurationFolder, certificateFolder, AppConstants.DataFolder));
-            return GenericWebAPIServer.DefaultWebAPIMainFunction(webAPIConfiguration);
+            ExecutionMode executionMode = ServerUtilities.GetExecutionMode();
+            GRYConsoleApplication<CommandlineParameter, APIServerInitializer<AppConstants, Settings>> consoleApplication = new GRYConsoleApplication<CommandlineParameter, APIServerInitializer<CompatibilityServerConstants, Settings>>(GRYLibrary.Core.GenericWebAPIServer.APIServer<AppConstants, CompatibilityServerSettings, CommandlineParameter>.WebAPIMain, GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitVersion.ToString(), CompatibilityServerConstants.AppDescription, true, executionMode);
+            APIServerInitializer<AppConstants, Settings> apiServerInitializer = new APIServerInitializer<AppConstants, Settings>(GeneralConstants.CodeUnitName, Version3.Parse(GeneralConstants.CodeUnitVersion), executionMode, GetEnvironmentTargetType(), new AppConstants(), GeneralConstants.Domain, CompatibilityServerConstants.AppDescription, new CompatibilityServerSettings(), GeneralConstants.NonProductiveCertificatePasswordHex, GeneralConstants.NonProductiveCertificatePFXHex);
+              return consoleApplication.Main(commandlineArguments, apiServerInitializer);
         }
 
         private static GRYEnvironment GetEnvironmentTargetType()
@@ -96,7 +35,7 @@ namespace DotNetWebAPICodeUnit.Core
 #elif Productive
             return Productive.Instance;
 #else
-            throw new System.Collections.Generic.KeyNotFoundException("Unknown Environmenttype.");
+            throw new System.Collections.Generic.KeyNotFoundException("Unknown environmenttargettype.");
 #endif
         }
     }
