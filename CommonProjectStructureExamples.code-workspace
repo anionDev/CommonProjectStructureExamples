@@ -25,37 +25,9 @@
 			"name": "DotNetWebAPICodeUnit"
 		},
 		{
-			"path": "./FlutterCodeUnit",
-			"name": "FlutterCodeUnit"
-		},
-		{
-			"path": "./GoCodeUnit",
-			"name": "GoCodeUnit"
-		},
-		{
-			"path": "./JavaCodeUnit",
-			"name": "JavaCodeUnit"
-		},
-		{
-			"path": "./KotlinCodeUnit",
-			"name": "KotlinCodeUnit"
-		},
-		{
-			"path": "./PythonPackageCodeUnit",
+			"path": "./PythonCodeUnit",
 			"name": "PythonPackageCodeUnit"
-		},
-		{
-			"path": "./ReactCodeUnit",
-			"name": "ReactCodeUnit"
-		},
-		{
-			"path": "./SpringCodeUnit",
-			"name": "SpringCodeUnit"
-		},
-		{
-			"path": "./VueJSCodeUnit",
-			"name": "VueJSCodeUnit"
-		},
+		}
 	],
 	"tasks": {
 		"version": "2.0.0",
