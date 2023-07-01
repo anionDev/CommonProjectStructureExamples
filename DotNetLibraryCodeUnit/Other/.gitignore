@@ -9,4 +9,3 @@ Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
 Resources/*.sarif
-Resources/GRYLibrary

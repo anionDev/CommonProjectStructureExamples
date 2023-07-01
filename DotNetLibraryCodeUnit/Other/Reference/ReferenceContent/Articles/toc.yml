@@ -1,2 +1,4 @@
-- name: SomeArticle
-  href: SomeArticle.md
+- name: Introduction
+  href: Introduction.md
+- name: Example
+  href: Example.md

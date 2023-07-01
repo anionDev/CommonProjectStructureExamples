@@ -24,8 +24,6 @@ def common_tasks():
     sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path(f"../{codeunit_name}/{codeunit_name}.csproj", folder_of_current_file), codeunit_version)
     sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path(f"../{codeunit_name}Tests/{codeunit_name}Tests.csproj", folder_of_current_file), codeunit_version)
     t.standardized_tasks_do_common_tasks(file, codeunit_version, verbosity, build_environment, True, additional_arguments_file, False, cmd_args)
-    t.ensure_grylibrary_is_available(codeunit_folder)
-    t.t4_transform(file, verbosity)
     t.standardized_task_verify_standard_format_csproj_files(codeunit_folder)
 
 

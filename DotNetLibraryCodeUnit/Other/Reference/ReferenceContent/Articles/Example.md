@@ -1,0 +1,3 @@
+# Example article
+
+Lorem ipsum.
