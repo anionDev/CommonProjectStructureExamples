@@ -16,7 +16,6 @@
         </dependencies>
         <projectUrl>https://github.com/anionDev/CommonProjectStructureExamples</projectUrl>
         <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples" branch="main" commit="$commitid$" />
-        <icon>images\DotNetLibraryCodeUnitIcon.png</icon>
     </metadata>
     <files>
         <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetLibraryCodeUnit.dll" target="lib/net7" />
