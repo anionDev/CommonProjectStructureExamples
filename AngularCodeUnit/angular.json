@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-code-unit",
+            "outputPath": "Other/Artifacts/BuildResult_Website",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -35,7 +35,7 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "Production": {
               "budgets": [
                 {
                   "type": "initial",
@@ -50,7 +50,22 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "QualityCheck": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "Development": {
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -59,19 +74,22 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "Production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "AngularCodeUnit:build:production"
+            "Production": {
+              "browserTarget": "AngularCodeUnit:build:Production"
             },
-            "development": {
-              "browserTarget": "AngularCodeUnit:build:development"
+            "QualityCheck": {
+              "browserTarget": "AngularCodeUnit:build:QualityCheck"
+            },
+            "Development": {
+              "browserTarget": "AngularCodeUnit:build:Development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "QualityCheck"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -95,7 +113,8 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "karma.conf.js"
           }
         }
       }

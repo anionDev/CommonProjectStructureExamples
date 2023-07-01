@@ -4,7 +4,6 @@ from pathlib import Path
 from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
 from ScriptCollection.GeneralUtilities import GeneralUtilities
 from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
-from ScriptCollection.ProgramRunnerEpew import ProgramRunnerEpew
 
 
 def common_tasks():
@@ -22,8 +21,7 @@ def common_tasks():
     additional_arguments_file = t.get_additionalargumentsfile_from_commandline_arguments(cmd_args, None)
     t.replace_version_in_packagejson_file(GeneralUtilities.resolve_relative_path(f"../package.json", folder_of_current_file), codeunit_version)
     t.standardized_tasks_do_common_tasks(file, codeunit_version, verbosity, build_environment, True, additional_arguments_file, False, cmd_args)
-    sc.program_runner = ProgramRunnerEpew()
-    sc.run_program("npm", "install", codeunit_folder, verbosity=verbosity)
+    t.run_with_epew("npm", "install", codeunit_folder, verbosity=verbosity)
 
 
 if __name__ == "__main__":
