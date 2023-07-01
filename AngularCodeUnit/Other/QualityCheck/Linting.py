@@ -4,7 +4,7 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 def linting():
-    TasksForCommonProjectStructure().standardized_tasks_linting_for_node_project(str(Path(__file__).absolute()), 1, "QualityCheck", sys.argv)
+    TasksForCommonProjectStructure().standardized_tasks_linting_for_angular_codeunit(str(Path(__file__).absolute()), 1, "QualityCheck", sys.argv)
 
 
 if __name__ == "__main__":

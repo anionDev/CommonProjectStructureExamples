@@ -28,12 +28,14 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage/angular-code-unit'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'cobertura', dir: './Other/Artifacts/TestCoverage' }
       ]
     },
+    colors: true,
+    logLevel: config.LOG_INFO,
     reporters: ['progress', 'kjhtml'],
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'ChromeHeadless'],
+    singleRun: false,
     restartOnFileChange: true
   });
 };
