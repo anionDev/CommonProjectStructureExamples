@@ -8,5 +8,5 @@ Resources/Constants/CodeUnitName.*
 Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
-Resources/ContainerCodeUnit.sarif
-Resources/ContainerCodeUnitTests.sarif
+Resources/*.sarif
+Workspace

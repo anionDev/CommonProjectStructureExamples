@@ -20,6 +20,8 @@ def common_tasks():
     additional_arguments_file = t.get_additionalargumentsfile_from_commandline_arguments(cmd_args, None)
     sc.replace_version_in_dockerfile_file(GeneralUtilities.resolve_relative_path(f"../{codeunitname}/Dockerfile", folder_of_current_file), codeunit_version)
     t.standardized_tasks_do_common_tasks(file, codeunit_version, verbosity, build_environment, True, additional_arguments_file, False, cmd_args)
+    t.t4_transform(file, verbosity)
+    t.standardized_task_verify_standard_format_csproj_files(codeunit_folder)
 
 
 if __name__ == "__main__":
