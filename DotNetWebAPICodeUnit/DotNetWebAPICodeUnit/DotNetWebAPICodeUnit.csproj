@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Authors>Marius Göcke</Authors>
-        <Version>0.1.1</Version>
-        <AssemblyVersion>0.1.1</AssemblyVersion>
-        <FileVersion>0.1.1</FileVersion>
+        <Version>0.1.0</Version>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <FileVersion>0.1.0</FileVersion>
         <SelfContained>false</SelfContained>
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
@@ -55,7 +55,6 @@
         <ErrorReport>none</ErrorReport>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="GRYLibrary" Version="0.12.45" />
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -67,5 +66,8 @@
         <PackageReference Include="NSwag.AspNetCore" Version="13.19.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
     </ItemGroup>
 </Project>

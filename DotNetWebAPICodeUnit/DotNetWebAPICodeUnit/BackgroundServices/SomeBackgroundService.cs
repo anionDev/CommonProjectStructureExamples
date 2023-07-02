@@ -1,6 +1,6 @@
 ﻿namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {
-    internal class SomeBackgroundService :ISomeBackgroundService
+    public class SomeBackgroundService :ISomeBackgroundService
     {
         public void StartAsync()
         {

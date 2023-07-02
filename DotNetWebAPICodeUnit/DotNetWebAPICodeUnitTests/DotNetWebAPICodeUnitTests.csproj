@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Authors>Marius Göcke</Authors>
-        <Version>0.1.1</Version>
-        <AssemblyVersion>0.1.1</AssemblyVersion>
-        <FileVersion>0.1.1</FileVersion>
+        <Version>0.1.0</Version>
+        <AssemblyVersion>0.1.0</AssemblyVersion>
+        <FileVersion>0.1.0</FileVersion>
         <SelfContained>false</SelfContained>
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
@@ -54,7 +54,6 @@
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\DotNetWebAPICodeUnit\DotNetWebAPICodeUnit.csproj" />
-        <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -21,11 +21,11 @@ namespace DotNetWebAPICodeUnit.Tests
             int expectedResult = 5;
 
             // act
-            var actualResult = controller.SomeFunction(parameter1, parameter2, parameter3);
+            IActionResult actualResult = controller.SomeFunction(parameter1, parameter2, parameter3);
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);
-            var acturalResultObject = (int)(actualResult as OkObjectResult).Value;
+            int acturalResultObject = (int)(actualResult as OkObjectResult).Value;
             Assert.AreEqual(expectedResult, acturalResultObject);
         }
     }

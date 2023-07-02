@@ -1,8 +1,8 @@
-﻿namespace DotNetWebAPICodeUnit.Core.BackgroundServices
+﻿using GRYLibrary.Core.GenericWebAPIServer.Utilities;
+
+namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {
-    internal interface ISomeBackgroundService
+    public interface ISomeBackgroundService :IBackgroundService
     {
-        void StartAsync();
-        void Stop();
     }
 }

@@ -22,11 +22,11 @@ namespace DotNetWebAPICodeUnit.Core.Controller
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [Route($"{nameof(SomeFunction)}/routeParameter")]
+        [Route($"{nameof(SomeFunction)}/{{parameter1}}")]
         public IActionResult SomeFunction([FromRoute] string parameter1, [FromQuery] int parameter2, [FromQuery] int parameter3)
         {
-            _Logger.Log($"{nameof(SomeFunction)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
-            return Ok(parameter2 + parameter3);
+            this._Logger.Log($"{nameof(SomeFunction)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
+            return this.Ok(parameter2 + parameter3);
         }
     }
 }
