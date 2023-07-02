@@ -19,15 +19,13 @@ http {
     resolver 127.0.0.11     ipv6=off valid=30s;
     client_max_body_size    800M;
     server_tokens           off;
-}
     ssl_protocols           TLSv1.2 TLSv1.3;
     add_header              X-Content-Type-Options nosniff;
     add_header              X-Frame-Options DENY;
     add_header              X-XSS-Protection "1; mode=block";
     add_header              Referrer-Policy "origin";
 
-    server {
-        server_name         _;
-        TODO
-    }
+$hosthttpserver
+$hosthttpsserver
 
+}
