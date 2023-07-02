@@ -14,7 +14,7 @@ namespace DotNetWebAPICodeUnit.Tests
         public void TestSomeFunction()
         {
             // arrange
-            MyAPIController controller = new MyAPIController(Mock.Of<ISomeService>(), Mock.Of<IGeneralLogger>());
+            MyAPIController controller = new MyAPIController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
             string parameter1 = "parameter1";
             int parameter2 = 2;
             int parameter3 = 3;
