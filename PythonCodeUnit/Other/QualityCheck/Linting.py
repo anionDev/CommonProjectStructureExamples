@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from PythonCodeUnit.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
 
 
 def linting():

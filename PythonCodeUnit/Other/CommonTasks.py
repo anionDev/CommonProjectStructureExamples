@@ -1,15 +1,15 @@
 import sys
 import os
 from pathlib import Path
-from PythonCodeUnit.GeneralUtilities import GeneralUtilities
-from PythonCodeUnit.PythonCodeUnitCore import PythonCodeUnitCore
-from PythonCodeUnit.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.GeneralUtilities import GeneralUtilities
+from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
+from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
 
 
 def common_tasks():
     file = str(Path(__file__).absolute())
     folder_of_current_file = os.path.dirname(file)
-    sc = PythonCodeUnitCore()
+    sc = ScriptCollectionCore()
     cmd_args = sys.argv
     t = TasksForCommonProjectStructure()
     codeunitname = os.path.basename(GeneralUtilities.resolve_relative_path("..", os.path.dirname(file)))

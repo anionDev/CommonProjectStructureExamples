@@ -2,4 +2,4 @@
 
 The following articles are available in the documentation
 
-- [Required tools for CommonProjectStructure](./Articles/RequiredToolsForCommonProjectStructure.md)
+- [Required tools for CommonProjectStructure](./Articles/SomeArticle.md)
