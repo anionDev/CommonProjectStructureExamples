@@ -1,32 +1,8 @@
 version: '3.2'
 
 services:
-  WebAPIContainerCodeUnitc:
-    image: WebAPIContainerCodeUnitc:0.0.1
-    container_name: 'WebAPIContainerCodeUnitc'
-    volumes:
-      - "./Volumes/Configuration:/Workspace/Configuration"
-      - "./Volumes/Log:/Workspace/Log"
-    networks:
-      - network
-
-  WebAPIContainerCodeUnit_torproxy:
-    image: aniondev/gryvatorproxy:0.1.9
-    container_name: 'WebAPIContainerCodeUnit_torproxy'
-    depends_on:
-      - WebAPIContainerCodeUnitc
-    volumes:
-      - ./Volumes/Keys:/var/lib/tor/hiddenservicename
-      - ./Volumes/Logs:/var/log/tor
-    environment:
-      - hiddenservicedir=hiddenservicename
-      - hiddenserviceport=80
-      - hiddenserviceaddress=WebAPIContainerCodeUnitc:80
-      - lognotice=true
-      - logdebug=false
-    networks:
-      - network
-
-networks:
-  network:
-    name: network
+  webapicontainercodeunit:
+    image: webapicontainercodeunit:0.0.1
+    container_name: 'webapicontainercodeunit'
+    ports:
+      - "80:80"
