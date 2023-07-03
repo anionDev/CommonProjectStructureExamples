@@ -9,10 +9,9 @@
 			"name": "AngularCodeUnit"
 		},
 		{
-			"path": "./ContainerCodeUnit",
-			"name": "ContainerCodeUnit"
+			"path": "./CombinedBackendFrontendCodeUnit",
+			"name": "CombinedBackendFrontendCodeUnit"
 		},
-		{
 			"path": "./DotNetConsoleCodeUnit",
 			"name": "DotNetConsoleCodeUnit"
 		},
@@ -26,7 +25,15 @@
 		},
 		{
 			"path": "./PythonCodeUnit",
-			"name": "PythonPackageCodeUnit"
+			"name": "PythonCodeUnit"
+		},
+		{
+			"path": "./WebAPIContainerCodeUnit",
+			"name": "WebAPIContainerCodeUnit"
+		},
+		{
+			"path": "./WebAppContainerCodeUnit",
+			"name": "WebAppContainerCodeUnit"
 		}
 	],
 	"tasks": {
