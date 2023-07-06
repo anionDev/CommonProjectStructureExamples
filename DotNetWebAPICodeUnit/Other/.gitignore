@@ -13,5 +13,6 @@ Resources/Constants/DevelopmentCertificatePFXHex.*
 Resources/Constants/DevelopmentCertificatePublicKey.*
 Resources/CodeAnalysisResult
 Resources/GRYLibrary
+Resources/DevelopmentCertificateAuthority
 Resources/DevelopmentCertificate
 Workspace

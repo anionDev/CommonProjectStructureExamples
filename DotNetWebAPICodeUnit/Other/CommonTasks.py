@@ -18,7 +18,7 @@ def common_tasks():
     codeunit_version = sc.get_semver_version_from_gitversion(GeneralUtilities.resolve_relative_path(
         "../..", os.path.dirname(file)))  # Should always be the same as the project-version
     folder_of_current_file = os.path.dirname(file)
-    t.generate_certificate_for_nonproductive_purposes(codeunit_folder, "PT", "SubjST", "SubjL", "SubjO", "SubjOU")
+    t.generate_certificate_for_nonproductive_purposes(codeunit_folder)
     t.set_constants_for_certificate_public_information(codeunit_folder)
     t.set_constants_for_certificate_private_information(codeunit_folder)
     sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path(f"../{codeunit_name}/{codeunit_name}.csproj", folder_of_current_file), codeunit_version)
