@@ -5,7 +5,7 @@ RUN mkdir /Workspace \
   && mkdir /Workspace/Configuration \
   && mkdir /Workspace/Logs
 
-ADD ./Other/Resources/DependentCodeUnits/WebAPIContainerCodeUnit/BuildResult_DotNet_win-x64 /Workspace/Application
+ADD ./Other/Resources/DependentCodeUnits/DotNetWebAPICodeUnit/BuildResult_DotNet_win-x64 /Workspace/Application
 
 WORKDIR /Workspace/Application
-ENTRYPOINT ["dotnet", "/Workspace/Application/WebAPIContainerCodeUnit.dll"]
+ENTRYPOINT ["dotnet", "/Workspace/Application/DotNetWebAPICodeUnit.dll"]

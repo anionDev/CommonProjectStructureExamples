@@ -4,7 +4,7 @@ from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjec
 
 
 def run_example():
-    TasksForCommonProjectStructure().run_dockerfile_example(str(Path(__file__).absolute()), 3, True, True, sys.argv)
+    TasksForCommonProjectStructure().run_dockerfile_example(str(Path(__file__).absolute()), 3, True, False, sys.argv)
 
 
 if __name__ == "__main__":

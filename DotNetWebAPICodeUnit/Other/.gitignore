@@ -8,10 +8,10 @@ Resources/Constants/CodeUnitName.*
 Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
-Resources/Constants/NonProductiveCertificatePasswordHex.*
-Resources/Constants/NonProductiveCertificatePFXHex.*
-Resources/Constants/NonProductiveCertificatePublicKey.*
-Resources/*.sarif
+Resources/Constants/DevelopmentCertificatePasswordHex.*
+Resources/Constants/DevelopmentCertificatePFXHex.*
+Resources/Constants/DevelopmentCertificatePublicKey.*
+Resources/CodeAnalysisResult
 Resources/GRYLibrary
-Resources/NonProductiveCertificate
+Resources/DevelopmentCertificate
 Workspace
