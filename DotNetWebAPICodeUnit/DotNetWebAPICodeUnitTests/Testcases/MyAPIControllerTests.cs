@@ -1,6 +1,7 @@
 using DotNetWebAPICodeUnit.Core.Controller;
 using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.GeneralPurposeLogger;
+using GRYLibrary.Core.Miscellaneous;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -11,6 +12,7 @@ namespace DotNetWebAPICodeUnit.Tests
     public class MyAPIControllerTests
     {
         [TestMethod]
+        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
         public void TestSomeFunction()
         {
             // arrange
