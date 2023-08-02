@@ -2,7 +2,7 @@
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {
-    public class CodeUnitSettings
+    public class CodeUnitSpecificConfiguration
     {
         public ICommonRoutesInformation CommonRoutesInformation { get; set; }
         public string SomePropertyOfTypeString { get; set; }

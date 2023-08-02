@@ -2,7 +2,7 @@
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {
-    public class CommandlineParameter :ICommandlineParameter
+    public class CodeuUnitSpecificCommandlineParameter :ICommandlineParameter
     {
         public string[] OriginalArguments { get; set; }
     }
