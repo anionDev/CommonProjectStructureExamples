@@ -20,7 +20,7 @@ namespace DotNetWebAPICodeUnit.Core
         internal static int Main(string[] commandlineArguments)
         {
             ExecutionMode executionMode = GUtilities.GetExecutionMode();
-            var environmentTargetType = GetEnvironmentTargetType();
+            GRYEnvironment environmentTargetType = GetEnvironmentTargetType();
             return new GRYConsoleApplication<CodeuUnitSpecificCommandlineParameter, APIServerInitializer<CodeUnitSpecificConstants, CodeUnitSpecificConfiguration, CodeuUnitSpecificCommandlineParameter>>(WebAPIServer<CodeUnitSpecificConstants, CodeUnitSpecificConfiguration, CodeuUnitSpecificCommandlineParameter>.WebAPIMain, GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitVersion.ToString(), CodeUnitSpecificConstants.AppDescription, true, executionMode).Main(commandlineArguments, (commandlineParameter) =>
             {
                 APIServerInitializer<CodeUnitSpecificConstants, CodeUnitSpecificConfiguration, CodeuUnitSpecificCommandlineParameter> apiServerInitializer = APIServerInitializer<CodeUnitSpecificConstants, CodeUnitSpecificConfiguration, CodeuUnitSpecificCommandlineParameter>.Create(GeneralConstants.CodeUnitName, Version3.Parse(GeneralConstants.CodeUnitVersion), executionMode, environmentTargetType, new CodeUnitSpecificConstants(), GeneralConstants.Domain, CodeUnitSpecificConstants.AppDescription, new CodeUnitSpecificConfiguration(), null, null);

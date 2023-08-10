@@ -26,7 +26,7 @@ namespace DotNetWebAPICodeUnit.Core.Controller
         public IActionResult SomeFunction([FromRoute] string parameter1, [FromQuery] int parameter2, [FromQuery] int parameter3)
         {
             this._Logger.Log($"{nameof(SomeFunction)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
-            return this.Ok(parameter2 + parameter3);
+            return this.Ok(DotNetLibraryCodeUnit.Core.Utilities.Add((ulong)parameter2, (ulong)parameter3));
         }
     }
 }
