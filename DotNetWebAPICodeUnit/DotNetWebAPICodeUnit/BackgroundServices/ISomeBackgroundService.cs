@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.GenericWebAPIServer.Utilities;
+﻿using GRYLibrary.Core.APIServer.Utilities;
 
 namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {

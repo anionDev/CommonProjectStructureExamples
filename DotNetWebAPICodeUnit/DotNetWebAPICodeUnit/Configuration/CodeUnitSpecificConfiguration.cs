@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.GenericWebAPIServer.CommonRoutes;
+﻿using GRYLibrary.Core.APIServer.CommonRoutes;
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {

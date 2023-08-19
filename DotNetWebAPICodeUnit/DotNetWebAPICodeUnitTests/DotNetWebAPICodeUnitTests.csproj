@@ -53,8 +53,8 @@
         <ErrorReport>none</ErrorReport>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
         <ProjectReference Include="..\DotNetWebAPICodeUnit\DotNetWebAPICodeUnit.csproj" />
-		<PackageReference Include="GRYLibrary" Version="0.12.55" />
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -74,7 +74,7 @@
         <PackageReference Include="MSTest.TestAdapter" Version="3.0.4" />
         <PackageReference Include="MSTest.TestFramework" Version="3.0.4" />
         <PackageReference Include="NJsonSchema" Version="10.9.0" />
-        <PackageReference Include="NSwag.AspNetCore" Version="13.19.0" />
+        <PackageReference Include="NSwag.AspNetCore" Version="13.20.0" />
         <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
     </ItemGroup>

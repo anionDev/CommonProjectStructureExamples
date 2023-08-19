@@ -1,6 +1,6 @@
 ﻿using DotNetWebAPICodeUnit.Core.Services;
+using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.GeneralPurposeLogger;
-using GRYLibrary.Core.GenericWebAPIServer.Settings.Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
