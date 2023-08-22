@@ -5,7 +5,7 @@
     <cps:version>0.1.0</cps:version>
     <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true" throwexceptionifcodeunitfilecannotbevalidated="true">
         <cps:testsettings>
-            <cps:minimalcodecoverageinpercent>1</cps:minimalcodecoverageinpercent>
+            <cps:minimalcodecoverageinpercent>80</cps:minimalcodecoverageinpercent>
         </cps:testsettings>
     </cps:properties>
     <cps:dependentcodeunits/>

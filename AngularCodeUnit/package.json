@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "test": "ng test --watch=true --configuration Development --browsers Chrome",
-    "start": "ng serve --watch=true --configuration Development",
-    "lint": "ng lint"
+    "start": "ng serve --watch=true --configuration Development"
   },
   "private": true,
   "dependencies": {
