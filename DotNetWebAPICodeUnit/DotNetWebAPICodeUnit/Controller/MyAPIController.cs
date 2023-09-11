@@ -9,7 +9,7 @@ namespace DotNetWebAPICodeUnit.Core.Controller
 {
     [ApiController]
     [Route(MyAPIController.ControllerRoute)]
-    public class MyAPIController :ControllerBase
+    public class MyAPIController : ControllerBase
     {
         public const string ControllerRoute = $"/{ServerConfiguration.APIRoutePrefix}/{nameof(MyAPIController)}";
         private readonly ISomeService _SomeService;
