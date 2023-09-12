@@ -10,6 +10,7 @@ using GRYLibrary.Core.APIServer.Mid.RequestLogger;
 using GRYLibrary.Core.APIServer.ConcreteEnvironments;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.Miscellaneous.FilePath;
+using GRYLibrary.Core.APIServer.ExecutionModes;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -41,7 +42,7 @@ namespace DotNetWebAPICodeUnit.Core
                     {
                         domain = "myservicedomain.example.com";//HINT this value must be updated before running but can also be changed after deployment
                     }
-                    bool useHTTPS = true;//HINT this value can be updated before running but can also be changed after deployment
+                    bool useHTTPS = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;//HINT this value can be updated before running but can also be changed after deployment
                     if (useHTTPS)
                     {
                         initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = HTTPS.Create(new TLSCertificateInformation
