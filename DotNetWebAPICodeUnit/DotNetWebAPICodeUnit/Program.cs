@@ -43,6 +43,7 @@ namespace DotNetWebAPICodeUnit.Core
                         domain = "myservicedomain.example.com";//HINT this value must be updated before running but can also be changed after deployment
                     }
                     bool useHTTPS = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;//HINT this value can be updated before running but can also be changed after deployment
+                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
                     if (useHTTPS)
                     {
                         initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = HTTPS.Create(new TLSCertificateInformation
@@ -55,7 +56,6 @@ namespace DotNetWebAPICodeUnit.Core
                     {
                         initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = HTTP.Create();
                     }
-                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
                 };
                 apiServerConfiguration.SetFunctionalInformationAction = (functionalInformation) => //HINT initialization for every execution
                 {
@@ -66,11 +66,11 @@ namespace DotNetWebAPICodeUnit.Core
                     ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
                     functionalInformation.PreRun = () =>
                     {
-                        someBackgroundService.StartAsync();
+                        someBackgroundService.StartAsync(functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode);
                     };
                     functionalInformation.PostRun = () =>
                     {
-                        someBackgroundService.Stop();
+                        someBackgroundService.Stop(functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode);
                     };
                 };
             });
