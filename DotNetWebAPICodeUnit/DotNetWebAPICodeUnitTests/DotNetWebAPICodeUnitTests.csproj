@@ -53,7 +53,6 @@
         <ErrorReport>none</ErrorReport>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
         <ProjectReference Include="..\DotNetWebAPICodeUnit\DotNetWebAPICodeUnit.csproj" />
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
