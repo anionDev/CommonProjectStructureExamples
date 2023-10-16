@@ -66,10 +66,8 @@
         <PackageReference Include="NSwag.AspNetCore" Version="13.20.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    </ItemGroup>
-    <ItemGroup>
-      <Reference Include="DotNetLibraryCodeUnit">
-        <HintPath>..\Other\Resources\DependentCodeUnits\DotNetLibraryCodeUnit\BuildResult_DotNet_win-x64\DotNetLibraryCodeUnit.dll</HintPath>
-      </Reference>
+        <Reference Include="DotNetLibraryCodeUnit">
+            <HintPath>..\Other\Resources\DependentCodeUnits\DotNetLibraryCodeUnit\BuildResult_DotNet_win-x64\DotNetLibraryCodeUnit.dll</HintPath>
+        </Reference>
     </ItemGroup>
 </Project>
