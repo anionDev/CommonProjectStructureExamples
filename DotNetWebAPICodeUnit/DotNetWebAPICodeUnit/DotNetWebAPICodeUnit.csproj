@@ -10,7 +10,7 @@
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <Copyright>Copyright © 2023 Marius Göcke</Copyright>
-        <Description>The DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-Web-API-application.</Description>
+        <Description>DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
         <RootNamespace>DotNetWebAPICodeUnit.Core</RootNamespace>
@@ -56,6 +56,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
+        <PackageReference Include="GRYLibrary" Version="0.12.67" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
         <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />

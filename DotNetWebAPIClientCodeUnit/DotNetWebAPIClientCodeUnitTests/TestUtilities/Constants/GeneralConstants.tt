@@ -1,0 +1,12 @@
+﻿<#@ output extension=".cs" #>
+<#@ template language="C#" #>
+<#@ assembly name="System.IO" #>
+<#@ parameter type="System.String" name="repositoryFolder" #>
+<#@ parameter type="System.String" name="codeUnitName" #>
+namespace CCOT.DataCollector.Tests.Constants
+{
+    internal static class GeneralConstants
+    {
+        internal const string CodeUnitFolder = @"<#= repositoryFolder #>\<#= codeUnitName #>";
+    }
+}

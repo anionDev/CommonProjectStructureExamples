@@ -8,13 +8,13 @@ using Microsoft.Extensions.Logging;
 namespace DotNetWebAPICodeUnit.Core.Controller
 {
     [ApiController]
-    [Route(MyAPIController.ControllerRoute)]
-    public class MyAPIController : ControllerBase
+    [Route(ExampleController.ControllerRoute)]
+    public class ExampleController : ControllerBase
     {
-        public const string ControllerRoute = $"/{ServerConfiguration.APIRoutePrefix}/{nameof(MyAPIController)}";
+        public const string ControllerRoute = $"/{ServerConfiguration.APIRoutePrefix}/{nameof(ExampleController)}";
         private readonly ISomeService _SomeService;
         private readonly IGeneralLogger _Logger;
-        public MyAPIController(ISomeService someService, IGeneralLogger logger)
+        public ExampleController(ISomeService someService, IGeneralLogger logger)
         {
             this._SomeService = someService;
             this._Logger = logger;
@@ -22,10 +22,10 @@ namespace DotNetWebAPICodeUnit.Core.Controller
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [Route($"{nameof(SomeFunction)}/{{parameter1}}")]
-        public IActionResult SomeFunction([FromRoute] string parameter1, [FromQuery] int parameter2, [FromQuery] int parameter3)
+        [Route($"{nameof(Add)}/{{parameter1}}")]
+        public IActionResult Add([FromRoute] string parameter1, [FromQuery] int parameter2, [FromQuery] int parameter3)
         {
-            this._Logger.Log($"{nameof(SomeFunction)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
+            this._Logger.Log($"{nameof(Add)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
             return this.Ok(DotNetLibraryCodeUnit.Core.Utilities.Add((ulong)parameter2, (ulong)parameter3));
         }
     }

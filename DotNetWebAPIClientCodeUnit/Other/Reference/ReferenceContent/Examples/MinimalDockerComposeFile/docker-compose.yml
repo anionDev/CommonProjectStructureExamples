@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+
+  DotNetWebAPIClientCodeUnit:
+    image: DotNetWebAPIClientCodeUnit:0.0.1
+    container_name: 'DotNetWebAPIClientCodeUnit'
+    volumes:
+      - "./Volumes/Data:/Workspace/Data"
+      - "./Volumes/Configuration:/Workspace/Configuration"
+      - "./Volumes/Logs:/Workspace/Logs"
+    ports:
+      - 443:443

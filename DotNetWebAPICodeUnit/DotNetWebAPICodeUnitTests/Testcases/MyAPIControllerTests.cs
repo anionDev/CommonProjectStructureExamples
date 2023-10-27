@@ -16,14 +16,14 @@ namespace DotNetWebAPICodeUnit.Tests
         public void TestSomeFunction()
         {
             // arrange
-            MyAPIController controller = new MyAPIController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
+            ExampleController controller = new MyAPIController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
             string parameter1 = "parameter1";
             int parameter2 = 2;
             int parameter3 = 3;
             int expectedResult = 5;
 
             // act
-            IActionResult actualResult = controller.SomeFunction(parameter1, parameter2, parameter3);
+            IActionResult actualResult = controller.Add(parameter1, parameter2, parameter3);
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);

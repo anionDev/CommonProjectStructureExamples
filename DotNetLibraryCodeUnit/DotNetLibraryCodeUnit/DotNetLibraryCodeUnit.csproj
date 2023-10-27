@@ -10,7 +10,7 @@
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <Copyright>Copyright © 2023 Marius Göcke</Copyright>
-        <Description>The DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</Description>
+        <Description>DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
         <RootNamespace>DotNetLibraryCodeUnit.Core</RootNamespace>

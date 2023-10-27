@@ -10,7 +10,7 @@
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <Copyright>Copyright © 2023 Marius Göcke</Copyright>
-        <Description>The DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.</Description>
+        <Description>DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
         <RootNamespace>DotNetConsoleCodeUnit.Core</RootNamespace>
