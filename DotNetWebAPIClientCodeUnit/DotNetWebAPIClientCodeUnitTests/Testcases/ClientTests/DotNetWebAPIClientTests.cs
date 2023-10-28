@@ -1,7 +1,8 @@
-﻿using GRYLibrary.Core.Miscellaneous;
+﻿using CCOT.DataCollectorClient.Core;
+using GRYLibrary.Core.Miscellaneous;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CCOT.DataCollectorClient.Tests.Testcases.Services
+namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.ClientTests
 {
     [TestClass]
     public class DotNetWebAPIClientTests
@@ -10,7 +11,7 @@ namespace CCOT.DataCollectorClient.Tests.Testcases.Services
         [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
         public void ConstructorTest()
         {
-            Core.DotNetWebAPIClient _ = new Core.DotNetWebAPIClient(default); //expect no exception
+            DotNetWebAPIClient _ = new DotNetWebAPIClient(default); //expect no exception
         }
     }
 }

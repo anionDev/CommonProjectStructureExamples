@@ -12,12 +12,12 @@ namespace DotNetLibraryCodeUnit.Tests.Testcases
         public void TestXSDValidator1()
         {
             // arrange
-            ulong a = 2;
-            ulong b = 3;
-            ulong expectedResult = 5;
+            decimal a = 3.5m;
+            decimal b = 2m;
+            decimal expectedResult = 5.5m;
 
             // act
-            ulong actualResult = Utilities.Add(a, b);
+            decimal actualResult = Utilities.Add(a, b);
 
             // assert
             Assert.AreEqual(expectedResult, actualResult);

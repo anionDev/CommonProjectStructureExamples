@@ -19,13 +19,15 @@ def common_tasks():
         "../..", os.path.dirname(file)))  # Should always be the same as the project-version
     folder_of_current_file = os.path.dirname(file)
     t.generate_certificate_for_development_purposes(codeunit_folder)
-    t.set_constants_for_certificate_private_information(codeunit_folder)
     sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path(f"../{codeunit_name}/{codeunit_name}.csproj", folder_of_current_file), codeunit_version)
     sc.replace_version_in_csproj_file(GeneralUtilities.resolve_relative_path(f"../{codeunit_name}Tests/{codeunit_name}Tests.csproj", folder_of_current_file), codeunit_version)
     additional_arguments_file = t.get_additionalargumentsfile_from_commandline_arguments(cmd_args, None)
     t.standardized_tasks_do_common_tasks(file, codeunit_version, verbosity, build_environment, True, additional_arguments_file, False, cmd_args)
-    t.t4_transform(file, verbosity)
     t.standardized_task_verify_standard_format_csproj_files(codeunit_folder)
+    t.copy_development_certificate_to_default_development_directory(codeunit_folder, build_environment)
+    t.set_constants_for_certificate_private_information(codeunit_folder)
+    t.create_artifact_for_development_certificate(codeunit_folder)  # required so that the client-codeunit is able to access it in integration-testcases
+    t.t4_transform(file, verbosity)
 
 
 if __name__ == "__main__":

@@ -14,13 +14,15 @@ namespace CCOT.DataCollectorClient.Core
             this._GenericAPIClient = new GenericAPIClient(genericAPIClientConfiguration);
         }
 
+        public decimal Add(decimal parameter1, decimal parameter2)
+        {
+            string route = $"API/ExampleController/{nameof(Add)}/{GUtilities.DecimalToString(parameter1)}/{GUtilities.DecimalToString(parameter2)}";
+            return this._GenericAPIClient.GetAsDecimalAsync(route).WaitAndGetResult();
+        }
+
         public void Dispose()
         {
-        }
-        public decimal Add(decimal input1, decimal input2)
-        {
-            string route = $"API/ExampleController/{nameof(Add)}/{GUtilities.DecimalToString(input1)}/{GUtilities.DecimalToString(input2)}";
-            return this._GenericAPIClient.GetAsDecimalAsync(route).WaitAndGetResult();
+            _GenericAPIClient.Dispose();
         }
     }
 }

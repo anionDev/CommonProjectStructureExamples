@@ -1,10 +1,11 @@
-﻿using GRYLibrary.Core.APIServer.Settings.Configuration;
+﻿using CCOT.DataCollectorClient.Core;
+using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.GenericAPIClient;
 using GRYLibrary.Core.Miscellaneous;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CCOT.DataCollectorClient.Tests.Testcases.Services
+namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.Integration
 {
     /// <summary>
     /// Ensures that the client and server can communicate in sense of serialize/deserialize of request/sponse without exceptions, correct route, etc.
@@ -18,16 +19,16 @@ namespace CCOT.DataCollectorClient.Tests.Testcases.Services
         {
             // arrange
             string apiKey = default;
-            using TestServer testServer = new TestServer(TestUtilities.Utilities.GetTestServerBinary(), apiKey);
+            using TestServer testServer = new TestServer(ClientTests.Utilities.GetTestServerBinary(), apiKey);
             GenericAPIClientConfiguration settings = new GenericAPIClientConfiguration()
             {
-                APIAddress = $"http://localhost:{HTTP.DefaultPort}",
+                APIAddress = $"http://127.0.0.1:{HTTP.DefaultPort}",
                 APIKey = apiKey
             };
-            decimal input1 = 2;
-            decimal input2 = 3;
-            decimal expected = 5;
-            Core.DotNetWebAPIClient client = new Core.DotNetWebAPIClient(settings); 
+            decimal input1 = 2.5m;
+            decimal input2 = 3m;
+            decimal expected = 5.5m;
+            DotNetWebAPIClient client = new DotNetWebAPIClient(settings);
 
             // act
             decimal actual = client.Add(input1, input2);

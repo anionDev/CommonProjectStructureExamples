@@ -3,7 +3,6 @@ using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.GeneralPurposeLogger;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetWebAPICodeUnit.Core.Controller
 {
@@ -21,12 +20,11 @@ namespace DotNetWebAPICodeUnit.Core.Controller
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        [Route($"{nameof(Add)}/{{parameter1}}")]
-        public IActionResult Add([FromRoute] string parameter1, [FromQuery] int parameter2, [FromQuery] int parameter3)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(decimal))]
+        [Route($"{nameof(Add)}/{{{nameof(parameter1)}}}/{{{nameof(parameter2)}}}")]
+        public IActionResult Add(decimal parameter1, decimal parameter2)
         {
-            this._Logger.Log($"{nameof(Add)} will be executed with parameter \"{parameter1}\".", LogLevel.Information);
-            return this.Ok(DotNetLibraryCodeUnit.Core.Utilities.Add((ulong)parameter2, (ulong)parameter3));
+            return this.Ok(DotNetLibraryCodeUnit.Core.Utilities.Add(parameter1, parameter2));
         }
     }
 }
