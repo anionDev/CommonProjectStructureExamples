@@ -11,7 +11,8 @@ using GRYLibrary.Core.APIServer.ConcreteEnvironments;
 using GRYLibrary.Core.Miscellaneous.FilePath;
 using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
-using GRYLibrary.Core.Log;
+using GRYLibrary.Core.Logging.GRYLogger;
+using GRYLibrary.Core.APIServer.Mid.Logging;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -19,7 +20,7 @@ namespace DotNetWebAPICodeUnit.Core
     {
         internal static int Main(string[] commandlineArguments)
         {
-            return GRYLibrary.Core.APIServer.Utilities.Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
+            return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
             {
                 apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
@@ -33,7 +34,7 @@ namespace DotNetWebAPICodeUnit.Core
                         TermsOfServiceLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/TermsOfService"
                     };
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
-                    bool runServices = initializationInformation.ApplicationConstants.Environment is not Development && initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
+                    bool runServices = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     bool verbose = initializationInformation.ApplicationConstants.Environment is not Productive;
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings = new SomeBackgroundServiceSettings()
                     {
@@ -43,6 +44,7 @@ namespace DotNetWebAPICodeUnit.Core
                         SomePropertyOfTypeInt = 42,
                         SomePropertyOfTypeString = "some string value",
                     };
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware = new RequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -55,15 +57,16 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.ServiceCollection.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
                     functionalInformation.ServiceCollection.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.ServiceCollection.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
+                    functionalInformation.ServiceCollection.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.ServiceCollection.BuildServiceProvider();
                     ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
                     functionalInformation.PreRun = () =>
                     {
-                        someBackgroundService.StartAsync(functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode);
+                        someBackgroundService.StartAsync();
                     };
                     functionalInformation.PostRun = () =>
                     {
-                        someBackgroundService.Stop(functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode);
+                        someBackgroundService.Stop().Wait();
                     };
                 };
             });

@@ -2,7 +2,7 @@
 
 namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {
-    public interface ISomeBackgroundService : IBackgroundService
+    public interface ISomeBackgroundService :IBackgroundService
     {
     }
 }

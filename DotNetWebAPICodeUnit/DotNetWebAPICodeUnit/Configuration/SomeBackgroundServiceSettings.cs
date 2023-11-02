@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.Log;
+﻿using GRYLibrary.Core.Logging.GRYLogger;
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {

@@ -1,6 +1,6 @@
 using DotNetWebAPICodeUnit.Core.Controller;
 using DotNetWebAPICodeUnit.Core.Services;
-using GRYLibrary.Core.GeneralPurposeLogger;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using GRYLibrary.Core.Miscellaneous;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

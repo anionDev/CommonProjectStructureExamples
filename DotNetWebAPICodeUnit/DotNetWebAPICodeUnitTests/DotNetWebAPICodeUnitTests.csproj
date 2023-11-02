@@ -53,6 +53,7 @@
         <ErrorReport>none</ErrorReport>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
         <ProjectReference Include="..\DotNetWebAPICodeUnit\DotNetWebAPICodeUnit.csproj" />
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
@@ -62,7 +63,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="GRYLibrary" Version="0.12.67" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.CodeCoverage" Version="17.7.2" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />

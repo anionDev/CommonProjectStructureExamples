@@ -2,6 +2,6 @@
 {
     public interface ISomeService
     {
-        void SomeFunction();
+        decimal Add(decimal parameter1, decimal parameter2);
     }
 }

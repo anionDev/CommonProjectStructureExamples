@@ -1,6 +1,6 @@
 ﻿using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
-using GRYLibrary.Core.GeneralPurposeLogger;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +24,7 @@ namespace DotNetWebAPICodeUnit.Core.Controller
         [Route($"{nameof(Add)}/{{{nameof(parameter1)}}}/{{{nameof(parameter2)}}}")]
         public IActionResult Add(decimal parameter1, decimal parameter2)
         {
-            return this.Ok(DotNetLibraryCodeUnit.Core.Utilities.Add(parameter1, parameter2));
+            return this.Ok(this._SomeService.Add(parameter1,parameter2));
         }
     }
 }

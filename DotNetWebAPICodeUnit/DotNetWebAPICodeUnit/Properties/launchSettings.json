@@ -1,8 +1,7 @@
 {
   "profiles": {
     "DotNetWebAPICodeUnit": {
-      "commandName": "Project",
-      "commandLineArgs": "--TestRun"
+      "commandName": "Project"
     }
   }
 }
