@@ -3,9 +3,7 @@ using GRYLibrary.Core.APIServer.Settings;
 using System.Threading;
 using System;
 using Microsoft.Extensions.Logging;
-using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
-using System.Threading.Tasks;
 using GRYLibrary.Core.APIServer.Utilities;
 
 namespace DotNetWebAPICodeUnit.Core.BackgroundServices
