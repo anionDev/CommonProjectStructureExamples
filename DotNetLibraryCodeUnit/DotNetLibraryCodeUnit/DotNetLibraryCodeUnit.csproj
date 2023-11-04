@@ -56,7 +56,7 @@
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="GRYLibrary" Version="0.12.68" />
+        <PackageReference Include="GRYLibrary" Version="0.12.69" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     </ItemGroup>
 </Project>
