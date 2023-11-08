@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/raw/v2.7.10/Conventions/RepositoryStructure/CommonProjectStructure/codeunit.xsd" enabled="true">
     <cps:name>PythonCodeUnit</cps:name>
     <cps:version>0.1.0</cps:version>
-    <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true" throwexceptionifcodeunitfilecannotbevalidated="true" description="PythonCodeUnit is a demonstration-codeunit for a python-pacakge.">
+    <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true" throwexceptionifcodeunitfilecannotbevalidated="true" description="PythonCodeUnit is a demonstration-codeunit for a python-package.">
         <cps:testsettings minimalcodecoverageinpercent="1"/>
     </cps:properties>
     <cps:dependentcodeunits/>

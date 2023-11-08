@@ -6,8 +6,7 @@
     <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true" throwexceptionifcodeunitfilecannotbevalidated="true" description="DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.">
         <cps:testsettings minimalcodecoverageinpercent="1"/>
     </cps:properties>
-    <cps:dependentcodeunits>
-    </cps:dependentcodeunits>
+    <cps:dependentcodeunits/>
     <cps:developerteam>
         <cps:developer>
             <cps:developername>Marius Göcke</cps:developername>

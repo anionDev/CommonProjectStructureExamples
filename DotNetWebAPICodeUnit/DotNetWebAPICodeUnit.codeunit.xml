@@ -6,9 +6,7 @@
     <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true" throwexceptionifcodeunitfilecannotbevalidated="true" description="DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.">
         <cps:testsettings minimalcodecoverageinpercent="1"/>
     </cps:properties>
-    <cps:dependentcodeunits>
-        <cps:dependentcodeunit>DotNetLibraryCodeUnit</cps:dependentcodeunit>
-    </cps:dependentcodeunits>
+    <cps:dependentcodeunits/>
     <cps:developerteam>
         <cps:developer>
             <cps:developername>Marius Göcke</cps:developername>
