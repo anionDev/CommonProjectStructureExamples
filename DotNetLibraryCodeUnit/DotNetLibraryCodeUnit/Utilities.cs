@@ -2,7 +2,7 @@
 {
     public static class Utilities
     {
-        public static ulong Add(ulong a, ulong b)
+        public static decimal Add(decimal a, decimal b)
         {
             return a + b;
         }

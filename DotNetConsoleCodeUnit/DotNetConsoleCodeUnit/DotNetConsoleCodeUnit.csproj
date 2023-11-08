@@ -10,7 +10,7 @@
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <Copyright>Copyright © 2023 Marius Göcke</Copyright>
-        <Description>The DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.</Description>
+        <Description>DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
         <RootNamespace>DotNetConsoleCodeUnit.Core</RootNamespace>
@@ -56,6 +56,7 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
+        <PackageReference Include="GRYLibrary" Version="0.12.66" />
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     </ItemGroup>

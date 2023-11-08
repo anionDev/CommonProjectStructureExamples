@@ -16,19 +16,18 @@ namespace DotNetWebAPICodeUnit.Tests
         public void TestSomeFunction()
         {
             // arrange
-            MyAPIController controller = new MyAPIController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
-            string parameter1 = "parameter1";
-            int parameter2 = 2;
-            int parameter3 = 3;
-            int expectedResult = 5;
+            ExampleController controller = new ExampleController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
+            decimal parameter1 = 2.5m;
+            decimal parameter2 = 3m;
+            decimal expectedResultValue = 5.5m;
 
             // act
-            IActionResult actualResult = controller.SomeFunction(parameter1, parameter2, parameter3);
+            IActionResult actualResult = controller.Add(parameter1, parameter2);
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);
-            int acturalResultObject = (int)(actualResult as OkObjectResult).Value;
-            Assert.AreEqual(expectedResult, acturalResultObject);
+            decimal acturalResultValue = (decimal)(actualResult as OkObjectResult).Value;
+            Assert.AreEqual(expectedResultValue, acturalResultValue);
         }
     }
 }
