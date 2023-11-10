@@ -4,7 +4,6 @@ using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using GRYLibrary.Core.Miscellaneous;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace DotNetWebAPICodeUnit.Tests
 {
@@ -16,7 +15,8 @@ namespace DotNetWebAPICodeUnit.Tests
         public void TestSomeFunction()
         {
             // arrange
-            ExampleController controller = new ExampleController(Mock.Of<ISomeService>(), GeneralLogger.NoLog());
+            ISomeService someService = new SomeService();
+            ExampleController controller = new ExampleController(someService, GeneralLogger.NoLog());
             decimal parameter1 = 2.5m;
             decimal parameter2 = 3m;
             decimal expectedResultValue = 5.5m;

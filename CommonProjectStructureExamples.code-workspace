@@ -75,6 +75,7 @@
 		]
 	},
 	"settings": {
+		"window.title": "${dirty} ${rootName}", // see https://code.visualstudio.com/updates/v1_10#_configurable-window-title
 		"files.exclude": {
 			".coverage": true,
 			"TestResults": true,
