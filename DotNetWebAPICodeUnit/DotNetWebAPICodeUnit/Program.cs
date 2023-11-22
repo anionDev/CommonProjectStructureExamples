@@ -13,6 +13,18 @@ using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.Logging.GRYLogger;
 using GRYLibrary.Core.APIServer.Mid.Logging;
+using DotNetWebAPICodeUnit.Core.Miscellaneous;
+using Microsoft.AspNetCore.Builder;
+using System;
+using OpenTelemetry.Resources;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Globalization;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
+using System.Numerics;
+using ExtendedXmlSerializer.ExtensionModel;
+using System.Diagnostics.Metrics;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -53,13 +65,18 @@ namespace DotNetWebAPICodeUnit.Core
                 };
                 apiServerConfiguration.SetFunctionalInformationAction = (functionalInformation) => //initialization for every run
                 {
-                    functionalInformation.ServiceCollection.AddSingleton<ISomeService, SomeService>();
-                    functionalInformation.ServiceCollection.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
-                    functionalInformation.ServiceCollection.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
-                    functionalInformation.ServiceCollection.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
-                    functionalInformation.ServiceCollection.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware);
-                    ServiceProvider serviceProvider = functionalInformation.ServiceCollection.BuildServiceProvider();
+                    functionalInformation.WebApplicationBuilder.Services.AddHealthChecks().AddCheck<HealthCheck>(nameof(HealthCheck));
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeService, SomeService>();
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware);
+                    ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
+
+                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
+
                     ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
+
                     functionalInformation.PreRun = () =>
                     {
                         someBackgroundService.StartAsync();
@@ -68,6 +85,24 @@ namespace DotNetWebAPICodeUnit.Core
                     {
                         someBackgroundService.Stop().Wait();
                     };
+                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
+                    {
+                        builder.AddAspNetCoreInstrumentation();
+                        //builder.AddRuntimeInstrumentation();
+                        //builder.AddProcessInstrumentation();
+                        builder.AddMeter("MyCompany.MyProduct.MyLibrary.MetricsName");
+                        builder.AddView(instrumentName: "MyCompany.MyProduct.MyLibrary.MetricsName",// name: "MyCompany.MyProduct.MyLibrary.MetricsName", 
+                            metricStreamConfiguration: new MetricStreamConfiguration
+                            {
+                                TagKeys = Array.Empty<string>(),
+                            });
+                        builder.AddPrometheusExporter();
+                    });
+                };
+                apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
+                {
+                    functionalInformationForWebApplication.WebApplication.MapHealthChecks("/HealthCheck");
+                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
                 };
             });
         }
