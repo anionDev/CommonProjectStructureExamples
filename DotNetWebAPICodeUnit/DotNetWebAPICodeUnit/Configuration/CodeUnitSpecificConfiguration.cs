@@ -1,12 +1,12 @@
 ﻿using GRYLibrary.Core.APIServer.CommonRoutes;
-using GRYLibrary.Core.APIServer.Mid.Logging;
+using GRYLibrary.Core.APIServer.MidT.RLog;
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {
-    public class CodeUnitSpecificConfiguration : ISupportRequestLoggingMiddleware
+    public class CodeUnitSpecificConfiguration : ISupportLoggingMiddleware
     {
         public ICommonRoutesInformation CommonRoutesInformation { get; set; }
         public ISomeBackgroundServiceSettings SomeBackgroundServiceSettings { get; set; }
-        public IRequestLoggingConfiguration ConfigurationForRequestLoggingMiddleware { get; set; }
+        public ILoggingConfiguration ConfigurationForLoggingMiddleware { get; set; }
     }
 }

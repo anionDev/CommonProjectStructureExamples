@@ -1,7 +1,5 @@
 using GRYLibrary.Core.GenericAPIClient;
 using GRYLibrary.Core.Miscellaneous;
-using System;
-using System.Web;
 using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
 
 namespace CCOT.DataCollectorClient.Core

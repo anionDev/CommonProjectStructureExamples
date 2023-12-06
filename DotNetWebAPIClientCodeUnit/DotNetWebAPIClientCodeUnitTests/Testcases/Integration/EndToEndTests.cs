@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.Integration
 {
     /// <summary>
-    /// Ensures that the client and server can communicate in sense of serialize/deserialize of request/sponse without exceptions, correct route, etc.
+    /// Ensures that the client and server can communicate in sense of serialize/deserialize of request/response without exceptions, correct route, etc.
     /// </summary>
     [TestClass]
     public class EndToEndTests
