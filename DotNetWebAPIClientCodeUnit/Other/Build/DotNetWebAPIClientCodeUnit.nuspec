@@ -10,16 +10,16 @@
         <copyright>Copyright © 2023 by Marius Göcke</copyright>
         <description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</description>
         <summary>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</summary>
-        <license type="file">lib/net7/DotNetWebAPIClientCodeUnit.License.txt</license>
+        <license type="file">lib/net8/DotNetWebAPIClientCodeUnit.License.txt</license>
         <dependencies>
-            <group targetFramework="net7" />
+            <group targetFramework="net8" />
         </dependencies>
         <projectUrl>https://github.com/anionDev/CommonProjectStructureExamples</projectUrl>
-        <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples.git.git" branch="main" commit="$commitid$" />
+        <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples.git" branch="main" commit="$commitid$" />
     </metadata>
     <files>
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.dll" target="lib/net7" />
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.License.txt" target="lib/net7" />
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.deps.json" target="lib/net7" />
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.dll" target="lib/net8" />
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.License.txt" target="lib/net8" />
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.deps.json" target="lib/net8" />
     </files>
 </package>

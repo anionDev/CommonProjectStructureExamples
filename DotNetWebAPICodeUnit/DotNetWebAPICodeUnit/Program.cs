@@ -6,13 +6,11 @@ using DotNetWebAPICodeUnit.Core.Configuration;
 using DotNetWebAPICodeUnit.Core.Services;
 using DotNetWebAPICodeUnit.Core.BackgroundServices;
 using GRYLibrary.Core.APIServer.CommonRoutes;
-using GRYLibrary.Core.APIServer.Mid.RequestLogger;
 using GRYLibrary.Core.APIServer.ConcreteEnvironments;
 using GRYLibrary.Core.Miscellaneous.FilePath;
 using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.Logging.GRYLogger;
-using GRYLibrary.Core.APIServer.Mid.Logging;
 using DotNetWebAPICodeUnit.Core.Miscellaneous;
 using Microsoft.AspNetCore.Builder;
 using System;
@@ -22,9 +20,7 @@ using Microsoft.Extensions.Logging;
 using System.Globalization;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
-using System.Numerics;
-using ExtendedXmlSerializer.ExtensionModel;
-using System.Diagnostics.Metrics;
+using GRYLibrary.Core.APIServer.MidT.RLog;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -37,8 +33,8 @@ namespace DotNetWebAPICodeUnit.Core
                 apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
-                    initializationInformation.ApplicationConstants.CommonRoutes = new HostCommonRoutes();
-                    initializationInformation.ApplicationConstants.RequestLoggingMiddleware = typeof(RequestLoggingMiddleware);
+                    initializationInformation.ApplicationConstants.CommonRoutesInformation = new HostCommonRoutes();
+                    initializationInformation.ApplicationConstants.RequestLoggingMiddleware = typeof(LoggingMiddleware);
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation = new CommonRoutesInformation()
                     {
                         ContactLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/Contact",
@@ -56,7 +52,7 @@ namespace DotNetWebAPICodeUnit.Core
                         SomePropertyOfTypeInt = 42,
                         SomePropertyOfTypeString = "some string value",
                     };
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware = new RequestLoggingConfiguration();
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware = new LoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -70,18 +66,18 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForRequestLoggingMiddleware);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ILoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
 
                     ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
 
-                    functionalInformation.PreRun = () =>
+                    functionalInformation.PreRun = (webApplication) =>
                     {
                         someBackgroundService.StartAsync();
                     };
-                    functionalInformation.PostRun = () =>
+                    functionalInformation.PostRun = (webApplication) =>
                     {
                         someBackgroundService.Stop().Wait();
                     };
