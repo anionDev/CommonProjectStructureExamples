@@ -1,12 +1,11 @@
 ﻿using GRYLibrary.Core.APIServer.BaseServices;
-using GRYLibrary.Core.Miscellaneous;
 using System.Diagnostics.Metrics;
 
 namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {
     public interface ISomeBackgroundService: IIteratingBackgroundService
     {
-        public Counter<decimal> SomeMetricsValue { get; }
+        public Counter<decimal> SomeMetricsValue1 { get; }
         void CalculateSomeMetricsValus();
     }
 }

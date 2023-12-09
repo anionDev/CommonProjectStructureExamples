@@ -7,37 +7,45 @@ using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using GRYLibrary.Core.APIServer.BaseServices;
 using GRYLibrary.Core.Miscellaneous;
 using System.Diagnostics.Metrics;
+using DotNetWebAPICodeUnit.Core.Constants;
 
 namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 {
-    public class SomeBackgroundService : IteratingBackgroundService, ISomeBackgroundService
+    public sealed class SomeBackgroundService : IteratingBackgroundService, ISomeBackgroundService
     {
         public ISomeBackgroundServiceSettings SomeBackgroundServiceSettings { get; private set; }
-        private readonly Meter _SomeMeter;
-        public Counter<decimal> SomeMetricsValue { get; private set; }
+        private readonly Meter _Meter1;
+        public Counter<decimal> SomeMetricsValue1 { get; private set; }
+        private readonly Meter _Meter2;
+        public Counter<decimal> SomeMetricsValue2 { get; private set; }
         public SomeBackgroundService(ISomeBackgroundServiceSettings someBackgroundServiceSettings, IApplicationConstants applicationConstants) : base(applicationConstants.ExecutionMode, GeneralLoggerExtensions.SetupLogger(someBackgroundServiceSettings.LogConfiguration, applicationConstants.GetLogFolder(), nameof(SomeBackgroundService)))
         {
             this.SomeBackgroundServiceSettings = someBackgroundServiceSettings;
             this.Enabled = this.SomeBackgroundServiceSettings.Enabled;
-            _SomeMeter = new Meter("MyCompany.MyProduct.MyLibrary.MetricsName");//https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation
-            SomeMetricsValue = _SomeMeter.CreateCounter<decimal>("hatco.store.hats_sold");
+
+            this._Meter1 = new Meter(CodeUnitSpecificConstants.Metric1Name);//https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation
+            this.SomeMetricsValue1 = this._Meter1.CreateCounter<decimal>(CodeUnitSpecificConstants.Metric1Name);
+
+            this._Meter2 = new Meter(CodeUnitSpecificConstants.Metric2Name);//https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation
+            this.SomeMetricsValue1 = this._Meter2.CreateCounter<decimal>(CodeUnitSpecificConstants.Metric2Name);
         }
 
         protected override void Run()
         {
             Thread.Sleep(TimeSpan.FromSeconds(20));
             this._Logger.Log("Do some scheduled job...", LogLevel.Debug);
-            CalculateSomeMetricsValus();
+            this.CalculateSomeMetricsValus();
         }
 
         public void CalculateSomeMetricsValus()
         {
-            SomeMetricsValue.Add(PercentValue.Random().Value);
+            this.SomeMetricsValue1.Add(PercentValue.Random().Value);
+            this.SomeMetricsValue2.Add(PercentValue.Random().Value);
         }
 
         public override void Dispose()
         {
-            _SomeMeter.Dispose();
+            this._Meter1.Dispose();
         }
     }
 }

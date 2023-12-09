@@ -14,13 +14,11 @@ using GRYLibrary.Core.Logging.GRYLogger;
 using DotNetWebAPICodeUnit.Core.Miscellaneous;
 using Microsoft.AspNetCore.Builder;
 using System;
-using OpenTelemetry.Resources;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Globalization;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
+using GRYLibrary.Core.APIServer.Mid.DLog;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -34,7 +32,7 @@ namespace DotNetWebAPICodeUnit.Core
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
                     initializationInformation.ApplicationConstants.CommonRoutesInformation = new HostCommonRoutes();
-                    initializationInformation.ApplicationConstants.RequestLoggingMiddleware = typeof(LoggingMiddleware);
+                    initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(RRequestLoggingMiddleware);
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation = new CommonRoutesInformation()
                     {
                         ContactLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/Contact",
@@ -52,7 +50,7 @@ namespace DotNetWebAPICodeUnit.Core
                         SomePropertyOfTypeInt = 42,
                         SomePropertyOfTypeString = "some string value",
                     };
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware = new LoggingConfiguration();
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.RequestLoggingConfiguration = new RequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -67,6 +65,7 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ILoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.RequestLoggingConfiguration);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
@@ -86,19 +85,28 @@ namespace DotNetWebAPICodeUnit.Core
                         builder.AddAspNetCoreInstrumentation();
                         //builder.AddRuntimeInstrumentation();
                         //builder.AddProcessInstrumentation();
-                        builder.AddMeter("MyCompany.MyProduct.MyLibrary.MetricsName");
-                        builder.AddView(instrumentName: "MyCompany.MyProduct.MyLibrary.MetricsName",// name: "MyCompany.MyProduct.MyLibrary.MetricsName", 
+
+                        builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
+                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
                             metricStreamConfiguration: new MetricStreamConfiguration
                             {
                                 TagKeys = Array.Empty<string>(),
                             });
+
+                        builder.AddMeter(CodeUnitSpecificConstants.Metric2NameFull);
+                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
+                            metricStreamConfiguration: new MetricStreamConfiguration
+                            {
+                                TagKeys = Array.Empty<string>(),
+                            });
+
                         builder.AddPrometheusExporter();
                     });
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
                     functionalInformationForWebApplication.WebApplication.MapHealthChecks("/HealthCheck");
-                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
+                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint("/Metrics");
                 };
             });
         }

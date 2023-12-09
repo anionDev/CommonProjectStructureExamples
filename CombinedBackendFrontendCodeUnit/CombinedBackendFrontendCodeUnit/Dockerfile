@@ -13,4 +13,4 @@ COPY CombinedBackendFrontendCodeUnit/nginx.configuration /etc/nginx
 COPY CombinedBackendFrontendCodeUnit/EntryPoint.sh /Workspace/Other/EntryPoint
 #TODO set healthckeck
 WORKDIR /usr/src/app
-ENTRYPOINT ["/Workspace/Other/EntryPoint/EntryPointScript.sh"]
+ENTRYPOINT ["/Workspace/Other/EntryPoint/EntryPoint.sh"]
