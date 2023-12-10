@@ -53,11 +53,11 @@
 			},
 			{
 				"label": "ContainerCodeUnit: Run example",
-				"command": "python ContainerCodeUnit/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile/RunExample.py",
+				"command": "python RunExample.py",
 				"args": [],
 				"type": "shell",
 				"options": {
-					"cwd": "${workspaceFolder}",
+					"cwd": "${workspaceFolder}/ContainerCodeUnit/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile",
 				},
 			}
 		]
