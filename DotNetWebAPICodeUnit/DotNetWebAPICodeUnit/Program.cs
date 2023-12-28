@@ -32,7 +32,7 @@ namespace DotNetWebAPICodeUnit.Core
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
                     initializationInformation.ApplicationConstants.CommonRoutesInformation = new HostCommonRoutes();
-                    initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(RRequestLoggingMiddleware);
+                    initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(DRequestLoggingMiddleware);
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation = new CommonRoutesInformation()
                     {
                         ContactLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/Contact",
@@ -50,7 +50,7 @@ namespace DotNetWebAPICodeUnit.Core
                         SomePropertyOfTypeInt = 42,
                         SomePropertyOfTypeString = "some string value",
                     };
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.RequestLoggingConfiguration = new RequestLoggingConfiguration();
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware = new RequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -64,8 +64,7 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ILoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.RequestLoggingConfiguration);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
