@@ -8,6 +8,7 @@ namespace DotNetWebAPICodeUnit.Core.Configuration
     {
         public ICommonRoutesInformation CommonRoutesInformation { get; set; }
         public ISomeBackgroundServiceSettings SomeBackgroundServiceSettings { get; set; }
-        public IRequestLoggingConfiguration ConfigurationForLoggingMiddleware { get; set; }
+        public IDRequestLoggingConfiguration ConfigurationForDLoggingMiddleware { get; set; }
+        public IRequestLoggingConfiguration ConfigurationForLoggingMiddleware { get { return this.ConfigurationForDLoggingMiddleware; } }
     }
 }

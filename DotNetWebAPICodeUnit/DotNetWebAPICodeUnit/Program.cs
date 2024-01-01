@@ -50,7 +50,7 @@ namespace DotNetWebAPICodeUnit.Core
                         SomePropertyOfTypeInt = 42,
                         SomePropertyOfTypeString = "some string value",
                     };
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware = new RequestLoggingConfiguration();
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware = new DRequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -65,6 +65,7 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IDRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
@@ -98,7 +99,6 @@ namespace DotNetWebAPICodeUnit.Core
                             {
                                 TagKeys = Array.Empty<string>(),
                             });
-
                         builder.AddPrometheusExporter();
                     });
                 };

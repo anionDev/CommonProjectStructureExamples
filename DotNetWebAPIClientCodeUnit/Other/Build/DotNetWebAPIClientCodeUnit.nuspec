@@ -7,7 +7,7 @@
         <authors>Marius Göcke</authors>
         <owners>Marius Göcke</owners>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <copyright>Copyright © 2023 by Marius Göcke</copyright>
+        <copyright>Copyright © 2024 by Marius Göcke</copyright>
         <description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</description>
         <summary>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</summary>
         <license type="file">lib/net8/DotNetWebAPIClientCodeUnit.License.txt</license>

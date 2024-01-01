@@ -9,7 +9,7 @@
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <Copyright>Copyright © 2023 Marius Göcke</Copyright>
+        <Copyright>Copyright © 2024 Marius Göcke</Copyright>
         <Description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>

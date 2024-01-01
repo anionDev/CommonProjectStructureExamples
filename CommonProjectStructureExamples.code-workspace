@@ -12,12 +12,17 @@
 			"path": "./CombinedBackendFrontendCodeUnit",
 			"name": "CombinedBackendFrontendCodeUnit"
 		},
+		{
 			"path": "./DotNetConsoleCodeUnit",
 			"name": "DotNetConsoleCodeUnit"
 		},
 		{
 			"path": "./DotNetLibraryCodeUnit",
 			"name": "DotNetLibraryCodeUnit"
+		},
+		{
+			"path": "./DotNetWebAPIClientCodeUnit",
+			"name": "DotNetWebAPIClientCodeUnit"
 		},
 		{
 			"path": "./DotNetWebAPICodeUnit",

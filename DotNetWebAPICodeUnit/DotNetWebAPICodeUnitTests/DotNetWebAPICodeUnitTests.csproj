@@ -9,7 +9,7 @@
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <Copyright>Copyright © 2023 Marius Göcke</Copyright>
+        <Copyright>Copyright © 2024 Marius Göcke</Copyright>
         <Description>DotNetWebAPICodeUnitTests is the test-project for DotNetWebAPICodeUnit.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
@@ -56,7 +56,6 @@
         <ErrorReport>none</ErrorReport>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
         <ProjectReference Include="..\DotNetWebAPICodeUnit\DotNetWebAPICodeUnit.csproj" />
         <PackageReference Include="coverlet.collector" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
@@ -66,6 +65,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="GRYLibrary" Version="0.12.84" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.CodeCoverage" Version="17.9.0-preview-23531-01" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
@@ -73,7 +73,7 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0-preview-23531-01" />
-        <PackageReference Include="Moq" Version="4.20.69" />
+        <PackageReference Include="Moq" Version="4.20.70" />
         <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
         <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
         <PackageReference Include="NJsonSchema" Version="11.0.0-preview006" />

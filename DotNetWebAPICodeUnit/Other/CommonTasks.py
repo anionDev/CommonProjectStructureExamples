@@ -28,6 +28,7 @@ def common_tasks():
     t.set_constants_for_certificate_private_information(codeunit_folder)
     t.create_artifact_for_development_certificate(codeunit_folder)  # required so that the client-codeunit is able to access it in integration-testcases
     t.t4_transform(file, verbosity)
+    t.update_year_for_dotnet_codeunit_in_common_scripts_file(file)
 
 
 if __name__ == "__main__":

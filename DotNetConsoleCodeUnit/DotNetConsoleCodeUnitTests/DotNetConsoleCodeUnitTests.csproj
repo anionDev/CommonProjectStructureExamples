@@ -9,7 +9,7 @@
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <Copyright>Copyright © 2023 Marius Göcke</Copyright>
+        <Copyright>Copyright © 2024 Marius Göcke</Copyright>
         <Description>DotNetConsoleCodeUnitTests is the test-project for DotNetConsoleCodeUnit.</Description>
         <PackageProjectUrl>https://github.com/anionDev/DotNetConsoleCodeUnit</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/DotNetConsoleCodeUnit.git</RepositoryUrl>

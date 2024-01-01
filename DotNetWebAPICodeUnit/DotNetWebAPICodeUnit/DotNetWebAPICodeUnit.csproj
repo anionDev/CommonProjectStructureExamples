@@ -9,7 +9,7 @@
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <Copyright>Copyright © 2023 Marius Göcke</Copyright>
+        <Copyright>Copyright © 2024 Marius Göcke</Copyright>
         <Description>DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
@@ -60,12 +60,13 @@
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="ExtendedXmlSerializer" Version="3.7.11" />
+        <PackageReference Include="GRYLibrary" Version="0.12.84" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-        <PackageReference Include="OpenTelemetry" Version="1.7.0-alpha.1" />
+        <PackageReference Include="OpenTelemetry" Version="1.7.0" />
         <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.7.0-alpha.1" />
         <PackageReference Include="OpenTelemetry.Exporter.Prometheus.HttpListener" Version="1.7.0-alpha.1" />
-        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0-alpha.1" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.6.0-beta.3" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.7.0" />
         <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
@@ -76,7 +77,6 @@
         <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
         <PackageReference Include="System.Reactive" Version="6.0.1-preview.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <ProjectReference Include="..\..\..\GRYLibrary\GRYLibrary\GRYLibrary\GRYLibrary.csproj" />
         <Reference Include="DotNetLibraryCodeUnit">
             <HintPath>..\Other\Resources\DependentCodeUnits\DotNetLibraryCodeUnit\BuildResult_DotNet_win-x64\DotNetLibraryCodeUnit.dll</HintPath>
         </Reference>
