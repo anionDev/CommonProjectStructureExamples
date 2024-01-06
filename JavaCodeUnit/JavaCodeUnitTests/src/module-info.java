@@ -5,7 +5,7 @@
  * 
  */
 module JavaCodeUnitTests {
-	exports testxases;
+	exports testcases;
 	requires junit;
 	requires JavaCodeUnit;
 }
