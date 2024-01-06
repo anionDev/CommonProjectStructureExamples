@@ -1,4 +1,4 @@
-package testCases;
+package testxases;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
