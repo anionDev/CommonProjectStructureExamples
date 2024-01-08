@@ -29,6 +29,10 @@
 			"name": "DotNetWebAPICodeUnit"
 		},
 		{
+			"path": "./JavaCodeUnit",
+			"name": "JavaCodeUnit"
+		},
+		{
 			"path": "./PythonCodeUnit",
 			"name": "PythonCodeUnit"
 		},
