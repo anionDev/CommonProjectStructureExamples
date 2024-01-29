@@ -12,10 +12,11 @@ The following codeunits are planned:
 - `FlutterCodeUnit`
 - `GoCodeUnit`
 - `GradleCodeUnit`
-- `HTMXCodeUnit`
 - `KotlinCodeUnit`
 - `PythonBackendCodeUnit`
 - `ReactCodeUnit`
 - `RustCodeUnit`
+- `StaticHTMLCodeUnit`
 - `TypeScriptBackendCodeUnit`
 - `VueJSCodeUnit`
+- `WebComponentsCodeUnit`
