@@ -9,6 +9,7 @@ The `CommonProjectStructureExamples`-repository contains examples how to impleme
 The following codeunits are planned:
 - `AntCodeUnit`
 - `CPPCodeUnit`
+- `ElectronCodeUnit`
 - `FlutterCodeUnit`
 - `GoCodeUnit`
 - `GradleCodeUnit`

@@ -65,21 +65,21 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="GRYLibrary" Version="0.12.84" />
+        <PackageReference Include="GRYLibrary" Version="0.12.85" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
-        <PackageReference Include="Microsoft.CodeCoverage" Version="17.9.0-preview-23531-01" />
+        <PackageReference Include="Microsoft.CodeCoverage" Version="17.9.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0-preview-23531-01" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
         <PackageReference Include="Moq" Version="4.20.70" />
-        <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-        <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-        <PackageReference Include="NJsonSchema" Version="11.0.0-preview006" />
-        <PackageReference Include="NSwag.AspNetCore" Version="14.0.0-preview010" />
+        <PackageReference Include="MSTest.TestAdapter" Version="3.2.1" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.2.1" />
+        <PackageReference Include="NJsonSchema" Version="11.0.0" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.0.3" />
         <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
         <PackageReference Include="System.Reactive" Version="6.0.1-preview.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.2" />
     </ItemGroup>
 </Project>

@@ -19,6 +19,7 @@ using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
 using GRYLibrary.Core.APIServer.Mid.DLog;
+using GRYLibrary.Core.APIServer.MaintenanceRoutes;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -31,7 +32,8 @@ namespace DotNetWebAPICodeUnit.Core
                 apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
-                    initializationInformation.ApplicationConstants.CommonRoutesInformation = new HostCommonRoutes();
+                    initializationInformation.ApplicationConstants.CommonRoutesHostInformation = new HostCommonRoutes();
+                    initializationInformation.ApplicationConstants.HostMaintenanceInformation = new HostMaintenanceRoutes();
                     initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(DRequestLoggingMiddleware);
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation = new CommonRoutesInformation()
                     {
@@ -39,6 +41,7 @@ namespace DotNetWebAPICodeUnit.Core
                         LicenseLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/License",
                         TermsOfServiceLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/TermsOfService"
                     };
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation = new MaintenanceRoutesInformation();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
                     bool runServices = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     bool verbose = initializationInformation.ApplicationConstants.Environment is not Productive;
@@ -64,6 +67,7 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMaintenanceRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IDRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
@@ -80,32 +84,11 @@ namespace DotNetWebAPICodeUnit.Core
                     {
                         someBackgroundService.Stop().Wait();
                     };
-                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
-                    {
-                        builder.AddAspNetCoreInstrumentation();
-                        //builder.AddRuntimeInstrumentation();
-                        //builder.AddProcessInstrumentation();
-
-                        builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
-                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration
-                            {
-                                TagKeys = Array.Empty<string>(),
-                            });
-
-                        builder.AddMeter(CodeUnitSpecificConstants.Metric2NameFull);
-                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration
-                            {
-                                TagKeys = Array.Empty<string>(),
-                            });
-                        builder.AddPrometheusExporter();
-                    });
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
-                    functionalInformationForWebApplication.WebApplication.MapHealthChecks("/HealthCheck");
-                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint("/Metrics");
+                    functionalInformationForWebApplication.WebApplication.MapHealthChecks(GRYLibrary.Core.APIServer.Utilities.Constants.UsualHealthCheckEndpoint);
+                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint(GRYLibrary.Core.APIServer.Utilities.Constants.UsualMetricsEndpoint);
                 };
             });
         }

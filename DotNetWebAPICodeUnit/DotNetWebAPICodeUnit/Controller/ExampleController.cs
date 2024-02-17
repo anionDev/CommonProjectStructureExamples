@@ -1,4 +1,5 @@
-﻿using DotNetWebAPICodeUnit.Core.Services;
+﻿using DotNetWebAPICodeUnit.Core.Constants;
+using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +11,7 @@ namespace DotNetWebAPICodeUnit.Core.Controller
     [Route(ExampleController.ControllerRoute)]
     public class ExampleController : ControllerBase
     {
-        public const string ControllerRoute = $"/{ServerConfiguration.APIRoutePrefix}/{nameof(ExampleController)}";
+        public const string ControllerRoute = $"{ServerConfiguration.APIRoutePrefix}/v{GeneralConstants.CodeUnitMajorVersion}/{nameof(ExampleController)}";
         private readonly ISomeService _SomeService;
         private readonly IGeneralLogger _Logger;
         public ExampleController(ISomeService someService, IGeneralLogger logger)
