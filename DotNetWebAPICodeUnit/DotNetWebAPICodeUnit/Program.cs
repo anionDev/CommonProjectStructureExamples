@@ -72,7 +72,24 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IDRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware);
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
-                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
+                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
+                    {                    
+                        builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
+                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
+                            metricStreamConfiguration: new MetricStreamConfiguration
+                            {
+                                TagKeys = Array.Empty<string>(),
+                            });
+
+                        builder.AddMeter(CodeUnitSpecificConstants.Metric2NameFull);
+                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
+                            metricStreamConfiguration: new MetricStreamConfiguration
+                            {
+                                TagKeys = Array.Empty<string>(),
+                            });
+
+                        builder.AddPrometheusExporter();
+                    });
 
                     ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
 
