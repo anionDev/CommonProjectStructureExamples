@@ -14,10 +14,12 @@ namespace DotNetWebAPICodeUnit.Core.Controller
         public const string ControllerRoute = $"{ServerConfiguration.APIRoutePrefix}/v{GeneralConstants.CodeUnitMajorVersion}/{nameof(ExampleController)}";
         private readonly ISomeService _SomeService;
         private readonly IGeneralLogger _Logger;
-        public ExampleController(ISomeService someService, IGeneralLogger logger)
+        private readonly IPersistence _Persistence;
+        public ExampleController(ISomeService someService, IGeneralLogger logger, IPersistence persistence)
         {
             this._SomeService = someService;
             this._Logger = logger;
+            this._Persistence = persistence;
         }
 
         [HttpGet]

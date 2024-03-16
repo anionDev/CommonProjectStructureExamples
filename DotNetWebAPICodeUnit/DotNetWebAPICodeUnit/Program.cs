@@ -15,7 +15,6 @@ using DotNetWebAPICodeUnit.Core.Miscellaneous;
 using Microsoft.AspNetCore.Builder;
 using System;
 using Microsoft.Extensions.Logging;
-using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
 using GRYLibrary.Core.APIServer.Mid.DLog;
@@ -62,6 +61,15 @@ namespace DotNetWebAPICodeUnit.Core
                 };
                 apiServerConfiguration.SetFunctionalInformationAction = (functionalInformation) => //initialization for every run
                 {
+                    bool runPersistent = functionalInformation.InitializationInformation.ApplicationConstants.Environment is not Development && functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
+                    if (runPersistent || true/*TODO remove this value*/)
+                    {
+                        functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
+                    }
+                    else
+                    {
+                        functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, TransientPersistence>();
+                    }
                     functionalInformation.WebApplicationBuilder.Services.AddHealthChecks().AddCheck<HealthCheck>(nameof(HealthCheck));
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeService, SomeService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
@@ -73,7 +81,7 @@ namespace DotNetWebAPICodeUnit.Core
                     ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
 
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
-                    {                    
+                    {
                         builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
                         builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
                             metricStreamConfiguration: new MetricStreamConfiguration
