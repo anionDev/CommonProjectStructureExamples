@@ -1,0 +1,9 @@
+version: '3.2'
+
+services:
+
+  webappcontainercodeunit:
+    image: webappcontainercodeunit:0.1.0
+    container_name: 'webappcontainercodeunit'
+    ports:
+      - "80:80"

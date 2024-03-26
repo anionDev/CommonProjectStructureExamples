@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+    <metadata minClientVersion="2.12">
+        <id>DotNetLibraryCodeUnit</id>
+        <version>0.1.0</version>
+        <title>DotNetLibraryCodeUnit</title>
+        <authors>Marius Göcke</authors>
+        <owners>Marius Göcke</owners>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <copyright>Copyright © 2024 by Marius Göcke</copyright>
+        <description>The DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</description>
+        <summary>The DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</summary>
+        <license type="file">lib/net7/DotNetLibraryCodeUnit.License.txt</license>
+        <dependencies>
+            <group targetFramework="net7" />
+        </dependencies>
+        <projectUrl>https://github.com/anionDev/CommonProjectStructureExamples</projectUrl>
+        <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples" branch="main" commit="$commitid$" />
+    </metadata>
+    <files>
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetLibraryCodeUnit.dll" target="lib/net7" />
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetLibraryCodeUnit.License.txt" target="lib/net7" />
+        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetLibraryCodeUnit.deps.json" target="lib/net7" />
+    </files>
+</package>
