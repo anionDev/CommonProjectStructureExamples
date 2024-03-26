@@ -14,7 +14,7 @@ namespace CCOT.DataCollectorClient.Core
 
         public decimal Add(decimal parameter1, decimal parameter2)
         {
-            string route = $"API/ExampleController/{nameof(Add)}/{GUtilities.DecimalToString(parameter1)}/{GUtilities.DecimalToString(parameter2)}";
+            string route = $"API/V1/ExampleController/Calculator/Add/?parameter1={GUtilities.DecimalToString(parameter1)}&parameter2={GUtilities.DecimalToString(parameter2)}";
             return this._GenericAPIClient.GetAsDecimalAsync(route).WaitAndGetResult();
         }
 

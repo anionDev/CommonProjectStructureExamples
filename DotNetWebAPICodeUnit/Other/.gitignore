@@ -13,7 +13,8 @@ Resources/Constants/CommitId.*
 Resources/Constants/DevelopmentCertificatePasswordHex.*
 Resources/Constants/DevelopmentCertificatePFXHex.*
 Resources/Constants/DevelopmentCertificatePublicKey.*
-Resources/CodeAnalysisResult
+Resources/CodeAnalysisResult/**
+!Resources/CodeAnalysisResult/.gitkeep
 Resources/GRYLibrary
 Resources/DevelopmentCertificateAuthority
 Resources/DevelopmentCertificate

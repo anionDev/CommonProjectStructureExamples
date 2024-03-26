@@ -1,6 +1,6 @@
 {
   "name": "angular-code-unit",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "ng test --watch=true --configuration Development --browsers Chrome",
     "start": "ng serve --watch=true --configuration Development"

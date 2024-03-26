@@ -75,18 +75,13 @@ namespace DotNetWebAPICodeUnit.Core
                               Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMySQLConnectionString(connectionString, true));
                           }, ServiceLifetime.Transient);
                         functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
-                        functionalInformation.WebApplicationBuilder.Host.ConfigureLogging((context, logging) =>
-                        {
-                            //https://stackoverflow.com/a/49681447/3905529
-                            logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
-                        });
                     }
                     else
                     {
                         functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, TransientPersistence>();
                     }
                     functionalInformation.WebApplicationBuilder.Services.AddHealthChecks().AddCheck<HealthCheck>(nameof(HealthCheck));
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeService, SomeService>();
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMathService, MathService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);

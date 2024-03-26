@@ -14,7 +14,7 @@ namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.Integration
     public class EndToEndTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(TestKind), nameof(TestKind.EndToEndTest))]
         public void AddTest()
         {
             // arrange

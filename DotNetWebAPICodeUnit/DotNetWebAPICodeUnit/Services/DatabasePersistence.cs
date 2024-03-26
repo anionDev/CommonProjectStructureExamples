@@ -4,7 +4,6 @@ using GRYLibrary.Core.Miscellaneous;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using GRYLibrary.Core.Miscellaneous.Migration;
-using System;
 using System.Linq;
 using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
 
@@ -45,7 +44,14 @@ namespace DotNetWebAPICodeUnit.Core.Services
 
         private MigrationConfiguration GetMigrationConfiguration()
         {
-            throw new NotImplementedException();
+            var result = new MigrationConfiguration();
+            //add migration-configurations if desired
+            return result;
+        }
+
+        public bool IsAvailable()
+        {
+            return _DatabaseContext.Database.CanConnect();
         }
     }
 }

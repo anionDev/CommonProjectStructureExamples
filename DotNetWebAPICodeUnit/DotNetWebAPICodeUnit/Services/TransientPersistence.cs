@@ -33,5 +33,10 @@ namespace DotNetWebAPICodeUnit.Core.Services
                 this._Customer.Remove(customerId);
             }
         }
+
+        public bool IsAvailable()
+        {
+            return true;
+        }
     }
 }
