@@ -1,28 +1,37 @@
-﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.DatabaseContext000000.DataTypes;
+﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
     public class TransientPersistence : IPersistence
     {
-        public void AddCustomer(Customer customer)
+        private readonly IDictionary<int, Customer> _Customer;
+        public TransientPersistence()
         {
-            throw new System.NotImplementedException();
+            this._Customer = new Dictionary<int, Customer>();
+        }
+        public void SetCustomer(Customer customer)
+        {
+            this._Customer[customer.Id] = customer;
         }
 
         public ISet<Customer> GetAllCustomer()
         {
-            throw new System.NotImplementedException();
+            return this._Customer.Values.ToHashSet();
         }
 
-        public void RemoveCustomer(Customer customer)
+        public Customer GetCustomer(int customerId)
         {
-            throw new System.NotImplementedException();
+            return this._Customer[customerId];
         }
 
-        public void UpdateCustomer(Customer customer)
+        public void RemoveCustomer(int customerId)
         {
-            throw new System.NotImplementedException();
+            if (this._Customer.ContainsKey(customerId))
+            {
+                this._Customer.Remove(customerId);
+            }
         }
     }
 }

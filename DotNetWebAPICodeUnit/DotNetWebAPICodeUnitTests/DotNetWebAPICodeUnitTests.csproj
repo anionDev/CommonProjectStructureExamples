@@ -77,9 +77,10 @@
         <PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
         <PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
         <PackageReference Include="NJsonSchema" Version="11.0.0" />
-        <PackageReference Include="NSwag.AspNetCore" Version="14.0.3" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
         <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
-        <PackageReference Include="System.Reactive" Version="6.0.1-preview.1" />
+        <PackageReference Include="System.Reactive" Version="6.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.3" />
     </ItemGroup>
 </Project>

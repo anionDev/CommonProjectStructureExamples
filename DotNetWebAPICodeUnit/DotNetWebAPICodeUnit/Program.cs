@@ -19,6 +19,10 @@ using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
 using GRYLibrary.Core.APIServer.Mid.DLog;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
+using Microsoft.Extensions.Hosting;
+using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -61,10 +65,21 @@ namespace DotNetWebAPICodeUnit.Core
                 };
                 apiServerConfiguration.SetFunctionalInformationAction = (functionalInformation) => //initialization for every run
                 {
+                    IGeneralLogger logger = functionalInformation.Logger;
                     bool runPersistent = functionalInformation.InitializationInformation.ApplicationConstants.Environment is not Development && functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
-                    if (runPersistent || true/*TODO remove this value*/)
+                    if (runPersistent)
                     {
+                          functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext000001>(options =>
+                          {
+                              string connectionString = functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.DatabaseConnectionString;
+                              Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMySQLConnectionString(connectionString, true));
+                          }, ServiceLifetime.Transient);
                         functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
+                        functionalInformation.WebApplicationBuilder.Host.ConfigureLogging((context, logging) =>
+                        {
+                            //https://stackoverflow.com/a/49681447/3905529
+                            logging.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
+                        });
                     }
                     else
                     {
@@ -83,35 +98,27 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
                     {
                         builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
-                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration
-                            {
-                                TagKeys = Array.Empty<string>(),
-                            });
-
+                        builder.AddView(
+                            instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
+                            metricStreamConfiguration: new MetricStreamConfiguration { TagKeys = Array.Empty<string>(), });
                         builder.AddMeter(CodeUnitSpecificConstants.Metric2NameFull);
-                        builder.AddView(instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration
-                            {
-                                TagKeys = Array.Empty<string>(),
-                            });
-
+                        builder.AddView(
+                            instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
+                            metricStreamConfiguration: new MetricStreamConfiguration { TagKeys = Array.Empty<string>(), });
                         builder.AddPrometheusExporter();
                     });
-
-                    ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
-
-                    functionalInformation.PreRun = (webApplication) =>
-                    {
-                        someBackgroundService.StartAsync();
-                    };
-                    functionalInformation.PostRun = (webApplication) =>
-                    {
-                        someBackgroundService.Stop().Wait();
-                    };
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
+                    ISomeBackgroundService someBackgroundService = functionalInformationForWebApplication.WebApplication.Services.GetService<ISomeBackgroundService>();
+                    functionalInformationForWebApplication.PreRun = () =>
+                    {
+                        someBackgroundService.StartAsync();
+                    };
+                    functionalInformationForWebApplication.PostRun = () =>
+                    {
+                        someBackgroundService.Stop().Wait();
+                    };
                     functionalInformationForWebApplication.WebApplication.MapHealthChecks(GRYLibrary.Core.APIServer.Utilities.Constants.UsualHealthCheckEndpoint);
                     functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint(GRYLibrary.Core.APIServer.Utilities.Constants.UsualMetricsEndpoint);
                 };

@@ -12,5 +12,6 @@ namespace DotNetWebAPICodeUnit.Core.Configuration
         public ISomeBackgroundServiceSettings SomeBackgroundServiceSettings { get; set; }
         public IDRequestLoggingConfiguration ConfigurationForDLoggingMiddleware { get; set; }
         public IRequestLoggingConfiguration ConfigurationForLoggingMiddleware { get { return this.ConfigurationForDLoggingMiddleware; } }
+        public string DatabaseConnectionString { get; set; }
     }
 }

@@ -11,12 +11,12 @@ namespace DotNetWebAPICodeUnit.Core.Miscellaneous
         private readonly IGeneralLogger _GeneralLogger;
         public HealthCheck(IGeneralLogger logger)
         {
-            _GeneralLogger = logger;
+            this._GeneralLogger = logger;
         }
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             string message = $"Service {GeneralConstants.CodeUnitName} is healthy.";
-            _GeneralLogger.Log(message, Microsoft.Extensions.Logging.LogLevel.Warning);
+            this._GeneralLogger.Log(message, Microsoft.Extensions.Logging.LogLevel.Warning);
             return Task.FromResult(HealthCheckResult.Healthy(message));
         }
     }
