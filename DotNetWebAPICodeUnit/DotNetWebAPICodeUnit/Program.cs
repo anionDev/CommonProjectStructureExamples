@@ -2,6 +2,7 @@ using DotNetWebAPICodeUnit.Core.Constants;
 using GRYLibrary.Core.Miscellaneous;
 using Microsoft.Extensions.DependencyInjection;
 using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
+using DNWAPICUUtilities = DotNetWebAPICodeUnit.Core.Miscellaneous.Utilities;
 using DotNetWebAPICodeUnit.Core.Configuration;
 using DotNetWebAPICodeUnit.Core.Services;
 using DotNetWebAPICodeUnit.Core.BackgroundServices;
@@ -19,7 +20,6 @@ using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
 using GRYLibrary.Core.APIServer.Mid.DLog;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
-using Microsoft.Extensions.Hosting;
 using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.EntityFrameworkCore;
@@ -30,11 +30,12 @@ namespace DotNetWebAPICodeUnit.Core
     {
         internal static int Main(string[] commandlineArguments)
         {
-            return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
+            return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), DNWAPICUUtilities.GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
             {
                 apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
+                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.SetDomainAndPublichUrlToDefault(domain);
                     initializationInformation.ApplicationConstants.CommonRoutesHostInformation = new HostCommonRoutes();
                     initializationInformation.ApplicationConstants.HostMaintenanceInformation = new HostMaintenanceRoutes();
                     initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(DRequestLoggingMiddleware);
@@ -45,7 +46,6 @@ namespace DotNetWebAPICodeUnit.Core
                         TermsOfServiceLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/TermsOfService"
                     };
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation = new MaintenanceRoutesInformation();
-                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
                     bool runServices = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     bool verbose = initializationInformation.ApplicationConstants.Environment is not Productive;
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings = new SomeBackgroundServiceSettings()
@@ -118,19 +118,6 @@ namespace DotNetWebAPICodeUnit.Core
                     functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint(GRYLibrary.Core.APIServer.Utilities.Constants.UsualMetricsEndpoint);
                 };
             });
-        }
-
-        private static GRYEnvironment GetEnvironmentTargetType()
-        {
-#if Development
-            return Development.Instance;
-#elif QualityCheck
-            return QualityCheck.Instance;
-#elif Productive
-            return Productive.Instance;
-#else
-            throw new System.Collections.Generic.KeyNotFoundException("Unknown environmenttargettype.");
-#endif
         }
     }
 }

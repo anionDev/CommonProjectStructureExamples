@@ -51,7 +51,7 @@ namespace DotNetWebAPICodeUnit.Core.Services
 
         public bool IsAvailable()
         {
-            return _DatabaseContext.Database.CanConnect();
+            return this._DatabaseContext.Database.CanConnect();
         }
     }
 }

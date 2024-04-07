@@ -66,11 +66,11 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3" />
-        <PackageReference Include="OpenTelemetry" Version="1.7.0" />
+        <PackageReference Include="OpenTelemetry" Version="1.8.0" />
         <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.7.0-alpha.1" />
         <PackageReference Include="OpenTelemetry.Exporter.Prometheus.HttpListener" Version="1.7.0-alpha.1" />
-        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0" />
-		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.7.1" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.8.0" />
+		<PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.8.0" />
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
         <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
