@@ -1,4 +1,4 @@
-﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes;
+﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.DataTypes;
 using System.Collections.Generic;
 using System.Linq;
 

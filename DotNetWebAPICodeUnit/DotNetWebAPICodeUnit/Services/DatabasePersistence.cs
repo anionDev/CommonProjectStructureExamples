@@ -1,37 +1,71 @@
-﻿using GRYLibrary.Core.Logging.GeneralPurposeLogger;
-using GRYLibrary.Core.Miscellaneous.Migration.Templates;
-using GRYLibrary.Core.Miscellaneous;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using GRYLibrary.Core.Miscellaneous.Migration;
 using System.Linq;
-using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
+using GRYLibrary.Core.Exceptions;
+using System.Data.SqlClient;
+using GRYLibrary.Core.APIServer.Services.Interfaces;
+using System.IO;
+using System.Reflection;
+using DotNetWebAPICodeUnit.Core.Database.Contexts;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
-    //see https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
     public class DatabasePersistence : IPersistence
     {
-        private readonly DatabaseContext000001 _DatabaseContext;
-        public DatabasePersistence(IGeneralLogger logger, DbContextOptions<DatabaseContext000001> options)
+        private readonly DatabaseContext _DatabaseContext;
+        private readonly IGeneralLogger _Logger;
+        private readonly ITimeService _TimeService;
+        public DatabasePersistence(IGeneralLogger logger, ITimeService timeService, DbContextOptions<DatabaseContext> options)
         {
-            this._DatabaseContext = new DatabaseContext000001(options);
-            SQLiteDBMigratable migratable = new SQLiteDBMigratable(logger, this.GetMigrationConfiguration(), Version3.Parse(Constants.GeneralConstants.CodeUnitVersion));
-            migratable.InitializeDatabaseAndMigrateIfRequired();
+            this._Logger = logger;
+            this._TimeService = timeService;
+            this._DatabaseContext = new DatabaseContext(options);
+            if (this.IsAvailable())
+            {
+                this.Initialize();
+            }
+            else
+            {
+                throw new DependencyNotAvailableException("Database not available.");
+            }
         }
 
-        public void SetCustomer(DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer customer)
+        private void Initialize()
+        {
+            var assembly = Assembly.GetEntryAssembly();
+            IList<MigrationInstance> instances = new List<MigrationInstance>();
+            foreach (var manifestResourceName in assembly.GetManifestResourceNames())
+            {
+                string resourcePrefix = "DotNetWebAPICodeUnit.Resources.Database.Migrations.";
+                if (manifestResourceName.StartsWith(resourcePrefix))
+                {
+                    using Stream stream = assembly.GetManifestResourceStream(manifestResourceName);
+                    using StreamReader reader = new StreamReader(stream);
+                    string migrationContent = reader.ReadToEnd();
+                    string name = manifestResourceName[..resourcePrefix.Length][(manifestResourceName.Length - 4)..];
+                    instances.Add(new MigrationInstance() { MigrationName = name, MigrationContent = migrationContent });
+                }
+            }
+            instances = instances.OrderBy(instance => instance.MigrationName).ToList();
+            using SqlConnection connection = (SqlConnection)this._DatabaseContext.Database.GetDbConnection();
+            connection.Open();
+            GRYMigrator migrator = new GRYMigrator(this._Logger, _TimeService, connection, instances);
+            migrator.InitializeDatabaseAndMigrateIfRequired();
+        }
+        public void SetCustomer(Database.Contexts.DataTypes.Customer customer)
         {
             this._DatabaseContext.Customer.Add(customer);
             this._DatabaseContext.SaveChanges();
         }
 
-        public ISet<DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer> GetAllCustomer()
+        public ISet<Database.Contexts.DataTypes.Customer> GetAllCustomer()
         {
             return this._DatabaseContext.Customer.ToHashSet();
         }
 
-        public DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer GetCustomer(int customerId)
+        public Database.Contexts.DataTypes.Customer GetCustomer(int customerId)
         {
             return this._DatabaseContext.Customer.First(c => c.Id == customerId);
         }
@@ -40,13 +74,6 @@ namespace DotNetWebAPICodeUnit.Core.Services
         {
             this._DatabaseContext.Remove(this.GetCustomer(customerId));
             this._DatabaseContext.SaveChanges();
-        }
-
-        private MigrationConfiguration GetMigrationConfiguration()
-        {
-            var result = new MigrationConfiguration();
-            //add migration-configurations if desired
-            return result;
         }
 
         public bool IsAvailable()

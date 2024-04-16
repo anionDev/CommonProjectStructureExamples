@@ -81,6 +81,6 @@
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
         <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
         <PackageReference Include="System.Reactive" Version="6.0.0" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.4" />
     </ItemGroup>
 </Project>
