@@ -1,2 +1,2 @@
 ﻿using System.Reflection;
-[assembly: AssemblyDelaySign(true)]
+[assembly: AssemblyDelaySignAttribute(true)]
