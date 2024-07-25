@@ -5,7 +5,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
+using GUtilities = GRYLibrary.Core.Misc.Utilities;
 
 namespace DotNetWebAPICodeUnit.Core.Miscellaneous
 {

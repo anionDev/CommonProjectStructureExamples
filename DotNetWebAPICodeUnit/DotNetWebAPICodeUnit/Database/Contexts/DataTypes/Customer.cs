@@ -1,4 +1,4 @@
-﻿namespace DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes
+﻿namespace DotNetWebAPICodeUnit.Core.Database.Contexts.DataTypes
 {
     public class Customer
     {

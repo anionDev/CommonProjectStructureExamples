@@ -38,5 +38,10 @@ namespace DotNetWebAPICodeUnit.Core.Services
         {
             return true;
         }
+
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using CCOT.DataCollectorClient.Core;
-using GRYLibrary.Core.Miscellaneous;
+using GRYLibrary.Core.Misc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.ClientTests

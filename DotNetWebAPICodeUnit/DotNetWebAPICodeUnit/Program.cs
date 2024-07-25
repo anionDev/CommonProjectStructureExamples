@@ -1,14 +1,14 @@
 using DotNetWebAPICodeUnit.Core.Constants;
-using GRYLibrary.Core.Miscellaneous;
+using GRYLibrary.Core.Misc;
 using Microsoft.Extensions.DependencyInjection;
-using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
+using GUtilities = GRYLibrary.Core.Misc.Utilities;
 using DNWAPICUUtilities = DotNetWebAPICodeUnit.Core.Miscellaneous.Utilities;
 using DotNetWebAPICodeUnit.Core.Configuration;
 using DotNetWebAPICodeUnit.Core.Services;
 using DotNetWebAPICodeUnit.Core.BackgroundServices;
 using GRYLibrary.Core.APIServer.CommonRoutes;
 using GRYLibrary.Core.APIServer.ConcreteEnvironments;
-using GRYLibrary.Core.Miscellaneous.FilePath;
+using GRYLibrary.Core.Misc.FilePath;
 using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.Logging.GRYLogger;
@@ -20,9 +20,9 @@ using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
 using GRYLibrary.Core.APIServer.Mid.DLog;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
-using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.EntityFrameworkCore;
+using DotNetWebAPICodeUnit.Core.Database.Contexts;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -69,10 +69,10 @@ namespace DotNetWebAPICodeUnit.Core
                     bool runPersistent = functionalInformation.InitializationInformation.ApplicationConstants.Environment is not Development && functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     if (runPersistent)
                     {
-                          functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext000001>(options =>
+                          functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext>(options =>
                           {
                               string connectionString = functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.DatabaseConnectionString;
-                              Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMySQLConnectionString(connectionString, true));
+                              Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMariaDBSQLConnectionString(connectionString, true));
                           }, ServiceLifetime.Transient);
                         functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
                     }

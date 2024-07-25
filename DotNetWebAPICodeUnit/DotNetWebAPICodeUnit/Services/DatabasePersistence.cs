@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using GRYLibrary.Core.Miscellaneous.Migration;
+using GRYLibrary.Core.Misc.Migration;
 using System.Linq;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using GRYLibrary.Core.Exceptions;
@@ -45,13 +45,13 @@ namespace DotNetWebAPICodeUnit.Core.Services
                     using StreamReader reader = new StreamReader(stream);
                     string migrationContent = reader.ReadToEnd();
                     string name = manifestResourceName[..resourcePrefix.Length][(manifestResourceName.Length - 4)..];
-                    instances.Add(new MigrationInstance() { MigrationName = name, MigrationContent = migrationContent });
+                    instances.Add(new MigrationInstance(index,name,migrationContent));
                 }
             }
             instances = instances.OrderBy(instance => instance.MigrationName).ToList();
             using SqlConnection connection = (SqlConnection)this._DatabaseContext.Database.GetDbConnection();
             connection.Open();
-            GRYMigrator migrator = new GRYMigrator(this._Logger, _TimeService, connection, instances);
+            GRYMigrator migrator = new GRYMigrator(this._Logger, _TimeService, connection, instances,databaseInteractor);
             migrator.InitializeDatabaseAndMigrateIfRequired();
         }
         public void SetCustomer(Database.Contexts.DataTypes.Customer customer)
@@ -79,6 +79,11 @@ namespace DotNetWebAPICodeUnit.Core.Services
         public bool IsAvailable()
         {
             return this._DatabaseContext.Database.CanConnect();
+        }
+
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

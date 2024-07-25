@@ -2,22 +2,16 @@
   "name": "angular-code-unit",
   "version": "1.0.1",
   "scripts": {
-    "test": "ng test --watch=true --configuration Development --browsers Chrome",
-    "start": "ng serve --watch=true --configuration Development"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^16.1.0",
-    "@angular/common": "^16.1.0",
-    "@angular/compiler": "^16.1.0",
-    "@angular/core": "^16.1.0",
-    "@angular/forms": "^16.1.0",
-    "@angular/platform-browser": "^16.1.0",
-    "@angular/platform-browser-dynamic": "^16.1.0",
-    "@angular/router": "^16.1.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.13.0"
+    "build": "npm run build-QualityCheck",
+    "build-Development": "ng build --configuration Development",
+    "build-QualityCheck": "ng build --configuration QualityCheck",
+    "build-Productive": "ng build --configuration Productive",
+    "test": "npm run test-QualityCheck",
+    "test-Development": "ng test --configuration Development --browsers ChromeHeadless --code-coverage --watch false",
+    "test-QualityCheck": "ng test --configuration QualityCheck --browsers ChromeHeadless --code-coverage --watch false",
+    "test-Productive": "ng test --configuration Productive --browsers ChromeHeadless --code-coverage --watch false",
+    "generate-api-client": "openapi --input ./Other/Resources/DependentCodeUnits/DotNetWebAPICodeUnit/APISpecification/DotNetWebAPICodeUnit.latest.api.json --output ./src/app/generated/dot-net-web-api-code-unit --client angular",
+    "start": "ng serve --configuration Development --proxy-config DevelopmentProxy.config.json"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.3",
