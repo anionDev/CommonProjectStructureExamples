@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
-    public class TransientPersistence : IPersistence
+    public sealed class TransientPersistence : IPersistence
     {
         private readonly IDictionary<int, Customer> _Customer;
         public TransientPersistence()

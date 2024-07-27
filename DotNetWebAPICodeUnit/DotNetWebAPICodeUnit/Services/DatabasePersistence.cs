@@ -1,79 +1,43 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using GRYLibrary.Core.Misc.Migration;
-using System.Linq;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
-using GRYLibrary.Core.Exceptions;
-using System.Data.SqlClient;
 using GRYLibrary.Core.APIServer.Services.Interfaces;
-using System.IO;
-using System.Reflection;
 using DotNetWebAPICodeUnit.Core.Database.Contexts;
+using GRYLibrary.Core.APIServer.Services.Trans;
+using System;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
-    public class DatabasePersistence : IPersistence
+    public sealed class DatabasePersistence : IPersistence
     {
         private readonly DatabaseContext _DatabaseContext;
         private readonly IGeneralLogger _Logger;
         private readonly ITimeService _TimeService;
-        public DatabasePersistence(IGeneralLogger logger, ITimeService timeService, DbContextOptions<DatabaseContext> options)
+        public DatabasePersistence(IGeneralLogger logger, ITimeService timeService, DbContextOptions<DatabaseContext> options, IDatabaseManager databaseManager)
         {
             this._Logger = logger;
             this._TimeService = timeService;
-            this._DatabaseContext = new DatabaseContext(options);
-            if (this.IsAvailable())
-            {
-                this.Initialize();
-            }
-            else
-            {
-                throw new DependencyNotAvailableException("Database not available.");
-            }
+            this._DatabaseContext = new DatabaseContext(options, logger, timeService, databaseManager);
         }
 
-        private void Initialize()
-        {
-            var assembly = Assembly.GetEntryAssembly();
-            IList<MigrationInstance> instances = new List<MigrationInstance>();
-            foreach (var manifestResourceName in assembly.GetManifestResourceNames())
-            {
-                string resourcePrefix = "DotNetWebAPICodeUnit.Resources.Database.Migrations.";
-                if (manifestResourceName.StartsWith(resourcePrefix))
-                {
-                    using Stream stream = assembly.GetManifestResourceStream(manifestResourceName);
-                    using StreamReader reader = new StreamReader(stream);
-                    string migrationContent = reader.ReadToEnd();
-                    string name = manifestResourceName[..resourcePrefix.Length][(manifestResourceName.Length - 4)..];
-                    instances.Add(new MigrationInstance(index,name,migrationContent));
-                }
-            }
-            instances = instances.OrderBy(instance => instance.MigrationName).ToList();
-            using SqlConnection connection = (SqlConnection)this._DatabaseContext.Database.GetDbConnection();
-            connection.Open();
-            GRYMigrator migrator = new GRYMigrator(this._Logger, _TimeService, connection, instances,databaseInteractor);
-            migrator.InitializeDatabaseAndMigrateIfRequired();
-        }
         public void SetCustomer(Database.Contexts.DataTypes.Customer customer)
         {
-            this._DatabaseContext.Customer.Add(customer);
-            this._DatabaseContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public ISet<Database.Contexts.DataTypes.Customer> GetAllCustomer()
         {
-            return this._DatabaseContext.Customer.ToHashSet();
+            throw new NotImplementedException();
         }
 
         public Database.Contexts.DataTypes.Customer GetCustomer(int customerId)
         {
-            return this._DatabaseContext.Customer.First(c => c.Id == customerId);
+            throw new NotImplementedException();
         }
 
         public void RemoveCustomer(int customerId)
         {
-            this._DatabaseContext.Remove(this.GetCustomer(customerId));
-            this._DatabaseContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public bool IsAvailable()
@@ -83,7 +47,7 @@ namespace DotNetWebAPICodeUnit.Core.Services
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            this._DatabaseContext.Dispose();
         }
     }
 }
