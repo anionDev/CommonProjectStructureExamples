@@ -5,24 +5,18 @@ using GUtilities = GRYLibrary.Core.Misc.Utilities;
 using DNWAPICUUtilities = DotNetWebAPICodeUnit.Core.Miscellaneous.Utilities;
 using DotNetWebAPICodeUnit.Core.Configuration;
 using DotNetWebAPICodeUnit.Core.Services;
-using DotNetWebAPICodeUnit.Core.BackgroundServices;
 using GRYLibrary.Core.APIServer.CommonRoutes;
 using GRYLibrary.Core.APIServer.ConcreteEnvironments;
-using GRYLibrary.Core.Misc.FilePath;
 using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
-using GRYLibrary.Core.Logging.GRYLogger;
 using DotNetWebAPICodeUnit.Core.Miscellaneous;
-using Microsoft.AspNetCore.Builder;
-using System;
-using Microsoft.Extensions.Logging;
-using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
-using GRYLibrary.Core.APIServer.Mid.DLog;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.EntityFrameworkCore;
 using DotNetWebAPICodeUnit.Core.Database.Contexts;
+using GRYLibrary.Core.APIServer.Mid.M05DLog;
+using DotNetWebAPICodeUnit.Core.BackgroundServices;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -48,14 +42,6 @@ namespace DotNetWebAPICodeUnit.Core
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation = new MaintenanceRoutesInformation();
                     bool runServices = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     bool verbose = initializationInformation.ApplicationConstants.Environment is not Productive;
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings = new SomeBackgroundServiceSettings()
-                    {
-                        Enabled = runServices,
-                        LogConfiguration = GRYLogConfiguration.GetCommonConfiguration(AbstractFilePath.FromString($"./{nameof(SomeBackgroundService)}.log"), verbose),
-                        SomePropertyOfTypeBool = true,
-                        SomePropertyOfTypeInt = 42,
-                        SomePropertyOfTypeString = "some string value",
-                    };
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware = new DRequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
@@ -69,11 +55,11 @@ namespace DotNetWebAPICodeUnit.Core
                     bool runPersistent = functionalInformation.InitializationInformation.ApplicationConstants.Environment is not Development && functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     if (runPersistent)
                     {
-                          functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext>(options =>
-                          {
-                              string connectionString = functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.DatabaseConnectionString;
-                              Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMariaDBSQLConnectionString(connectionString, true));
-                          }, ServiceLifetime.Transient);
+                        functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext>(options =>
+                        {
+                            string connectionString = functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.DatabaseConnectionString;
+                            Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMariaDBSQLConnectionString(connectionString, true));
+                        }, ServiceLifetime.Transient);
                         functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
                     }
                     else
@@ -82,40 +68,22 @@ namespace DotNetWebAPICodeUnit.Core
                     }
                     functionalInformation.WebApplicationBuilder.Services.AddHealthChecks().AddCheck<HealthCheck>(nameof(HealthCheck));
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMathService, MathService>();
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMaintenanceRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<IDRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware);
-                    ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
-
-                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
-                    {
-                        builder.AddMeter(CodeUnitSpecificConstants.Metric1NameFull);
-                        builder.AddView(
-                            instrumentName: CodeUnitSpecificConstants.Metric1NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration { TagKeys = Array.Empty<string>(), });
-                        builder.AddMeter(CodeUnitSpecificConstants.Metric2NameFull);
-                        builder.AddView(
-                            instrumentName: CodeUnitSpecificConstants.Metric2NameFull,
-                            metricStreamConfiguration: new MetricStreamConfiguration { TagKeys = Array.Empty<string>(), });
-                        builder.AddPrometheusExporter();
-                    });
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
-                    ISomeBackgroundService someBackgroundService = functionalInformationForWebApplication.WebApplication.Services.GetService<ISomeBackgroundService>();
+                    IMetricsService metricsService = functionalInformationForWebApplication.WebApplication.Services.GetService<IMetricsService>();
                     functionalInformationForWebApplication.PreRun = () =>
                     {
-                        someBackgroundService.StartAsync();
+                        metricsService.StartAsync();
                     };
                     functionalInformationForWebApplication.PostRun = () =>
                     {
-                        someBackgroundService.Stop().Wait();
+                        metricsService.Stop().Wait();
                     };
-                    functionalInformationForWebApplication.WebApplication.MapHealthChecks(GRYLibrary.Core.APIServer.Utilities.Constants.UsualHealthCheckEndpoint);
-                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint(GRYLibrary.Core.APIServer.Utilities.Constants.UsualMetricsEndpoint);
                 };
             });
         }

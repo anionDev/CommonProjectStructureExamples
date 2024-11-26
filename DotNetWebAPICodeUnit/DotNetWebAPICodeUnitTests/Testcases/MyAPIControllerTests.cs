@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace DotNetWebAPICodeUnit.Tests
+namespace DotNetWebAPICodeUnit.Tests.Testcases
 {
     [TestClass]
     public class MyAPIControllerTests
