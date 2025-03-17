@@ -3,62 +3,21 @@
 		{
 			"path": ".",
 			"name": "Entire project"
-		},
-		{
-			"path": "./AngularCodeUnit",
-			"name": "AngularCodeUnit"
-		},
-		{
-			"path": "./CombinedBackendFrontendCodeUnit",
-			"name": "CombinedBackendFrontendCodeUnit"
-		},
-		{
-			"path": "./DotNetConsoleCodeUnit",
-			"name": "DotNetConsoleCodeUnit"
-		},
-		{
-			"path": "./DotNetLibraryCodeUnit",
-			"name": "DotNetLibraryCodeUnit"
-		},
-		{
-			"path": "./DotNetWebAPIClientCodeUnit",
-			"name": "DotNetWebAPIClientCodeUnit"
-		},
-		{
-			"path": "./DotNetWebAPICodeUnit",
-			"name": "DotNetWebAPICodeUnit"
-		},
-		{
-			"path": "./JavaCodeUnit",
-			"name": "JavaCodeUnit"
-		},
-		{
-			"path": "./PythonCodeUnit",
-			"name": "PythonCodeUnit"
-		},
-		{
-			"path": "./WebAPIContainerCodeUnit",
-			"name": "WebAPIContainerCodeUnit"
-		},
-		{
-			"path": "./WebAppContainerCodeUnit",
-			"name": "WebAppContainerCodeUnit"
 		}
 	],
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "Build all codeunits",
-				"command": "SCBuildCodeunits",
-				"args": [
-					"--buildenvironment",
-					"Development"
-				],
+				"label": "Base: Build all codeunits",
+				"command": "scbuildcodeunits",
 				"type": "shell",
 				"options": {
-					"cwd": "${workspaceFolder}",
+					"cwd": "${workspaceFolder}"
 				},
+				"aliases": [
+					"bb"
+				]
 			},
 			{
 				"label": "ContainerCodeUnit: Run example",
@@ -85,18 +44,18 @@
 	},
 	"settings": {
 		"terminal.integrated.cwd": "${workspaceFolder}",
-		"window.title": "${dirty} ${rootName}", // see https://code.visualstudio.com/updates/v1_10#_configurable-window-title
+		"window.title": "${dirty} ${rootName}",
 		"files.exclude": {
 			".coverage": true,
 			"TestResults": true,
-			".vs": true,
+			".vs": true
 		},
 		"spellright.language": [
-			"en",
+			"en"
 		],
 		"spellright.documentTypes": [
 			"markdown",
-			"plaintext",
-		],
+			"plaintext"
+		]
 	}
 }
