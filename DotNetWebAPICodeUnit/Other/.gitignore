@@ -7,13 +7,15 @@ Resources/DependentCodeUnits
 Resources/Constants/CodeUnitDescription.*
 Resources/Constants/CodeUnitName.*
 Resources/Constants/CodeUnitVersion.*
+Resources/Constants/CodeUnitMajorVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
 Resources/Constants/DevelopmentCertificatePasswordHex.*
 Resources/Constants/DevelopmentCertificatePFXHex.*
 Resources/Constants/DevelopmentCertificatePublicKey.*
-Resources/CodeAnalysisResult
+Resources/CodeAnalysisResult/**
+!Resources/CodeAnalysisResult/.gitkeep
 Resources/GRYLibrary
-Resources/DevelopmentCertificateAuthority
+Resources/CA
 Resources/DevelopmentCertificate
 Workspace

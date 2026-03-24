@@ -7,11 +7,17 @@ The `CommonProjectStructureExamples`-repository contains examples how to impleme
 ## TODOs
 
 The following codeunits are planned:
+- `AntCodeUnit`
+- `CPPCodeUnit`
+- `ElectronCodeUnit`
 - `FlutterCodeUnit`
 - `GoCodeUnit`
-- `JavaCodeUnit`
+- `GradleCodeUnit`
 - `KotlinCodeUnit`
-- `PythonCodeUnit`
+- `PythonBackendCodeUnit`
 - `ReactCodeUnit`
-- `SpringCodeUnit`
+- `RustCodeUnit`
+- `StaticHTMLCodeUnit`
+- `TypeScriptBackendCodeUnit`
 - `VueJSCodeUnit`
+- `WebComponentsCodeUnit`

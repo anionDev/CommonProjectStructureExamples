@@ -1,11 +1,12 @@
 using DotNetWebAPICodeUnit.Core.Controller;
 using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
-using GRYLibrary.Core.Miscellaneous;
+using GRYLibrary.Core.Misc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
-namespace DotNetWebAPICodeUnit.Tests
+namespace DotNetWebAPICodeUnit.Tests.Testcases
 {
     [TestClass]
     public class MyAPIControllerTests
@@ -15,14 +16,15 @@ namespace DotNetWebAPICodeUnit.Tests
         public void TestSomeFunction()
         {
             // arrange
-            ISomeService someService = new SomeService();
-            ExampleController controller = new ExampleController(someService, GeneralLogger.NoLog());
+            IMathService someService = new MathService();
+            Mock<IPersistence> persistence = new Mock<IPersistence>();
+            ExampleController controller = new ExampleController(someService, GeneralLogger.NoLog(), persistence.Object);
             decimal parameter1 = 2.5m;
             decimal parameter2 = 3m;
             decimal expectedResultValue = 5.5m;
 
             // act
-            IActionResult actualResult = controller.Add(parameter1, parameter2);
+            IActionResult actualResult = controller.Calculate("Add", parameter1, parameter2);
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);

@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
     <metadata minClientVersion="2.12">
         <id>DotNetLibraryCodeUnit</id>
-        <version>0.1.0</version>
+        <version>1.0.1</version>
         <title>DotNetLibraryCodeUnit</title>
         <authors>Marius Göcke</authors>
         <owners>Marius Göcke</owners>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <copyright>Copyright © 2023 by Marius Göcke</copyright>
+        <copyright>Copyright © 2024 by Marius Göcke</copyright>
         <description>The DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</description>
         <summary>The DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</summary>
         <license type="file">lib/net7/DotNetLibraryCodeUnit.License.txt</license>

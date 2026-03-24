@@ -1,0 +1,22 @@
+### YamlMime:ManagedReference
+items:
+- uid: DotNetLibraryCodeUnit.Core
+  commentId: N:DotNetLibraryCodeUnit.Core
+  id: DotNetLibraryCodeUnit.Core
+  children:
+  - DotNetLibraryCodeUnit.Core.Utilities
+  langs:
+  - csharp
+  - vb
+  name: DotNetLibraryCodeUnit.Core
+  nameWithType: DotNetLibraryCodeUnit.Core
+  fullName: DotNetLibraryCodeUnit.Core
+  type: Namespace
+  assemblies:
+  - DotNetLibraryCodeUnit
+references:
+- uid: DotNetLibraryCodeUnit.Core.Utilities
+  commentId: T:DotNetLibraryCodeUnit.Core.Utilities
+  name: Utilities
+  nameWithType: Utilities
+  fullName: DotNetLibraryCodeUnit.Core.Utilities

@@ -1,26 +1,22 @@
 using DotNetWebAPICodeUnit.Core.Constants;
-using GRYLibrary.Core.Miscellaneous;
+using GRYLibrary.Core.Misc;
 using Microsoft.Extensions.DependencyInjection;
-using GUtilities = GRYLibrary.Core.Miscellaneous.Utilities;
+using GUtilities = GRYLibrary.Core.Misc.Utilities;
+using DNWAPICUUtilities = DotNetWebAPICodeUnit.Core.Miscellaneous.Utilities;
 using DotNetWebAPICodeUnit.Core.Configuration;
 using DotNetWebAPICodeUnit.Core.Services;
-using DotNetWebAPICodeUnit.Core.BackgroundServices;
 using GRYLibrary.Core.APIServer.CommonRoutes;
 using GRYLibrary.Core.APIServer.ConcreteEnvironments;
-using GRYLibrary.Core.Miscellaneous.FilePath;
 using GRYLibrary.Core.APIServer.ExecutionModes;
 using GRYLibrary.Core.APIServer.Utilities;
-using GRYLibrary.Core.Logging.GRYLogger;
 using DotNetWebAPICodeUnit.Core.Miscellaneous;
-using Microsoft.AspNetCore.Builder;
-using System;
-using OpenTelemetry.Resources;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Globalization;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Metrics;
 using GRYLibrary.Core.APIServer.MidT.RLog;
+using GRYLibrary.Core.APIServer.MaintenanceRoutes;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
+using Microsoft.EntityFrameworkCore;
+using DotNetWebAPICodeUnit.Core.Database.Contexts;
+using GRYLibrary.Core.APIServer.Mid.M05DLog;
+using DotNetWebAPICodeUnit.Core.BackgroundServices;
 
 namespace DotNetWebAPICodeUnit.Core
 {
@@ -28,31 +24,25 @@ namespace DotNetWebAPICodeUnit.Core
     {
         internal static int Main(string[] commandlineArguments)
         {
-            return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
+            return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), DNWAPICUUtilities.GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
             {
                 apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
-                    initializationInformation.ApplicationConstants.CommonRoutesInformation = new HostCommonRoutes();
-                    initializationInformation.ApplicationConstants.RequestLoggingMiddleware = typeof(LoggingMiddleware);
+                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.SetDomainAndPublichUrlToDefault(domain);
+                    initializationInformation.ApplicationConstants.CommonRoutesHostInformation = new HostCommonRoutes();
+                    initializationInformation.ApplicationConstants.HostMaintenanceInformation = new HostMaintenanceRoutes();
+                    initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(DRequestLoggingMiddleware);
                     initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation = new CommonRoutesInformation()
                     {
                         ContactLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/Contact",
                         LicenseLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/License",
                         TermsOfServiceLink = $"https://information.{domain}/Products/{GeneralConstants.CodeUnitName}/TermsOfService"
                     };
-                    initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation = new MaintenanceRoutesInformation();
                     bool runServices = initializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
                     bool verbose = initializationInformation.ApplicationConstants.Environment is not Productive;
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings = new SomeBackgroundServiceSettings()
-                    {
-                        Enabled = runServices,
-                        LogConfiguration = GRYLogConfiguration.GetCommonConfiguration(AbstractFilePath.FromString($"./{nameof(SomeBackgroundService)}.log"), verbose),
-                        SomePropertyOfTypeBool = true,
-                        SomePropertyOfTypeInt = 42,
-                        SomePropertyOfTypeString = "some string value",
-                    };
-                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware = new LoggingConfiguration();
+                    initializationInformation.InitialApplicationConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware = new DRequestLoggingConfiguration();
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.HostAPISpecificationForInNonDevelopmentEnvironment = true;
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Protocol = initializationInformation.ApplicationConstants.ExecutionMode.Accept(new GetProcolVisitor(domain));
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.Domain = domain;
@@ -61,59 +51,41 @@ namespace DotNetWebAPICodeUnit.Core
                 };
                 apiServerConfiguration.SetFunctionalInformationAction = (functionalInformation) => //initialization for every run
                 {
+                    IGeneralLogger logger = functionalInformation.Logger;
+                    bool runPersistent = functionalInformation.InitializationInformation.ApplicationConstants.Environment is not Development && functionalInformation.InitializationInformation.ApplicationConstants.ExecutionMode is RunProgram;
+                    if (runPersistent)
+                    {
+                        functionalInformation.WebApplicationBuilder.Services.AddDbContext<DatabaseContext>(options =>
+                        {
+                            string connectionString = functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.DatabaseConnectionString;
+                            Tools.ConnectToDatabase(() => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)), logger, GUtilities.AdaptMariaDBSQLConnectionString(connectionString, true));
+                        }, ServiceLifetime.Transient);
+                        functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, DatabasePersistence>();
+                    }
+                    else
+                    {
+                        functionalInformation.WebApplicationBuilder.Services.AddSingleton<IPersistence, TransientPersistence>();
+                    }
                     functionalInformation.WebApplicationBuilder.Services.AddHealthChecks().AddCheck<HealthCheck>(nameof(HealthCheck));
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeService, SomeService>();
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundService, SomeBackgroundService>();
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ISomeBackgroundServiceSettings>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.SomeBackgroundServiceSettings);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMathService, MathService>();
                     functionalInformation.WebApplicationBuilder.Services.AddSingleton<ICommonRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.CommonRoutesInformation);
-                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<ILoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
-                    ServiceProvider serviceProvider = functionalInformation.WebApplicationBuilder.Services.BuildServiceProvider();
-
-                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry();
-
-                    ISomeBackgroundService someBackgroundService = serviceProvider.GetService<ISomeBackgroundService>();
-
-                    functionalInformation.PreRun = (webApplication) =>
-                    {
-                        someBackgroundService.StartAsync();
-                    };
-                    functionalInformation.PostRun = (webApplication) =>
-                    {
-                        someBackgroundService.Stop().Wait();
-                    };
-                    functionalInformation.WebApplicationBuilder.Services.AddOpenTelemetry().WithMetrics(builder =>
-                    {
-                        builder.AddAspNetCoreInstrumentation();
-                        //builder.AddRuntimeInstrumentation();
-                        //builder.AddProcessInstrumentation();
-                        builder.AddMeter("MyCompany.MyProduct.MyLibrary.MetricsName");
-                        builder.AddView(instrumentName: "MyCompany.MyProduct.MyLibrary.MetricsName",// name: "MyCompany.MyProduct.MyLibrary.MetricsName", 
-                            metricStreamConfiguration: new MetricStreamConfiguration
-                            {
-                                TagKeys = Array.Empty<string>(),
-                            });
-                        builder.AddPrometheusExporter();
-                    });
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IMaintenanceRoutesInformation>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.MaintenanceRoutesInformation);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForLoggingMiddleware);
+                    functionalInformation.WebApplicationBuilder.Services.AddSingleton<IDRequestLoggingConfiguration>(functionalInformation.PersistedAPIServerConfiguration.ApplicationSpecificConfiguration.ConfigurationForDLoggingMiddleware);
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
-                    functionalInformationForWebApplication.WebApplication.MapHealthChecks("/HealthCheck");
-                    functionalInformationForWebApplication.WebApplication.UseOpenTelemetryPrometheusScrapingEndpoint("/metrics");
+                    IMetricsService metricsService = functionalInformationForWebApplication.WebApplication.Services.GetService<IMetricsService>();
+                    functionalInformationForWebApplication.PreRun = () =>
+                    {
+                        metricsService.StartAsync();
+                    };
+                    functionalInformationForWebApplication.PostRun = () =>
+                    {
+                        metricsService.Stop().Wait();
+                    };
                 };
             });
-        }
-
-        private static GRYEnvironment GetEnvironmentTargetType()
-        {
-#if Development
-            return Development.Instance;
-#elif QualityCheck
-            return QualityCheck.Instance;
-#elif Productive
-            return Productive.Instance;
-#else
-            throw new System.Collections.Generic.KeyNotFoundException("Unknown environmenttargettype.");
-#endif
         }
     }
 }
