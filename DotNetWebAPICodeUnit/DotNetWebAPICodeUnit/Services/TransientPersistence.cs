@@ -1,10 +1,10 @@
-﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes;
+﻿using DotNetWebAPICodeUnit.Core.Database.Contexts.DataTypes;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
-    public class TransientPersistence : IPersistence
+    public sealed class TransientPersistence : IPersistence
     {
         private readonly IDictionary<int, Customer> _Customer;
         public TransientPersistence()
@@ -32,6 +32,16 @@ namespace DotNetWebAPICodeUnit.Core.Services
             {
                 this._Customer.Remove(customerId);
             }
+        }
+
+        public bool IsAvailable()
+        {
+            return true;
+        }
+
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

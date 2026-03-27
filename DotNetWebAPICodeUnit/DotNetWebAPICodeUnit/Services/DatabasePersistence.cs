@@ -1,51 +1,53 @@
-﻿using GRYLibrary.Core.Logging.GeneralPurposeLogger;
-using GRYLibrary.Core.Miscellaneous.Migration.Templates;
-using GRYLibrary.Core.Miscellaneous;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using GRYLibrary.Core.Miscellaneous.Migration;
+using GRYLibrary.Core.Logging.GeneralPurposeLogger;
+using GRYLibrary.Core.APIServer.Services.Interfaces;
+using DotNetWebAPICodeUnit.Core.Database.Contexts;
+using GRYLibrary.Core.APIServer.Services.Trans;
 using System;
-using System.Linq;
-using DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001;
 
 namespace DotNetWebAPICodeUnit.Core.Services
 {
-    //see https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
-    public class DatabasePersistence : IPersistence
+    public sealed class DatabasePersistence : IPersistence
     {
-        private readonly DatabaseContext000001 _DatabaseContext;
-        public DatabasePersistence(IGeneralLogger logger, DbContextOptions<DatabaseContext000001> options)
+        private readonly DatabaseContext _DatabaseContext;
+        private readonly IGeneralLogger _Logger;
+        private readonly ITimeService _TimeService;
+        public DatabasePersistence(IGeneralLogger logger, ITimeService timeService, DbContextOptions<DatabaseContext> options, IDatabaseManager databaseManager)
         {
-            this._DatabaseContext = new DatabaseContext000001(options);
-            SQLiteDBMigratable migratable = new SQLiteDBMigratable(logger, this.GetMigrationConfiguration(), Version3.Parse(Constants.GeneralConstants.CodeUnitVersion));
-            migratable.InitializeDatabaseAndMigrateIfRequired();
+            this._Logger = logger;
+            this._TimeService = timeService;
+            this._DatabaseContext = new DatabaseContext(options, logger, timeService, databaseManager);
         }
 
-        public void SetCustomer(DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer customer)
+        public void SetCustomer(Database.Contexts.DataTypes.Customer customer)
         {
-            this._DatabaseContext.Customer.Add(customer);
-            this._DatabaseContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public ISet<DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer> GetAllCustomer()
+        public ISet<Database.Contexts.DataTypes.Customer> GetAllCustomer()
         {
-            return this._DatabaseContext.Customer.ToHashSet();
+            throw new NotImplementedException();
         }
 
-        public DotNetWebAPICodeUnit.Core.Database.Contexts.Context000001.DataTypes.Customer GetCustomer(int customerId)
+        public Database.Contexts.DataTypes.Customer GetCustomer(int customerId)
         {
-            return this._DatabaseContext.Customer.First(c => c.Id == customerId);
+            throw new NotImplementedException();
         }
 
         public void RemoveCustomer(int customerId)
         {
-            this._DatabaseContext.Remove(this.GetCustomer(customerId));
-            this._DatabaseContext.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        private MigrationConfiguration GetMigrationConfiguration()
+        public bool IsAvailable()
         {
-            throw new NotImplementedException();
+            return this._DatabaseContext.Database.CanConnect();
+        }
+
+        public void Dispose()
+        {
+            this._DatabaseContext.Dispose();
         }
     }
 }

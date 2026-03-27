@@ -1,12 +1,8 @@
-﻿using CommandLine;
-using GRYLibrary.Core.Miscellaneous.ConsoleApplication;
+﻿using GRYLibrary.Core.APIServer.Verbs;
 
 namespace DotNetWebAPICodeUnit.Core.Configuration
 {
-    public class CodeUnitSpecificCommandlineParameter : ICommandlineParameter
+    public class CodeUnitSpecificCommandlineParameter : RunServer
     {
-        public string[] OriginalArguments { get; set; }
-        [Option(nameof(TestRun))]
-        public bool TestRun { get; set; }
     }
 }
