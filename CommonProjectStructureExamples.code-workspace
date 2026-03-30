@@ -17,16 +17,8 @@
 				},
 				"aliases": [
 					"bb"
-				]
-			},
-			{
-				"label": "ContainerCodeUnit: Run example",
-				"command": "python RunExample.py",
-				"args": [],
-				"type": "shell",
-				"options": {
-					"cwd": "${workspaceFolder}/ContainerCodeUnit/Other/Reference/ReferenceContent/Examples/MinimalDockerComposeFile",
-				},
+				],
+				"allowcustomarguments": true
 			}
 		]
 	},
