@@ -10,7 +10,8 @@
         <PreserveCompilationContext>false</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <Copyright>Copyright © 2024 Marius Göcke</Copyright>
-        <Description>DotNetWebAPIClientCodeUnitTests is the test-project for DotNetWebAPIClientCodeUnit.</Description>
+        <Description>DotNetWebAPIClientCodeUnitTests is the test-project for
+            DotNetWebAPIClientCodeUnit.</Description>
         <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
         <RootNamespace>DotNetWebAPIClientCodeUnit.Tests</RootNamespace>
@@ -27,7 +28,8 @@
         <WarningLevel>4</WarningLevel>
         <Prefer32Bit>false</Prefer32Bit>
         <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\..\Other\Resources\PublicKeys\StronglyNamedKey\CommonProjectStructureExamplesPublicKey.snk</AssemblyOriginatorKeyFile>
+        <AssemblyOriginatorKeyFile>
+            ..\..\Other\Resources\PublicKeys\StronglyNamedKey\CommonProjectStructureExamplesPublicKey.snk</AssemblyOriginatorKeyFile>
         <DelaySign>True</DelaySign>
         <NoWarn>1701;1702;CA1822;CS1591;CS1573;IDE0045;IDE0046;IDE0054;IDE0058;IDE0074;IDE0090</NoWarn>
         <WarningsAsErrors>NU1605</WarningsAsErrors>
@@ -61,16 +63,13 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.msbuild" Version="6.0.2">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="GRYLibrary" Version="0.12.104" />
+        <PackageReference Include="GRYLibrary" Version="2.0.19" />
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.CodeCoverage" Version="17.10.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
         <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"
+            Version="8.0.1" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
         <PackageReference Include="Moq" Version="4.20.70" />
