@@ -1,18 +1,12 @@
-from pathlib import Path
-from ScriptCollection.GeneralUtilities import GeneralUtilities
-from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.TFCPS.TFCPS_Generic import TFCPS_Generic_CLI,TFCPS_Generic_Functions
 
 
 def prepare_build_codeunits():
-    t = TasksForCommonProjectStructure()
-    current_file = str(Path(__file__).absolute())
-    repository_folder = GeneralUtilities.resolve_relative_path("../../..", current_file)
-    t.ensure_certificate_authority_for_development_purposes_is_generated(repository_folder)
-    t.generate_certificate_for_development_purposes_for_product(repository_folder)
-    t.generate_tasksfile_from_workspace_file(repository_folder)
-    t.ensure_plantuml_is_available(repository_folder)
-    t.generate_codeunits_overview_diagram(repository_folder)
-    t.generate_svg_files_from_plantuml_files(repository_folder)
+    t:TFCPS_Generic_Functions=TFCPS_Generic_CLI().parse(__file__)
+    t.tfcps_Tools_General.ensure_certificate_authority_for_development_purposes_is_generated(t.repository_folder)
+    t.tfcps_Tools_General.generate_certificate_for_development_purposes_for_product(t.repository_folder)
+    t.tfcps_Tools_General.generate_tasksfile_from_workspace_file(t.repository_folder)
+    t.tfcps_Tools_General.generate_codeunits_overview_diagram(t.repository_folder)
 
 
 if __name__ == "__main__":

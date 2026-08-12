@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <cps:codeunit xmlns:cps="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/tree/main/Conventions/RepositoryStructure/CommonProjectStructure" codeunitspecificationversion="2.9.4"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/raw/v2.9.4/Conventions/RepositoryStructure/CommonProjectStructure/codeunit.xsd" enabled="true">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/raw/v2.9.4/Conventions/RepositoryStructure/CommonProjectStructure/codeunit.xsd" enabled="false">
     <cps:name>RustCodeUnit</cps:name>
     <cps:version>1.0.1</cps:version>
     <cps:codeunitownername>Marius Göcke</cps:codeunitownername>
@@ -14,8 +14,6 @@
     </cps:properties>
     <cps:dependentcodeunits>
     </cps:dependentcodeunits>
-        <cps:pipelinedemands>
-        </cps:pipelinedemands>
     <cps:developerteam>
         <cps:developer>
             <cps:developername>Marius Göcke</cps:developername>

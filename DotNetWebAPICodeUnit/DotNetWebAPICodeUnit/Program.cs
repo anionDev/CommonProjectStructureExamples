@@ -22,7 +22,12 @@ namespace DotNetWebAPICodeUnit.Core
 {
     internal class Program
     {
+        internal bool ListenOnEveryIP { get; set; } = true;
         internal static int Main(string[] commandlineArguments)
+        {
+            return new Program().MainImplementation(commandlineArguments);
+        }
+        internal int MainImplementation(string[] commandlineArguments)
         {
             return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), DNWAPICUUtilities.GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, (apiServerConfiguration) =>
             {
@@ -30,6 +35,7 @@ namespace DotNetWebAPICodeUnit.Core
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.SetDomainAndPublichUrlToDefault(domain);
+                    initializationInformation.ApplicationConstants.ListenOnEveryIP = this.ListenOnEveryIP;
                     initializationInformation.ApplicationConstants.CommonRoutesHostInformation = new HostCommonRoutes();
                     initializationInformation.ApplicationConstants.HostMaintenanceInformation = new HostMaintenanceRoutes();
                     initializationInformation.ApplicationConstants.LoggingMiddleware = typeof(DRequestLoggingMiddleware);
