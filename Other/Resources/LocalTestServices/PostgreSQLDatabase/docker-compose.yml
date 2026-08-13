@@ -1,0 +1,36 @@
+services:
+  commonprojectstructureexamples_postgresql:
+    container_name: "commonprojectstructureexamples_postgresql"
+    image: ${image_postgresql}
+    # The port is published so that the testcases reach the database when they run on the host. Inside the
+    # build-container they reach it by the container-name instead, see the test-utilities of the codeunit.
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pa55w0rd
+      POSTGRES_DB: DotNetWebAPICodeUnitDatabase
+    volumes:
+      - ./Volumes/PostgreSQLData:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -p 5432 -U user -d DotNetWebAPICodeUnitDatabase || exit 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+      start_period: 5s
+    networks:
+      - commonprojectstructureexamples_net
+
+  commonprojectstructureexamples_postgresql_administration:
+    container_name: "commonprojectstructureexamples_postgresql_administration"
+    image: ${image_adminer}
+    ports:
+      - "8081:8080"
+    depends_on:
+      - commonprojectstructureexamples_postgresql
+    networks:
+      - commonprojectstructureexamples_net
+
+networks:
+  commonprojectstructureexamples_net:
+    external: true

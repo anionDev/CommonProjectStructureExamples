@@ -1,0 +1,2 @@
+
+call `RemoveCustomer`(@Id);

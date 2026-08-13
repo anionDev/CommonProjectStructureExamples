@@ -16,75 +16,36 @@
       "architect": {
         "build": {
           "defaultConfiguration": "Development",
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "configurations": {
-            "Production": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
+            "Productive": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
             },
             "QualityCheck": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "outputHashing": "all"
             },
             "Development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "options": {
             "outputPath": "Other/Artifacts/BuildResult_Website",
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -95,23 +56,28 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fontsource/roboto/300.css",
+              "node_modules/@fontsource/roboto/400.css",
+              "node_modules/@fontsource/roboto/500.css",
+              "node_modules/@fontsource/material-icons/index.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           }
         },
         "serve": {
           "defaultConfiguration": "Development",
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "Production": {
-              "browserTarget": "AngularCodeUnit:build:Production"
+            "Productive": {
+              "buildTarget": "AngularCodeUnit:build:Productive"
             },
             "QualityCheck": {
-              "browserTarget": "AngularCodeUnit:build:QualityCheck"
+              "buildTarget": "AngularCodeUnit:build:QualityCheck"
             },
             "Development": {
-              "browserTarget": "AngularCodeUnit:build:Development"
+              "buildTarget": "AngularCodeUnit:build:Development"
             }
           },
           "options": {
@@ -128,7 +94,7 @@
           "defaultConfiguration": "Development",
           "builder": "@angular-devkit/build-angular:karma",
           "configurations": {
-            "Production": {},
+            "Productive": {},
             "QualityCheck": {},
             "Development": {}
           },
@@ -144,6 +110,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fontsource/roboto/300.css",
+              "node_modules/@fontsource/roboto/400.css",
+              "node_modules/@fontsource/roboto/500.css",
+              "node_modules/@fontsource/material-icons/index.css",
               "src/styles.scss"
             ],
             "scripts": [],

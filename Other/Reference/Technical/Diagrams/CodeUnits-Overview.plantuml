@@ -1,0 +1,67 @@
+@startuml CodeUnits-Overview
+skinparam defaultFontName "DejaVu Sans"
+title CodeUnits of CommonProjectStructureExamples
+
+[DotNetConsoleCodeUnit]
+note as DotNetConsoleCodeUnitNote
+  DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.
+end note
+DotNetConsoleCodeUnit .. DotNetConsoleCodeUnitNote
+
+[DotNetLibraryCodeUnit]
+note as DotNetLibraryCodeUnitNote
+  DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.
+end note
+DotNetLibraryCodeUnit .. DotNetLibraryCodeUnitNote
+
+[PythonCodeUnit]
+note as PythonCodeUnitNote
+  PythonCodeUnit is a demonstration-codeunit for a python-package.
+end note
+PythonCodeUnit .. PythonCodeUnitNote
+
+[DotNetWebAPICodeUnit]
+note as DotNetWebAPICodeUnitNote
+  DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.
+end note
+DotNetWebAPICodeUnit .. DotNetWebAPICodeUnitNote
+
+[AngularCodeUnit]
+note as AngularCodeUnitNote
+  AngularCodeUnit is a demonstration-codeunit for an Angular-web-application.
+end note
+AngularCodeUnit .. AngularCodeUnitNote
+
+[DotNetWebAPIClientCodeUnit]
+note as DotNetWebAPIClientCodeUnitNote
+  DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.
+end note
+DotNetWebAPIClientCodeUnit .. DotNetWebAPIClientCodeUnitNote
+
+[WebAPIContainerCodeUnit]
+note as WebAPIContainerCodeUnitNote
+  WebAPIContainerCodeUnit is a containerized variant of DotNetWebAPICodeUnit.
+end note
+WebAPIContainerCodeUnit .. WebAPIContainerCodeUnitNote
+
+[CombinedBackendFrontendCodeUnit]
+note as CombinedBackendFrontendCodeUnitNote
+  CombinedBackendFrontendCodeUnit is a demonstration-codeunit which works as reverse-proxy for a backend-server-application and a frontend-web-application.
+end note
+CombinedBackendFrontendCodeUnit .. CombinedBackendFrontendCodeUnitNote
+
+[WebAppContainerCodeUnit]
+note as WebAppContainerCodeUnitNote
+  WebAppContainerCodeUnit is a containerized variant of AngularCodeUnit.
+end note
+WebAppContainerCodeUnit .. WebAppContainerCodeUnitNote
+
+DotNetWebAPICodeUnit --> DotNetLibraryCodeUnit
+AngularCodeUnit --> DotNetWebAPICodeUnit
+DotNetWebAPIClientCodeUnit --> DotNetWebAPICodeUnit
+WebAPIContainerCodeUnit --> DotNetWebAPICodeUnit
+CombinedBackendFrontendCodeUnit --> AngularCodeUnit
+CombinedBackendFrontendCodeUnit --> DotNetWebAPICodeUnit
+WebAppContainerCodeUnit --> AngularCodeUnit
+
+@enduml

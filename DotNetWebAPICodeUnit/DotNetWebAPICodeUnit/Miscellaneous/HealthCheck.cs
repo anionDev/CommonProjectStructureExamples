@@ -1,4 +1,5 @@
 ﻿using DotNetWebAPICodeUnit.Core.Services;
+using GRYLibrary.Core.APIServer.Services.Init;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -13,10 +14,12 @@ namespace DotNetWebAPICodeUnit.Core.Miscellaneous
     {
         private readonly IGeneralLogger _Logger;
         private readonly IPersistence _Persistence;
-        public HealthCheck(IGeneralLogger logger, IPersistence persistence)
+        private readonly IInitializationService _InitializationService;
+        public HealthCheck(IGeneralLogger logger, IPersistence persistence, IInitializationService initializationService)
         {
             this._Logger = logger;
             this._Persistence = persistence;
+            this._InitializationService = initializationService;
         }
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
@@ -26,9 +29,9 @@ namespace DotNetWebAPICodeUnit.Core.Miscellaneous
                 HealthStatus result = HealthStatus.Healthy;
                 if (GUtilities.CheckCancellationToken(messages, cancellationToken, out (HealthStatus, IList<string>) abortResult))
                 { return abortResult; }
-                Tools.CheckService(this._Logger, nameof(this._Persistence), this._Persistence, ref result, messages, true, true);
+                Tools.CheckSingleExternalService(this._Logger, this._Persistence.GetType().Name, this._Persistence, ref result, messages, true, true);
                 return (result, messages);
-            }, context, cancellationToken);
+            }, context, cancellationToken, this._InitializationService);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CCOT.DataCollectorClient.Core;
+﻿using DotNetWebAPIClientCodeUnit.Core;
 using GRYLibrary.Core.Misc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

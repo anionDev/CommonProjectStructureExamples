@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="508px" preserveAspectRatio="none" style="width:3543px;height:508px;background:#FFFFFF;" version="1.1" viewBox="0 0 3543 508" width="3543px" zoomAndPan="magnify">
+  <defs />
+  <g>
+    <g class="title" data-source-line="2">
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" font-weight="700" lengthAdjust="spacing" textLength="381.0283" x="1577.7957" y="22.9951">CodeUnits of CommonProjectStructureExamples</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetConsoleCodeUnit" data-source-line="4" id="ent0001">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="209.3262" x="186" y="44.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="375.3262" y="49.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="373.3262" y="51.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="373.3262" y="55.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="169.3262" x="201" y="77.292">DotNetConsoleCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetConsoleCodeUnitNote" data-source-line="6" id="ent0002">
+      <path d="M6,160.7969 L6,185.9297 A0,0 0 0 0 6,185.9297 L574.5488,185.9297 A0,0 0 0 0 574.5488,185.9297 L574.5488,170.7969 L564.5488,160.7969 L294.5,160.7969 L290.5,90.3569 L286.5,160.7969 L6,160.7969 A0,0 0 0 0 6,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M564.5488,160.7969 L564.5488,170.7969 L574.5488,170.7969 L564.5488,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="547.5488" x="12" y="177.8638">DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetLibraryCodeUnit" data-source-line="10" id="ent0004">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="202.7021" x="1710" y="362.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1892.7021" y="367.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1890.7021" y="369.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1890.7021" y="373.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="162.7021" x="1725" y="395.292">DotNetLibraryCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetLibraryCodeUnitNote" data-source-line="12" id="ent0005">
+      <path d="M1572.5,468.2969 L1572.5,493.4297 A0,0 0 0 0 1572.5,493.4297 L2050.6455,493.4297 A0,0 0 0 0 2050.6455,493.4297 L2050.6455,478.2969 L2040.6455,468.2969 L1815.5,468.2969 L1811.5,408.4569 L1807.5,468.2969 L1572.5,468.2969 A0,0 0 0 0 1572.5,468.2969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M2040.6455,468.2969 L2040.6455,478.2969 L2050.6455,478.2969 L2040.6455,468.2969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="457.1455" x="1578.5" y="485.3638">DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</text>
+    </g>
+    <g class="entity" data-qualified-name="PythonCodeUnit" data-source-line="16" id="ent0007">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152.8682" x="3222" y="44.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="3354.8682" y="49.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="3352.8682" y="51.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="3352.8682" y="55.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="112.8682" x="3237" y="77.292">PythonCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="PythonCodeUnitNote" data-source-line="18" id="ent0008">
+      <path d="M3068,160.7969 L3068,185.9297 A0,0 0 0 0 3068,185.9297 L3528.6196,185.9297 A0,0 0 0 0 3528.6196,185.9297 L3528.6196,170.7969 L3518.6196,160.7969 L3302.5,160.7969 L3298.5,90.3569 L3294.5,160.7969 L3068,160.7969 A0,0 0 0 0 3068,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M3518.6196,160.7969 L3518.6196,170.7969 L3528.6196,170.7969 L3518.6196,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="439.6196" x="3074" y="177.8638">PythonCodeUnit is a demonstration-codeunit for a python-package.</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetWebAPICodeUnit" data-source-line="22" id="ent0010">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="207.2412" x="1918" y="256.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="2105.2412" y="261.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2103.2412" y="263.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2103.2412" y="267.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="167.2412" x="1933" y="289.292">DotNetWebAPICodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetWebAPICodeUnitNote" data-source-line="24" id="ent0011">
+      <path d="M1948,372.7969 L1948,397.9297 A0,0 0 0 0 1948,397.9297 L2517.0757,397.9297 A0,0 0 0 0 2517.0757,397.9297 L2517.0757,382.7969 L2507.0757,372.7969 L2213.04,372.7969 L2066.25,302.3569 L2205.04,372.7969 L1948,372.7969 A0,0 0 0 0 1948,372.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M2507.0757,372.7969 L2507.0757,382.7969 L2517.0757,382.7969 L2507.0757,372.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="548.0757" x="1954" y="389.8638">DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.</text>
+    </g>
+    <g class="entity" data-qualified-name="AngularCodeUnit" data-source-line="28" id="ent0013">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="158.7744" x="2336" y="150.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="2474.7744" y="155.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2472.7744" y="157.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2472.7744" y="161.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="118.7744" x="2351" y="183.292">AngularCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="AngularCodeUnitNote" data-source-line="30" id="ent0014">
+      <path d="M2738.5,266.7969 L2738.5,291.9297 L3266.0874,291.9297 L3266.0874,276.7969 L3256.0874,266.7969 L2738.5,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M3256.0874,266.7969 L3256.0874,276.7969 L3266.0874,276.7969 L3256.0874,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:1;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="506.5874" x="2744.5" y="283.8638">AngularCodeUnit is a demonstration-codeunit for an Angular-web-application.</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetWebAPIClientCodeUnit" data-source-line="34" id="ent0016">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="247.7715" x="1720.5" y="150.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1948.2715" y="155.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1946.2715" y="157.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1946.2715" y="161.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="207.7715" x="1735.5" y="183.292">DotNetWebAPIClientCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="DotNetWebAPIClientCodeUnitNote" data-source-line="36" id="ent0017">
+      <path d="M1392,266.7969 L1392,291.9297 A0,0 0 0 0 1392,291.9297 L1882.6123,291.9297 A0,0 0 0 0 1882.6123,291.9297 L1882.6123,276.7969 L1872.6123,266.7969 L1664.51,266.7969 L1800.6,196.3569 L1656.51,266.7969 L1392,266.7969 A0,0 0 0 0 1392,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M1872.6123,266.7969 L1872.6123,276.7969 L1882.6123,276.7969 L1872.6123,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="469.6123" x="1398" y="283.8638">DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</text>
+    </g>
+    <g class="entity" data-qualified-name="WebAPIContainerCodeUnit" data-source-line="40" id="ent0019">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="226.2451" x="2074.5" y="150.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="2280.7451" y="155.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2278.7451" y="157.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2278.7451" y="161.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="186.2451" x="2089.5" y="183.292">WebAPIContainerCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="WebAPIContainerCodeUnitNote" data-source-line="42" id="ent0020">
+      <path d="M2160,266.7969 L2160,291.9297 A0,0 0 0 0 2160,291.9297 L2703.2471,291.9297 A0,0 0 0 0 2703.2471,291.9297 L2703.2471,276.7969 L2693.2471,266.7969 L2408.37,266.7969 L2239.25,196.3569 L2400.37,266.7969 L2160,266.7969 A0,0 0 0 0 2160,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M2693.2471,266.7969 L2693.2471,276.7969 L2703.2471,276.7969 L2693.2471,266.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="522.2471" x="2166" y="283.8638">WebAPIContainerCodeUnit is a containerized variant of DotNetWebAPICodeUnit.</text>
+    </g>
+    <g class="entity" data-qualified-name="CombinedBackendFrontendCodeUnit" data-source-line="46" id="ent0022">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="298.9385" x="1872" y="44.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="2150.9385" y="49.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2148.9385" y="51.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2148.9385" y="55.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="258.9385" x="1887" y="77.292">CombinedBackendFrontendCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="CombinedBackendFrontendCodeUnitNote" data-source-line="48" id="ent0023">
+      <path d="M610,160.7969 L610,185.9297 A0,0 0 0 0 610,185.9297 L1685.2505,185.9297 A0,0 0 0 0 1685.2505,185.9297 L1685.2505,170.7969 L1675.2505,160.7969 L1248.23,160.7969 L1871.75,86.1169 L1240.23,160.7969 L610,160.7969 A0,0 0 0 0 610,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M1675.2505,160.7969 L1675.2505,170.7969 L1685.2505,170.7969 L1675.2505,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="1054.2505" x="616" y="177.8638">CombinedBackendFrontendCodeUnit is a demonstration-codeunit which works as reverse-proxy for a backend-server-application and a frontend-web-application.</text>
+    </g>
+    <g class="entity" data-qualified-name="WebAppContainerCodeUnit" data-source-line="52" id="ent0025">
+      <rect fill="#F1F1F1" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="231.4473" x="2483" y="44.2969" />
+      <rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="2694.4473" y="49.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2692.4473" y="51.2969" />
+      <rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="2692.4473" y="55.2969" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="14" lengthAdjust="spacing" textLength="191.4473" x="2498" y="77.292">WebAppContainerCodeUnit</text>
+    </g>
+    <g class="entity" data-qualified-name="WebAppContainerCodeUnitNote" data-source-line="54" id="ent0026">
+      <path d="M2530,160.7969 L2530,185.9297 A0,0 0 0 0 2530,185.9297 L3033.0728,185.9297 A0,0 0 0 0 3033.0728,185.9297 L3033.0728,170.7969 L3023.0728,160.7969 L2764.91,160.7969 L2637.31,90.3569 L2756.91,160.7969 L2530,160.7969 A0,0 0 0 0 2530,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <path d="M3023.0728,160.7969 L3023.0728,170.7969 L3033.0728,170.7969 L3023.0728,160.7969" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" />
+      <text fill="#000000" font-family="'DejaVu Sans'" font-size="13" lengthAdjust="spacing" textLength="482.0728" x="2536" y="177.8638">WebAppContainerCodeUnit is a containerized variant of AngularCodeUnit.</text>
+    </g>
+    <g class="link" data-entity-1="ent0013" data-entity-2="ent0014" data-link-type="association" data-source-line="32" id="lnk15">
+      <path d="M2495.09,192.7369 C2500.97,193.9769 2506.82,195.1769 2512.5,196.2969 C2657.64,224.8769 2828.22,251.9669 2925.02,266.7369" fill="none" id="AngularCodeUnit-AngularCodeUnitNote" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" />
+    </g>
+    <g class="link" data-entity-1="ent0010" data-entity-2="ent0004" data-link-type="dependency" data-source-line="58" id="lnk28">
+      <path d="M1976.96,302.3569 C1941.33,319.9969 1896.0707,342.4179 1860.4507,360.0579" fill="none" id="DotNetWebAPICodeUnit-to-DotNetLibraryCodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="1855.97,362.2769,1865.8103,361.8673,1860.4507,360.0579,1862.26,354.6983,1855.97,362.2769" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0013" data-entity-2="ent0010" data-link-type="dependency" data-source-line="59" id="lnk29">
+      <path d="M2335.77,195.3469 C2268.65,213.0569 2177.8044,237.0408 2109.6844,255.0208" fill="none" id="AngularCodeUnit-to-DotNetWebAPICodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="2104.85,256.2969,2114.5728,257.8676,2109.6844,255.0208,2112.5312,250.1325,2104.85,256.2969" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0016" data-entity-2="ent0010" data-link-type="dependency" data-source-line="60" id="lnk30">
+      <path d="M1882.04,196.3569 C1912.07,213.9969 1949.6788,236.1044 1979.7088,253.7444" fill="none" id="DotNetWebAPIClientCodeUnit-to-DotNetWebAPICodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="1984.02,256.2769,1978.2858,248.2695,1979.7088,253.7444,1974.2338,255.1674,1984.02,256.2769" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0019" data-entity-2="ent0010" data-link-type="dependency" data-source-line="61" id="lnk31">
+      <path d="M2152.3,196.3569 C2124.12,213.9969 2089.0473,235.9826 2060.8873,253.6226" fill="none" id="WebAPIContainerCodeUnit-to-DotNetWebAPICodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="2056.65,256.2769,2066.4006,254.8889,2060.8873,253.6226,2062.1537,248.1093,2056.65,256.2769" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0022" data-entity-2="ent0013" data-link-type="dependency" data-source-line="62" id="lnk32">
+      <path d="M2105.06,90.3569 C2173.16,108.3269 2263.8756,132.2707 2330.9256,149.9707" fill="none" id="CombinedBackendFrontendCodeUnit-to-AngularCodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="2335.76,151.2469,2328.0791,145.0822,2330.9256,149.9707,2326.0371,152.8172,2335.76,151.2469" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0022" data-entity-2="ent0010" data-link-type="dependency" data-source-line="63" id="lnk33">
+      <path d="M2021.5,90.3769 C2021.5,130.7069 2021.5,210.8569 2021.5,251.1969" fill="none" id="CombinedBackendFrontendCodeUnit-to-DotNetWebAPICodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="2021.5,256.1969,2025.5,247.1969,2021.5,251.1969,2017.5,247.1969,2021.5,256.1969" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+    <g class="link" data-entity-1="ent0025" data-entity-2="ent0013" data-link-type="dependency" data-source-line="64" id="lnk34">
+      <path d="M2559.69,90.3569 C2528.63,107.9969 2489.6371,130.1664 2458.5971,147.8064" fill="none" id="WebAppContainerCodeUnit-to-AngularCodeUnit" style="stroke:#181818;stroke-width:1;" />
+      <polygon fill="#181818" points="2454.25,150.2769,2464.0511,149.3077,2458.5971,147.8064,2460.0984,142.3524,2454.25,150.2769" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;" />
+    </g>
+  </g>
+</svg>

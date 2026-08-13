@@ -1,4 +1,5 @@
 ﻿using GRYLibrary.Core.APIServer.CommonRoutes;
+using GRYLibrary.Core.APIServer.Services.Database;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
 using GRYLibrary.Core.APIServer.Mid.M05DLog;
 using GRYLibrary.Core.APIServer.MidT.RLog;
@@ -11,6 +12,6 @@ namespace DotNetWebAPICodeUnit.Core.Configuration
         public IMaintenanceRoutesInformation MaintenanceRoutesInformation { get; set; }
         public IDRequestLoggingConfiguration ConfigurationForDLoggingMiddleware { get; set; }
         public IRequestLoggingConfiguration ConfigurationForLoggingMiddleware { get { return this.ConfigurationForDLoggingMiddleware; } }
-        public string DatabaseConnectionString { get; set; }
+        public IDatabasePersistenceConfiguration DatabasePersistenceConfiguration { get; set; }
     }
 }

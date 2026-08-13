@@ -1,5 +1,23 @@
 {
-  "metadata": [],
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "DotNetWebAPIClientCodeUnit.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "_site/**"
+          ],
+          "src": "../../DotNetWebAPIClientCodeUnit"
+        }
+      ],
+      "dest": "./ReferenceContent/API",
+      "disableGitFeatures": true
+    }
+  ],
   "build": {
     "content": [
       {

@@ -1,0 +1,25 @@
+:host {
+  /*
+   * Without this the host is an inline-element which contains a block-element, and the geometry such a construct
+   * gets differs between the browser-engines: the element was 1216 pixels wide in chromium but 480 in firefox,
+   * and 102 pixels high in chromium but 118 in webkit.
+   */
+  display: block;
+}
+
+.settings-card {
+  max-width: 480px;
+  margin: 16px auto;
+}
+
+.setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.setting-label {
+  /* A system-token of the theme, so the label follows the chosen color-scheme. */
+  color: var(--mat-sys-on-surface);
+}

@@ -1,4 +1,5 @@
 ﻿using GRYLibrary.Core.APIServer.BaseServices;
+using GRYLibrary.Core.APIServer.Services.Logger;
 using GRYLibrary.Core.APIServer.Settings;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using GRYLibrary.Core.Logging.GRYLogger;
@@ -14,7 +15,9 @@ namespace DotNetWebAPICodeUnit.Core.BackgroundServices
 
         public Gauge MetricRandomGauge { get; private set; }
         private readonly Random _Random = new Random();
-        public MetricsService(IApplicationConstants<CodeUnitSpecificConstants> constants, IGRYLog logger) : base(constants.ExecutionMode, logger)
+        // The logger is taken as "IServerLog" and not as "IGRYLog", because that is what the dependency-injection
+        // of the library provides. Asking for "IGRYLog" directly makes the creation of this service fail.
+        public MetricsService(IApplicationConstants<CodeUnitSpecificConstants> constants, IServerLog log) : base(constants.ExecutionMode, log.Logger)
         {
             this.Enabled = true;
             this.AdditionalDelay = TimeSpan.FromSeconds(5);
@@ -30,7 +33,7 @@ namespace DotNetWebAPICodeUnit.Core.BackgroundServices
             }
             catch (Exception exception)
             {
-                this._Logger.LogException(exception, "Error while calculating metrics");
+                this._Logger.Log("Error while calculating metrics", exception);
             }
         }
 

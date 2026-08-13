@@ -3,7 +3,7 @@ version: '3.2'
 services:
 
   webapicontainercodeunit:
-    image: webapicontainercodeunit:0.1.0
+    image: webapicontainercodeunit:1.2.0
     container_name: 'webapicontainercodeunit'
     volumes:
       - "./Volumes/Configuration:/Workspace/Configuration"

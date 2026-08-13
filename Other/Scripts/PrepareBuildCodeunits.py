@@ -7,6 +7,8 @@ def prepare_build_codeunits():
     t.tfcps_Tools_General.generate_certificate_for_development_purposes_for_product(t.repository_folder)
     t.tfcps_Tools_General.generate_tasksfile_from_workspace_file(t.repository_folder)
     t.tfcps_Tools_General.generate_codeunits_overview_diagram(t.repository_folder)
+    t.sc.ensure_docker_network_is_available("commonprojectstructureexamples_net")
+    t.tfcps_Tools_General.pull_images_of_test_services(t.repository_folder,None)
 
 
 if __name__ == "__main__":

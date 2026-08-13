@@ -10,6 +10,7 @@ Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CodeUnitMajorVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
+Resources/Constants/CurrentTimestamp.*
 Resources/CodeAnalysisResult
 Resources/GRYLibrary
 Resources/DevelopmentCertificateAuthority

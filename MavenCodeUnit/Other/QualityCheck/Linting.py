@@ -1,14 +1,10 @@
-import sys
-from pathlib import Path
-from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.TFCPS.Maven.TFCPS_CodeUnitSpecific_Maven import TFCPS_CodeUnitSpecific_Maven_Functions,TFCPS_CodeUnitSpecific_Maven_CLI
 
-def standardized_tasks_lint_for_maven_project(t:TasksForCommonProjectStructure,script_file:str,verbosity:int,commandline_arguments:list[str]):
-    pass#TODO
 
-def lint():
-    t = TasksForCommonProjectStructure()
-    standardized_tasks_lint_for_maven_project(t,str(Path(__file__).absolute()), 1, sys.argv)
+def linting():
+    tf:TFCPS_CodeUnitSpecific_Maven_Functions=TFCPS_CodeUnitSpecific_Maven_CLI.parse(__file__)
+    tf.linting()
 
 
 if __name__ == "__main__":
-    lint()
+    linting()
