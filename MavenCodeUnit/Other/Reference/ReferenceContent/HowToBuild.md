@@ -1,4 +1,5 @@
 # How to build
 
-This codeunit is a usual maven-project including one main-project and its test-cases.
-The codeunit is buildable by using the command `scbuildcodeunits` to build the entire project which includes this codeunit.
+This codeunit contains one maven-project, which is located in `MavenCodeUnit` and which contains its testcases in its own `src/test`-folder.
+
+The codeunit is buildable by using the command `scbuildcodeunits` to build the entire product which includes this codeunit.

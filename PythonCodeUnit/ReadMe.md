@@ -1,123 +1,33 @@
 # PythonCodeUnit
 
-## General
+## Purpose
 
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/PythonCodeUnit.svg)](https://pypi.org/project/PythonCodeUnit/)
-![PyPI](https://img.shields.io/pypi/v/PythonCodeUnit)
-![Dependencies](https://img.shields.io/librariesio/github/anionDev/PythonCodeUnit)
+`PythonCodeUnit` is the demonstration-codeunit for a python-package. It shows which shape such a codeunit has in a repository which implements the CommonProjectStructure, not a realistic package: it provides two example-functions and one commandline-executable per function.
 
-[![CodeFactor](https://www.codefactor.io/repository/github/aniondev/PythonCodeUnit/badge/main)](https://www.codefactor.io/repository/github/aniondev/PythonCodeUnit/overview/main)
-[![Downloads](https://pepy.tech/badge/PythonCodeUnit)](https://pepy.tech/project/PythonCodeUnit)
-![Coverage](https://raw.githubusercontent.com/anionDev/PythonCodeUnit/main/PythonCodeUnit/Other/Resources/TestCoverageBadges/badge_shieldsio_linecoverage_blue.svg)
+The package is not published anywhere. It exists to be copied as the starting-point of a real python-codeunit.
 
-The PythonCodeUnit is the place for reusable scripts.
+## Structure
 
-## Reference
+The package is located in `PythonCodeUnit` and its testcases are located in `PythonCodeUnitTests`, which is the layout the CommonProjectStructure defines.
 
-The reference can be found [here](https://aniondev.github.io/PythonCodeUnitReference/index.html).
+- `PythonCodeUnitCore.py` contains the functions. They are separated from the commandline-interface so that they are testable without running an executable.
+- `Executables.py` contains one function per commandline-executable. Each of them only parses the arguments and calls the corresponding function of `PythonCodeUnitCore`. Which executable is installed under which name is declared in `setup.cfg`.
 
-## Hints
+## Build and test
 
-Most of the scripts are written in [python](https://www.python.org) 3.
+The codeunit is built and tested by the scripts of the CommonProjectStructure, so by the pipeline of the repository (`task bb` in the repository-root). The scripts are `Other/Build/Build.py`, `Other/QualityCheck/Linting.py` and `Other/QualityCheck/RunTestcases.py`.
 
-Caution: Before executing **any** script of this repository read the sourcecode of the script (and the sourcecode of all functions called by this function directly or transitively) carefully and verify that the script does exactly what you want to do and nothing else.
+What they run:
 
-Some functions are not entirely available on windows or require common third-party tools. See the [Runtime dependencies](#runtime-dependencies)-section for more information.
+- The build creates the wheel of the package and stores it as artifact in `Other/Artifacts/BuildResult_Wheel`.
+- The linting runs `pylint`. The ruleset comes from the `.pylintrc`-file of the repository if there is one.
+- The testcases are run by `pytest` and the coverage is measured by `coverage`, which writes its report in the cobertura-format. The html-report, the badges and the check of the coverage-threshold are generated from that report.
 
-When using PythonCodeUnit it is not required but recommended for better usability to have [epew](https://github.com/anionDev/Epew) installed.
+## Install locally
 
-## Get PythonCodeUnit
+Install the built wheel with `pip install --force-reinstall Other/Artifacts/BuildResult_Wheel/PythonCodeUnit-<version>-py3-none-any.whl`. After that the executables of the package are available on the commandline.
 
-### Installation via pip
+## Further information
 
-`pip3 install PythonCodeUnit`
-
-See the [PyPI-site for PythonCodeUnit](https://pypi.org/project/PythonCodeUnit)
-
-### Download sourcecode using git
-
-You can simply git-clone the PythonCodeUnit and then use the scripts under the provided license.
-
-`git clone https://github.com/anionDev/PythonCodeUnit.git`
-
-It may be more easy to pip-install the PythonCodeUnit but technically pip is not required. Actually you need to git-clone (or download as zip-file from [GitHub](https://github.com/anionDev/PythonCodeUnit) the PythonCodeUnit to use the scripts in this repository which are not written in python.
-
-## Troubleshooting
-
-It is recommended to always use only the newest version of the PythonCodeUnit. If you have an older version: Update it (e. g. using `pip3 install PythonCodeUnit --upgrade` if you installed the PythonCodeUnit via pip). If you still have problems, then feel free to create an [issue](https://github.com/anionDev/PythonCodeUnit/issues).
-
-If you have installed the PythonCodeUnit as pip-package you can simply check the version using Python with the following commands:
-
-```lang-bash
-from PythonCodeUnit.PythonCodeUnitCore import PythonCodeUnitCore
-PythonCodeUnitCore.get_PythonCodeUnit_version()
-```
-
-Or you can simply run `pip3 freeze` folder to get information about (all) currently installed pip-packages.
-
-## Development
-
-### Branching-system
-
-This repository applies the [GitFlowSimplified](https://github.com/anionDev/ProjectTemplates/blob/main/Templates/Conventions/BranchingSystem/GitFlowSimplified.md)-branching-system.
-
-### Repository-structure
-
-This repository applies the [CommonProjectStructure](https://github.com/anionDev/ProjectTemplates/blob/main/Templates/Conventions/RepositoryStructure/CommonProjectStructure/CommonProjectStructure.md)-branching-system.
-
-### Install dependencies
-
-PythonCodeUnit requires [Python](https://www.python.org) 3.10.
-
-To develop PythonCodeUnit it is obviously required that the following commandline-commands are available on your system:
-
-- `python` (on some systems `python3`)
-- `pip3`
-
-The pip-packages which are required for developing on this project are defined in `requirements.txt`.
-
-### IDE
-
-The recommended IDE for developing PythonCodeUnit is Visual Studio Code.
-The recommended addons for developing PythonCodeUnit with Visual Studio Code are:
-
-- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
-- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-- [Spell Right](https://marketplace.visualstudio.com/items?itemName=ban.spellright)
-- [docs-markdown](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-markdown)
-
-### Build
-
-To create and install an PythonCodeUnit locally simply do the following commands:
-
-```bash
-python ./PythonCodeUnit/Other/Build/Build.py
-pip3 install --force-reinstall ./PythonCodeUnit/Other/Artifacts/Wheel/PythonCodeUnit-x.x.x-py3-none-any.whl
-```
-
-(Note: `x.x.x` must be replaced by the appropriate version-number.)
-
-### Coding style
-
-In this repository [pylint](https://pylint.org/) will be used to report linting-issues.
-If you change code in this repository please ensure pylint does not find any issues before creating a pull-request.
-
-If linting-issues exist in the current code-base can be checked by running `python ./PythonCodeUnit/Other/QualityCheck/Linting.py`.
-
-## Runtime dependencies
-
-PythonCodeUnit requires [Python](https://www.python.org) 3.10.
-
-The usual Python-dependencies will be installed automagically by `pip`.
-
-For functions to to read or change the permissions or the owner of a file the PythonCodeUnit relies on the functionality of the following tools:
-
-- chmod
-- chown
-- ls
-
-This tools must be available on the system where the functions should be executed. Meanwhile this tools are also available on Windows but may have a slightly limited functionality.
-
-## License
-
-See [License.txt](https://raw.githubusercontent.com/anionDev/PythonCodeUnit/main/License.txt) for license-information.
+- Which requirements have to be fulfilled to run the scripts of this codeunit is documented in [Hints.md](./Other/Reference/ReferenceContent/Hints.md).
+- How this codeunit is built is documented in [HowToBuild.md](./Other/Reference/ReferenceContent/HowToBuild.md).

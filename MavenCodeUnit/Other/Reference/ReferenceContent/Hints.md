@@ -2,20 +2,19 @@
 
 ## Requirements
 
-The following tools from the [tools-list](https://github.com/anionDev/ScriptCollection/blob/main/ScriptCollection/Other/Reference/ReferenceContent/Articles/RequirementsForCommonProjectStructure.md#Tools) are required to build this code-unit:
+The following tools are required to build this codeunit:
 
 - `docfx`
-- `java`
 - `git`
-- `gitversion`
+- `mvn`
 - `python`
 - `reportgenerator`
 - `scriptcollection`
 
-To create a release the following tools are also required:
+A java-development-kit in the version which the `maven.compiler.release`-property of the `pom.xml` declares must be available as well.
 
-- `gh`
+The linting, the bill-of-materials and the coverage-measurement are implemented by maven-plugins which are declared in the `pom.xml`, so they are downloaded by maven itself and do not have to be installed separately.
 
 ## IDE
 
-The recommended IDE for this codeunit is [Eclipse](https://www.eclipse.org/).
+The recommended IDE for this codeunit is [Visual Studio Code](https://code.visualstudio.com/) with the [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
