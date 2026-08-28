@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.Misc;
+using GRYLibrary.Core.Misc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Utilities = DotNetConsoleCodeUnit.Core.Utilities;
 
@@ -8,7 +8,7 @@ namespace DotNetConsoleCodeUnit.Tests.Testcases
     public class UtilitiesTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestXSDValidator1()
         {
             // arrange

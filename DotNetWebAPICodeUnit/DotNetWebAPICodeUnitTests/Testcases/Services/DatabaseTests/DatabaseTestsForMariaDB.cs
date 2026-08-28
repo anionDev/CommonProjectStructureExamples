@@ -29,14 +29,14 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services.DatabaseTests
         }
 
         [TestMethod(DisplayName = nameof(AllMigrationsAreWorkingTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void AllMigrationsAreWorkingTest()
         {
             this.AllMigrationsAreWorking();
         }
 
         [TestMethod(DisplayName = nameof(MigrationsAreAppliedOnlyOnceTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void MigrationsAreAppliedOnlyOnceTest()
         {
             this.MigrationsAreAppliedOnlyOnce();

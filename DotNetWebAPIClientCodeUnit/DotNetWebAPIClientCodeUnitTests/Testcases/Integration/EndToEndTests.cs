@@ -14,7 +14,7 @@ namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.Integration
     public class EndToEndTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.EndToEndTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.EndToEndTest))]
         public void AddTest()
         {
             // arrange

@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.Misc;
+using GRYLibrary.Core.Misc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Utilities = DotNetLibraryCodeUnit.Core.Miscellaneous.Utilities;
 
@@ -8,7 +8,7 @@ namespace DotNetLibraryCodeUnit.Tests.Testcases
     public class UtilitiesTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void AddTest()
         {
             // arrange
@@ -24,7 +24,7 @@ namespace DotNetLibraryCodeUnit.Tests.Testcases
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void SubTest()
         {
             // arrange
@@ -40,7 +40,7 @@ namespace DotNetLibraryCodeUnit.Tests.Testcases
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void MulTest()
         {
             // arrange
@@ -56,7 +56,7 @@ namespace DotNetLibraryCodeUnit.Tests.Testcases
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void Divtest()
         {
             // arrange

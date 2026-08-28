@@ -2,6 +2,12 @@
 skinparam defaultFontName "DejaVu Sans"
 title CodeUnits of CommonProjectStructureExamples
 
+[DartLibraryCodeUnit]
+note as DartLibraryCodeUnitNote
+  The DartLibraryCodeUnit is a demonstration-codeunit for a Dart-library.
+end note
+DartLibraryCodeUnit .. DartLibraryCodeUnitNote
+
 [DotNetConsoleCodeUnit]
 note as DotNetConsoleCodeUnitNote
   DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.
@@ -14,11 +20,29 @@ note as DotNetLibraryCodeUnitNote
 end note
 DotNetLibraryCodeUnit .. DotNetLibraryCodeUnitNote
 
+[GoCodeUnit]
+note as GoCodeUnitNote
+  GoCodeUnit is a demonstration-codeunit for a go-project.
+end note
+GoCodeUnit .. GoCodeUnitNote
+
+[MavenCodeUnit]
+note as MavenCodeUnitNote
+  MavenCodeUnit is a demonstration-codeunit for a maven-project.
+end note
+MavenCodeUnit .. MavenCodeUnitNote
+
 [PythonCodeUnit]
 note as PythonCodeUnitNote
   PythonCodeUnit is a demonstration-codeunit for a python-package.
 end note
 PythonCodeUnit .. PythonCodeUnitNote
+
+[RustCodeUnit]
+note as RustCodeUnitNote
+  RustCodeUnit is a demonstration-codeunit for a rust-project.
+end note
+RustCodeUnit .. RustCodeUnitNote
 
 [DotNetWebAPICodeUnit]
 note as DotNetWebAPICodeUnitNote

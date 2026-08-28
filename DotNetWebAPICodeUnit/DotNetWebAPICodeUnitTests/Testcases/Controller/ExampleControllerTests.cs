@@ -12,7 +12,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Controller
     public class ExampleControllerTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestSomeFunction()
         {
             // arrange

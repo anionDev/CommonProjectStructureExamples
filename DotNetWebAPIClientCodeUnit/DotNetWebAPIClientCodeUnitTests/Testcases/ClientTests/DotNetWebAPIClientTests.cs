@@ -8,7 +8,7 @@ namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.ClientTests
     public class DotNetWebAPIClientTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void ConstructorTest()
         {
             DotNetWebAPIClient _ = new DotNetWebAPIClient(default); //expect no exception

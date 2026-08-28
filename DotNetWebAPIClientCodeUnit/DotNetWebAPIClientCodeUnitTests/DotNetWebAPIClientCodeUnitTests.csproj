@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <Authors>Marius Göcke</Authors>
     <Version>1.2.0</Version>
     <AssemblyVersion>1.2.0</AssemblyVersion>
@@ -9,6 +10,7 @@
     <IsPackable>false</IsPackable>
     <PreserveCompilationContext>false</PreserveCompilationContext>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <Copyright>Copyright © 2026 Marius Göcke</Copyright>
     <Description>DotNetWebAPIClientCodeUnitTests is the test-project for
             DotNetWebAPIClientCodeUnit.</Description>
@@ -58,24 +60,24 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DotNetWebAPIClientCodeUnit\DotNetWebAPIClientCodeUnit.csproj" />
-    <PackageReference Include="coverlet.collector" Version="10.0.1">
+    <PackageReference Include="coverlet.collector" Version="[10.0.1]">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="GRYLibrary" Version="2.0.27" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.10" />
-    <PackageReference Include="Microsoft.CodeCoverage" Version="18.5.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="10.0.10" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.10" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
-    <PackageReference Include="Moq" Version="4.20.72" />
-    <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
-    <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
-    <PackageReference Include="NJsonSchema" Version="11.6.1" />
-    <PackageReference Include="NSwag.AspNetCore" Version="14.7.1" />
-    <PackageReference Include="System.Collections.Immutable" Version="10.0.8" />
-    <PackageReference Include="System.Reactive" Version="6.1.0" />
+    <PackageReference Include="GRYLibrary" Version="[2.0.31]" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="[2.3.10]" />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="[18.5.1]" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[10.0.10]" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="[10.0.10]" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[10.0.10]" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="[10.0.10]" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="[18.5.1]" />
+    <PackageReference Include="Moq" Version="[4.20.72]" />
+    <PackageReference Include="MSTest.TestAdapter" Version="[4.2.3]" />
+    <PackageReference Include="MSTest.TestFramework" Version="[4.2.3]" />
+    <PackageReference Include="NJsonSchema" Version="[11.6.1]" />
+    <PackageReference Include="NSwag.AspNetCore" Version="[14.7.1]" />
+    <PackageReference Include="System.Collections.Immutable" Version="[10.0.8]" />
+    <PackageReference Include="System.Reactive" Version="[6.1.0]" />
   </ItemGroup>
 </Project>

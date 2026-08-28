@@ -26,7 +26,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestCreateCustomerStoresTheCustomer()
         {
             // arrange
@@ -40,7 +40,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestCreateCustomerAssignsAnUnusedId()
         {
             // arrange
@@ -56,7 +56,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestCreateCustomerWithEmptyNameIsRejected()
         {
             // arrange
@@ -67,7 +67,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestCreateCustomerWithInvalidEmailAddressIsRejected()
         {
             // arrange
@@ -78,7 +78,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestUpdateCustomerAppliesTheNewValues()
         {
             // arrange
@@ -93,7 +93,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestUpdateCustomerWhichDoesNotExistIsRejected()
         {
             // arrange
@@ -106,7 +106,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestRemoveCustomer()
         {
             // arrange
@@ -121,7 +121,7 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services
         }
 
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.UnitTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.UnitTest))]
         public void TestRemoveCustomerWhichDoesNotExistIsRejected()
         {
             // arrange

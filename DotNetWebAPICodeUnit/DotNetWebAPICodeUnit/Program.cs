@@ -35,7 +35,7 @@ namespace DotNetWebAPICodeUnit.Core
         {
             return Tools.RunAPIServer<CodeUnitSpecificCommandlineParameter, CodeUnitSpecificConstants, CodeUnitSpecificConfiguration>(GeneralConstants.CodeUnitName, GeneralConstants.CodeUnitDescription, Version3.Parse(GeneralConstants.CodeUnitVersion), DNWAPICUUtilities.GetEnvironmentTargetType(), GUtilities.GetExecutionMode(commandlineArguments), commandlineArguments, null, (apiServerConfiguration) =>
             {
-                apiServerConfiguration.SetInitialzationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
+                apiServerConfiguration.SetInitializationInformationAction = (initializationInformation) => //HINT initialization for first run (used when configuration-file not exists)
                 {
                     string domain = Tools.GetDefaultDomainValue(GeneralConstants.CodeUnitName);
                     initializationInformation.InitialApplicationConfiguration.ServerConfiguration.SetDomainAndPublichUrlToDefault(domain);

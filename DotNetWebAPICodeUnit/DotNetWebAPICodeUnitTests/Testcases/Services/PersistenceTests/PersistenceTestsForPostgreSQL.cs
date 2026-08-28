@@ -30,35 +30,35 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Services.PersistenceTests
         }
 
         [TestMethod(DisplayName = nameof(CreateAndGetCustomerTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void CreateAndGetCustomerTest()
         {
             this.CreateAndGetCustomer();
         }
 
         [TestMethod(DisplayName = nameof(GetAllCustomersTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void GetAllCustomersTest()
         {
             this.GetAllCustomers();
         }
 
         [TestMethod(DisplayName = nameof(UpdateCustomerTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void UpdateCustomerTest()
         {
             this.UpdateCustomer();
         }
 
         [TestMethod(DisplayName = nameof(RemoveCustomerTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void RemoveCustomerTest()
         {
             this.RemoveCustomer();
         }
 
         [TestMethod(DisplayName = nameof(GetCustomerWhichDoesNotExistThrowsTest))]
-        [TestProperty(nameof(TestKind), nameof(TestKind.IntegrationTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.IntegrationTest))]
         public override void GetCustomerWhichDoesNotExistThrowsTest()
         {
             this.GetCustomerWhichDoesNotExistThrows();
