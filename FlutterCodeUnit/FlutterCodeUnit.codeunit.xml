@@ -9,7 +9,7 @@
     <cps:codeunitowneremailaddress>marius.goecke@gmail.com</cps:codeunitowneremailaddress>
     <cps:properties codeunithastestablesourcecode="true" codeunithasupdatabledependencies="true"
         throwexceptionifcodeunitfilecannotbevalidated="true" developmentstate="Maintenance-updates only"
-        description="The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, Linux-target only).">
+        description="The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, linux and web build-targets).">
         <cps:testsettings minimalcodecoverageinpercent="1" />
         <cps:pipelinedemands>
         </cps:pipelinedemands>

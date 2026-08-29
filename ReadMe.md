@@ -12,7 +12,7 @@ Each codeunit of this repository is one such example. The examples are minimal o
 |----------|--------------|
 | `AngularCodeUnit` | an Angular-web-application |
 | `CombinedBackendFrontendCodeUnit` | a reverse-proxy which serves a backend-server-application and a frontend-web-application together |
-| `FlutterCodeUnit` | a Flutter-application (Material-Design, `linux`-build-target only) |
+| `FlutterCodeUnit` | a Flutter-application (Material-Design, `linux`- and `web`-build-targets) |
 | `DotNetConsoleCodeUnit` | a .NET-console-application |
 | `DotNetLibraryCodeUnit` | a .NET-library |
 | `DotNetWebAPICodeUnit` | a .NET-web-API-application |

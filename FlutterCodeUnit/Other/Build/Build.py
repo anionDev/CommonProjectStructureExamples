@@ -3,7 +3,7 @@ from ScriptCollection.TFCPS.Flutter.TFCPS_CodeUnitSpecific_Flutter import TFCPS_
 
 def build():
     tf:TFCPS_CodeUnitSpecific_Flutter_Functions=TFCPS_CodeUnitSpecific_Flutter_CLI.parse(__file__)
-    tf.build("flutter_code_unit",["linux"])
+    tf.build("flutter_code_unit",["linux","web"])
 
 
 if __name__ == "__main__":
