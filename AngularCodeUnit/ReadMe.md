@@ -16,7 +16,7 @@ The codeunit is built and tested by the scripts of the CommonProjectStructure, s
 The npm-scripts behind them exist per target-environment (`Development`, `QualityCheck`, `Productive`):
 
 - `npm run build-<target-environment>` builds the application.
-- `npm run test-<target-environment>` runs the unit-tests (jasmine, executed by karma in a headless chrome) including the coverage-measurement.
+- `npm run test-<target-environment>` runs the unit-tests (executed by vitest in jsdom) including the coverage-measurement.
 - `npm run lint` runs the linting.
 - `npm run generate-api-client` regenerates the client for `DotNetWebAPICodeUnit`.
 

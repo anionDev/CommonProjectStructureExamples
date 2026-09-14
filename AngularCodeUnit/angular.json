@@ -16,7 +16,7 @@
       "architect": {
         "build": {
           "defaultConfiguration": "Development",
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "configurations": {
             "Productive": {
               "budgets": [
@@ -92,32 +92,27 @@
         },
         "test": {
           "defaultConfiguration": "Development",
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "configurations": {
-            "Productive": {},
-            "QualityCheck": {},
-            "Development": {}
+            "Productive": {
+              "buildTarget": "AngularCodeUnit:build:Productive"
+            },
+            "QualityCheck": {
+              "buildTarget": "AngularCodeUnit:build:QualityCheck"
+            },
+            "Development": {
+              "buildTarget": "AngularCodeUnit:build:Development"
+            }
           },
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "runner": "vitest",
+            "runnerConfig": "vitest-base.config.ts",
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/@fontsource/roboto/300.css",
-              "node_modules/@fontsource/roboto/400.css",
-              "node_modules/@fontsource/roboto/500.css",
-              "node_modules/@fontsource/material-icons/index.css",
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "karmaConfig": "karma.conf.js"
+            "coverage": true,
+            "coverageReporters": [
+              "cobertura",
+              "text-summary"
+            ]
           }
         },
         "lint": {
