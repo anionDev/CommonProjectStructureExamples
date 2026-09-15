@@ -58,7 +58,9 @@
     <ErrorReport>none</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GRYLibrary" Version="[2.0.31]" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="[8.16.0]" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="[8.16.0]" />
+    <PackageReference Include="GRYLibrary" Version="[2.1.0]" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="[10.0.10]" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="[10.0.10]" />
     <PackageReference Include="MySqlConnector" Version="[2.4.0]" />
