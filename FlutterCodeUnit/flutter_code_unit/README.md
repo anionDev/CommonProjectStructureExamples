@@ -1,6 +1,6 @@
 # flutter_code_unit
 
-The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, Linux-target only).
+The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, linux- and web-build-targets).
 
 ## Getting Started
 

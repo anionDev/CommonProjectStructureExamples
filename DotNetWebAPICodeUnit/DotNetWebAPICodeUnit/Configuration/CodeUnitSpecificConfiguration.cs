@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.APIServer.CommonRoutes;
+using GRYLibrary.Core.APIServer.CommonRoutes;
 using GRYLibrary.Core.APIServer.Services.Database;
 using GRYLibrary.Core.APIServer.MaintenanceRoutes;
 using GRYLibrary.Core.APIServer.Mid.M05DLog;

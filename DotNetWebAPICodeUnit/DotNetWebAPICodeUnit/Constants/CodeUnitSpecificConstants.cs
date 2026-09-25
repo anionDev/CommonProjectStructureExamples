@@ -1,4 +1,4 @@
-﻿namespace DotNetWebAPICodeUnit.Core.Constants
+namespace DotNetWebAPICodeUnit.Core.Constants
 {
     public class CodeUnitSpecificConstants
     {

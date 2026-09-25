@@ -5,6 +5,11 @@ const angular = require("angular-eslint");
 
 module.exports = tseslint.config(
   {
+    // The api-client in src/app/generated is regenerated from the API-specification of DotNetWebAPICodeUnit
+    // (see "npm run generate-api-client") and is therefore never edited by hand, so it is excluded from linting.
+    ignores: ["src/app/generated/**"],
+  },
+  {
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,

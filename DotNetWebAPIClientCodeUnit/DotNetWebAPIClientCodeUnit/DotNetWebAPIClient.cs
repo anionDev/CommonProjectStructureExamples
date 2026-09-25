@@ -1,4 +1,4 @@
-﻿using GRYLibrary.Core.APIClient;
+using GRYLibrary.Core.APIClient;
 using GRYLibrary.Core.Misc;
 using GUtilities = GRYLibrary.Core.Misc.Utilities;
 

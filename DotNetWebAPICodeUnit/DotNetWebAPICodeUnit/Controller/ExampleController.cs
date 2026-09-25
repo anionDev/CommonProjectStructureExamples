@@ -1,4 +1,4 @@
-﻿using DotNetWebAPICodeUnit.Core.Constants;
+using DotNetWebAPICodeUnit.Core.Constants;
 using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.APIServer.Services.Logger;
 using GRYLibrary.Core.APIServer.Settings.Configuration;

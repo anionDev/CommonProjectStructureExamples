@@ -13,7 +13,6 @@
   <dependentcodeunits>
     <dependentcodeunit>DotNetWebAPICodeUnit</dependentcodeunit>
   </dependentcodeunits>
-  <pipelinedemands />
   <developerteam>
     <developer>
       <developername>Marius Göcke</developername>

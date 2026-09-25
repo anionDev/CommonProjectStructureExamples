@@ -1,4 +1,4 @@
-﻿using DotNetWebAPICodeUnit.Core.Controller;
+using DotNetWebAPICodeUnit.Core.Controller;
 using DotNetWebAPICodeUnit.Core.Services;
 using GRYLibrary.Core.APIServer.Services.Logger;
 using GRYLibrary.Core.Logging.GRYLogger;
@@ -27,8 +27,8 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Controller
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);
-            decimal acturalResultValue = (decimal)(actualResult as OkObjectResult).Value;
-            Assert.AreEqual(expectedResultValue, acturalResultValue);
+            decimal actualResultValue = (decimal)(actualResult as OkObjectResult).Value;
+            Assert.AreEqual(expectedResultValue, actualResultValue);
         }
     }
 }

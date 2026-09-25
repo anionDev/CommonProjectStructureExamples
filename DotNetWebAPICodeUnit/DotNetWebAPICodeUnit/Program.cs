@@ -1,4 +1,4 @@
-﻿using DotNetWebAPICodeUnit.Core.Constants;
+using DotNetWebAPICodeUnit.Core.Constants;
 using GRYLibrary.Core.Misc;
 using System;
 using Microsoft.Extensions.DependencyInjection;

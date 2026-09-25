@@ -8,15 +8,15 @@
           "**.md",
           "**.yml"
         ],
-        "src":"./ReferenceContent"
-      },
+        "src": "./ReferenceContent"
+      }
     ],
     "resource": [
       {
         "files": [
           "Images/**"
         ],
-        "src":"./ReferenceContent"
+        "src": "./ReferenceContent"
       }
     ],
     "overwrite": [

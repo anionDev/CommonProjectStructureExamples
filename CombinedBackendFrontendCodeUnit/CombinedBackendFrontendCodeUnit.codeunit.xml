@@ -4,7 +4,11 @@
   <version>1.2.0</version>
   <codeunitownername>Marius Göcke</codeunitownername>
   <codeunitowneremailaddress>marius.goecke@gmail.com</codeunitowneremailaddress>
-  <properties codeunithastestablesourcecode="false" codeunithasupdatabledependencies="false" throwexceptionifcodeunitfilecannotbevalidated="true" developmentstate="Maintenance-updates only" description="CombinedBackendFrontendCodeUnit is a demonstration-codeunit which works as reverse-proxy for a backend-server-application and a frontend-web-application.">&gt;<pipelinedemands />
+  <properties codeunithastestablesourcecode="false" codeunithasupdatabledependencies="false" throwexceptionifcodeunitfilecannotbevalidated="true" developmentstate="Maintenance-updates only" description="CombinedBackendFrontendCodeUnit is a demonstration-codeunit which works as reverse-proxy for a backend-server-application and a frontend-web-application.">
+    <pipelinedemands />
+    <updatesettings>
+      <ignoreddependencies />
+    </updatesettings>
   </properties>
   <dependentcodeunits>
     <dependentcodeunit>DotNetWebAPICodeUnit</dependentcodeunit>

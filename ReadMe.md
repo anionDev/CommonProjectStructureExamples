@@ -23,6 +23,9 @@ Each codeunit of this repository is one such example. The examples are minimal o
 | `MavenCodeUnit` | a maven-project |
 | `GoCodeUnit` | a go-project |
 | `RustCodeUnit` | a rust-project |
+| `DartLibraryCodeUnit` | a Dart-library |
+| `CPPLibrary` | a C++-library |
+| `CExecutable` | a C-executable which uses the library of the dependent codeunit `CPPLibrary` |
 
 `DotNetWebAPIClientCodeUnit` is the example for the case that one codeunit uses another one of the same repository: it declares `DotNetWebAPICodeUnit` in its `dependentcodeunits` and reaches it exclusively through `Other/Resources/DependentCodeUnits`.
 
@@ -58,7 +61,6 @@ The tools which are required to build a codeunit and the packages a codeunit dep
 Examples for the following project-types do not exist yet:
 
 - `AntCodeUnit`
-- `CPPCodeUnit`
 - `ElectronCodeUnit`
 - `GradleCodeUnit`
 - `KotlinCodeUnit`

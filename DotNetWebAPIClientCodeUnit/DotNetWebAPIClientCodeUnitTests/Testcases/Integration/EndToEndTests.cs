@@ -1,4 +1,4 @@
-﻿using DotNetWebAPIClientCodeUnit.Core;
+using DotNetWebAPIClientCodeUnit.Core;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.APIServer.Utilities;
 using GRYLibrary.Core.APIClient;

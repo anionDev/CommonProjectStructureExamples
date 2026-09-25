@@ -1,4 +1,4 @@
-﻿using GUtilities = GRYLibrary.Core.Misc.Utilities;
+using GUtilities = GRYLibrary.Core.Misc.Utilities;
 
 namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.ClientTests
 {

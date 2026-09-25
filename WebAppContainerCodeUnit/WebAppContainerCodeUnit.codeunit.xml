@@ -4,7 +4,8 @@
   <version>1.2.0</version>
   <codeunitownername>Marius Göcke</codeunitownername>
   <codeunitowneremailaddress>marius.goecke@gmail.com</codeunitowneremailaddress>
-  <properties codeunithastestablesourcecode="false" codeunithasupdatabledependencies="false" throwexceptionifcodeunitfilecannotbevalidated="true" developmentstate="Maintenance-updates only" description="WebAppContainerCodeUnit is a containerized variant of AngularCodeUnit.">&gt;<pipelinedemands />
+  <properties codeunithastestablesourcecode="false" codeunithasupdatabledependencies="false" throwexceptionifcodeunitfilecannotbevalidated="true" developmentstate="Maintenance-updates only" description="WebAppContainerCodeUnit is a containerized variant of AngularCodeUnit.">
+    <pipelinedemands />
     <updatesettings>
       <ignoreddependencies />
     </updatesettings>
