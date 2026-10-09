@@ -8,7 +8,7 @@ This codeunit has no source-code of its own. `DotNetWebAPICodeUnit` and `Angular
 
 ## Structure
 
-- `CombinedBackendFrontendCodeUnit/Dockerfile` defines the image: it is based on `nginx:latest`, copies the build-result of `DotNetWebAPICodeUnit` (`Other/Resources/DependentCodeUnits/DotNetWebAPICodeUnit/BuildResult_DotNet_win-x64`) into `/Workspace/Backend/Application` and the build-result of `AngularCodeUnit` (`Other/Resources/DependentCodeUnits/AngularCodeUnit/BuildResult_Website`) into `/Workspace/Frontend/Application`, and copies `nginx.configuration` and `EntryPoint.sh` into the image.
+- `CombinedBackendFrontendCodeUnit/Dockerfile` defines the image: it is based on `nginx:latest`, copies the build-result of `DotNetWebAPICodeUnit` (`Other/Resources/DependentCodeUnits/DotNetWebAPICodeUnit/BuildResult_DotNet_win-x64`) into `/Workspace/Backend/Application` and the build-result of `AngularCodeUnit` (`Other/Resources/DependentCodeUnits/AngularCodeUnit/BuildResult_WebApplication`) into `/Workspace/Frontend/Application`, and copies `nginx.configuration` and `EntryPoint.sh` into the image.
 - `CombinedBackendFrontendCodeUnit/nginx.configuration` is the nginx-configuration which is meant to route requests to the backend and to the frontend depending on the route.
 - `CombinedBackendFrontendCodeUnit/EntryPoint.sh` is the entrypoint of the container.
 - `Other/Examples/MinimalDockerComposeFile` contains a minimal `docker-compose.yml` and a `RunExample.py` which starts the built image locally.

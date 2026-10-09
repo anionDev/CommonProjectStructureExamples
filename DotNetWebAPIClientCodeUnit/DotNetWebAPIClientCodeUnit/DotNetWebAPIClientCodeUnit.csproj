@@ -11,7 +11,7 @@
     <PreserveCompilationContext>false</PreserveCompilationContext>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-        <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditMode>all</NuGetAuditMode>
     <Copyright>Copyright © 2026 Marius Göcke</Copyright>
     <Description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</Description>
     <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
@@ -73,6 +73,6 @@
     <PackageReference Include="System.Reactive" Version="[6.1.0]" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="[10.2.1]" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="[9.0.0]" />
-    <PackageReference Include="GRYLibrary" Version="[2.1.4]" />
+    <PackageReference Include="GRYLibrary" Version="[2.1.5]" />
   </ItemGroup>
 </Project>

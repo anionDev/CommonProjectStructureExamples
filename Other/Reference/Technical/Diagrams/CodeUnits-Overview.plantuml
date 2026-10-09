@@ -2,6 +2,12 @@
 skinparam defaultFontName "DejaVu Sans"
 title CodeUnits of CommonProjectStructureExamples
 
+[CPPLibrary]
+note as CPPLibraryNote
+  CPPLibrary is a demonstration-codeunit for a c++-library, built via TFCPS_CodeUnitSpecific_CPP.
+end note
+CPPLibrary .. CPPLibraryNote
+
 [DartLibraryCodeUnit]
 note as DartLibraryCodeUnitNote
   The DartLibraryCodeUnit is a demonstration-codeunit for a Dart-library.
@@ -19,6 +25,12 @@ note as DotNetLibraryCodeUnitNote
   DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.
 end note
 DotNetLibraryCodeUnit .. DotNetLibraryCodeUnitNote
+
+[FlutterCodeUnit]
+note as FlutterCodeUnitNote
+  The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, linux and web build-targets).
+end note
+FlutterCodeUnit .. FlutterCodeUnitNote
 
 [GoCodeUnit]
 note as GoCodeUnitNote
@@ -43,6 +55,12 @@ note as RustCodeUnitNote
   RustCodeUnit is a demonstration-codeunit for a rust-project.
 end note
 RustCodeUnit .. RustCodeUnitNote
+
+[CExecutable]
+note as CExecutableNote
+  CExecutable is a demonstration-codeunit for a c-executable which uses the library of the dependent codeunit CPPLibrary, built via TFCPS_CodeUnitSpecific_CPP.
+end note
+CExecutable .. CExecutableNote
 
 [DotNetWebAPICodeUnit]
 note as DotNetWebAPICodeUnitNote
@@ -80,6 +98,7 @@ note as WebAppContainerCodeUnitNote
 end note
 WebAppContainerCodeUnit .. WebAppContainerCodeUnitNote
 
+CExecutable --> CPPLibrary
 DotNetWebAPICodeUnit --> DotNetLibraryCodeUnit
 AngularCodeUnit --> DotNetWebAPICodeUnit
 DotNetWebAPIClientCodeUnit --> DotNetWebAPICodeUnit

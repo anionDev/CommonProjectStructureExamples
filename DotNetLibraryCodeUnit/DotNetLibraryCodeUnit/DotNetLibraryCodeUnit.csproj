@@ -11,7 +11,7 @@
     <PreserveCompilationContext>false</PreserveCompilationContext>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-        <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditMode>all</NuGetAuditMode>
     <Copyright>Copyright © 2026 Marius Göcke</Copyright>
     <Description>DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.</Description>
     <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
@@ -62,7 +62,7 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="[2.9.1]" />
     <PackageReference Include="Microsoft.CSharp" Version="[4.7.0]" />
-    <PackageReference Include="GRYLibrary" Version="[2.1.4]" />
+    <PackageReference Include="GRYLibrary" Version="[2.1.5]" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[10.0.10]" />
   </ItemGroup>
 </Project>

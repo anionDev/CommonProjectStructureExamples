@@ -13,6 +13,23 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "ar": "Other/Resources/Translations/messages.ar.xlf",
+          "de": "Other/Resources/Translations/messages.de.xlf",
+          "de-AT": "Other/Resources/Translations/messages.de-AT.xlf",
+          "de-CH": "Other/Resources/Translations/messages.de-CH.xlf",
+          "el": "Other/Resources/Translations/messages.el.xlf",
+          "en-GB": "Other/Resources/Translations/messages.en-GB.xlf",
+          "es": "Other/Resources/Translations/messages.es.xlf",
+          "es-MX": "Other/Resources/Translations/messages.es-MX.xlf",
+          "fr": "Other/Resources/Translations/messages.fr.xlf",
+          "pt": "Other/Resources/Translations/messages.pt.xlf",
+          "ru": "Other/Resources/Translations/messages.ru.xlf",
+          "zh": "Other/Resources/Translations/messages.zh.xlf"
+        }
+      },
       "architect": {
         "build": {
           "defaultConfiguration": "Development",
@@ -44,10 +61,11 @@
             }
           },
           "options": {
-            "outputPath": "Other/Artifacts/BuildResult_Website",
+            "outputPath": "Other/Artifacts/BuildResult_WebApplication",
             "index": "src/index.html",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -85,9 +103,12 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "AngularCodeUnit:build"
+            "buildTarget": "AngularCodeUnit:build",
+            "outputPath": "Other/Resources/Translations",
+            "format": "xlf2",
+            "outFile": "messages.xlf"
           }
         },
         "test": {

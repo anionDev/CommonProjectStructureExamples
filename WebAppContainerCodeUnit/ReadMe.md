@@ -8,7 +8,7 @@ This codeunit has no source-code of its own. `AngularCodeUnit` is declared in it
 
 ## Structure
 
-- `WebAppContainerCodeUnit/Dockerfile` defines the image: it is based on `nginx:latest` and copies the build-result of `AngularCodeUnit` (`Other/Resources/DependentCodeUnits/AngularCodeUnit/BuildResult_Website`) into `/usr/share/nginx/html`, so nginx serves the built Angular-application as static files. A `HEALTHCHECK` requests the page over https.
+- `WebAppContainerCodeUnit/Dockerfile` defines the image: it is based on `nginx:latest` and copies the build-result of `AngularCodeUnit` (the `browser`-folder of `Other/Resources/DependentCodeUnits/AngularCodeUnit/BuildResult_WebApplication`) into `/usr/share/nginx/html`, so nginx serves the built Angular-application as static files: one subfolder per language and an `index.html` in the root which forwards to the language of the browser. A `HEALTHCHECK` requests the page over https.
 - `Other/Examples/MinimalDockerComposeFile` contains a minimal `docker-compose.yml` and a `RunExample.py` which starts the built image locally.
 
 ## Build and test

@@ -11,7 +11,7 @@
     <PreserveCompilationContext>false</PreserveCompilationContext>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-        <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditMode>all</NuGetAuditMode>
     <Copyright>Copyright © 2026 Marius Göcke</Copyright>
     <Description>DotNetWebAPIClientCodeUnitTests is the test-project for DotNetWebAPIClientCodeUnit.</Description>
     <PackageProjectUrl>https://github.com/anionDev/CommonProjectStructureExamples</PackageProjectUrl>
@@ -64,7 +64,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="GRYLibrary" Version="[2.1.4]" />
+    <PackageReference Include="GRYLibrary" Version="[2.1.5]" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="[2.3.10]" />
     <PackageReference Include="Microsoft.CodeCoverage" Version="[18.5.1]" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[10.0.10]" />
