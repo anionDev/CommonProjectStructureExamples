@@ -57,6 +57,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # The app bundles its own "Roboto" (SIL/Apache-2.0, see Other/Resources/Fonts/LICENSE.txt) instead of relying on
+  # a font installed on the machine, so that it looks the same on every target and - together with
+  # test/flutter_test_config.dart, which loads the same files - the visual output of a test is reproducible on the
+  # Windows host and inside the Linux build-container alike. The theme names this family explicitly (see
+  # lib/app_theme.dart). The files live at the codeunit-level so they are not specific to this one Flutter-package.
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: ../Other/Resources/Fonts/Roboto-Regular.ttf
+        - asset: ../Other/Resources/Fonts/Roboto-Bold.ttf
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

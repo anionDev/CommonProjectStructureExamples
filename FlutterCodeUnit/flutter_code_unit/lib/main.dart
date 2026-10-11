@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_theme.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -11,7 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FlutterCodeUnit',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      // The application's colors come from one place only (see lib/app_theme.dart): the light and the
+      // dark palette. Material applies them to every widget through these two themes.
+      theme: appLightTheme,
+      darkTheme: appDarkTheme,
       home: const HelloWorldPage(),
     );
   }

@@ -78,7 +78,7 @@
         "args": [],
         "type": "shell",
         "options": {
-          "cwd": "${workspaceFolder}/AngularCodeUnit/Other/QualityCheck"
+          "cwd": "${workspaceFolder}/Other/Scripts"
         },
         "aliases": [
           "uvrb"

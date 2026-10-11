@@ -55,7 +55,7 @@ tasks:
   UpdateVisualRegressionBaselines:
     desc: "Update: Visual-regression-baselines"
     silent: true
-    dir: "./AngularCodeUnit/Other/QualityCheck"
+    dir: "./Other/Scripts"
     cmds:
       - "python UpdateVisualRegressionBaselines.py {{.CLI_ARGS}}"
     aliases:
