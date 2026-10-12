@@ -1,4 +1,4 @@
-﻿namespace DotNetWebAPICodeUnit.Core.Services
+namespace DotNetWebAPICodeUnit.Core.Services
 {
     public class MathService : IMathService
     {

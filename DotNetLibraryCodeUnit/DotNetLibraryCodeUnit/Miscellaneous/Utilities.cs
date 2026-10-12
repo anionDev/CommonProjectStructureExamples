@@ -1,4 +1,4 @@
-﻿namespace DotNetLibraryCodeUnit.Core.Miscellaneous
+namespace DotNetLibraryCodeUnit.Core.Miscellaneous
 {
     public static class Utilities
     {

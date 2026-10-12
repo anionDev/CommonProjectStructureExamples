@@ -1,3 +1,3 @@
 # Introduction
 
-The main namespace of the DotNetLibraryCodeUnit is `DotNetLibraryCodeUnit.Core`.
+The main package of the MavenCodeUnit is `de.aniondev.mavencodeunit`.

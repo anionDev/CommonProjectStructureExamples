@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace CCOT.DataCollectorClient.Core
+namespace DotNetWebAPIClientCodeUnit.Core
 {
     public interface IDotNetWebAPIClient : IDisposable
     {

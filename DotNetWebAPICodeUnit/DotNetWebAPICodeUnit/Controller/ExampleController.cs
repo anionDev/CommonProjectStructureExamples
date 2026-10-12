@@ -1,5 +1,6 @@
-﻿using DotNetWebAPICodeUnit.Core.Constants;
+using DotNetWebAPICodeUnit.Core.Constants;
 using DotNetWebAPICodeUnit.Core.Services;
+using GRYLibrary.Core.APIServer.Services.Logger;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.Logging.GeneralPurposeLogger;
 using Microsoft.AspNetCore.Http;
@@ -17,12 +18,13 @@ namespace DotNetWebAPICodeUnit.Core.Controller
         public const string ControllerRoute = $"{ServerConfiguration.APIRoutePrefix}/v{GeneralConstants.CodeUnitMajorVersion}/{nameof(ExampleController)}";
         private readonly IMathService _MathService;
         private readonly IGeneralLogger _Logger;
-        private readonly IPersistence _Persistence;
-        public ExampleController(IMathService someService, IGeneralLogger logger, IPersistence persistence)
+        // The logger is taken as "IServerLog" and not as "IGeneralLogger", because that is what the
+        // dependency-injection of the library provides. A controller which asks for "IGeneralLogger" can not be
+        // created, which makes every request to it answer with statuscode 500.
+        public ExampleController(IMathService someService, IServerLog log)
         {
             this._MathService = someService;
-            this._Logger = logger;
-            this._Persistence = persistence;
+            this._Logger = log.Logger;
         }
 
         /// <summary>

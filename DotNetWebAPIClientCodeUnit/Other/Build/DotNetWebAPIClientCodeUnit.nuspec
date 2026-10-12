@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
-    <metadata minClientVersion="2.12">
-        <id>DotNetWebAPIClientCodeUnit</id>
-        <version>0.12.60</version>
-        <title>DotNetWebAPIClientCodeUnit</title>
-        <authors>Marius Göcke</authors>
-        <owners>Marius Göcke</owners>
-        <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <copyright>Copyright © 2024 by Marius Göcke</copyright>
-        <description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</description>
-        <summary>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</summary>
-        <license type="file">lib/net8/DotNetWebAPIClientCodeUnit.License.txt</license>
-        <dependencies>
-            <group targetFramework="net8" />
-        </dependencies>
-        <projectUrl>https://github.com/anionDev/CommonProjectStructureExamples</projectUrl>
-        <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples.git" branch="main" commit="$commitid$" />
-    </metadata>
-    <files>
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.dll" target="lib/net8" />
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.License.txt" target="lib/net8" />
-        <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.deps.json" target="lib/net8" />
-    </files>
+  <metadata minClientVersion="2.12">
+    <id>DotNetWebAPIClientCodeUnit</id>
+    <version>1.2.0</version>
+    <title>DotNetWebAPIClientCodeUnit</title>
+    <authors>Marius Göcke</authors>
+    <owners>Marius Göcke</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <copyright>Copyright © 2026 by Marius Göcke</copyright>
+    <description>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</description>
+    <summary>DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.</summary>
+    <license type="file">lib/net8/DotNetWebAPIClientCodeUnit.License.txt</license>
+    <dependencies>
+      <group targetFramework="net8" />
+    </dependencies>
+    <projectUrl>https://github.com/anionDev/CommonProjectStructureExamples</projectUrl>
+    <repository type="git" url="https://github.com/anionDev/CommonProjectStructureExamples.git" branch="main" commit="$commitid$" />
+  </metadata>
+  <files>
+    <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.dll" target="lib/net8" />
+    <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.License.txt" target="lib/net8" />
+    <file src="../Artifacts/BuildResult_DotNet_win-x64/DotNetWebAPIClientCodeUnit.deps.json" target="lib/net8" />
+  </files>
 </package>

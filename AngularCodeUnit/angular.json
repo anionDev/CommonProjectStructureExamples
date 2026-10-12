@@ -13,80 +13,59 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "ar": "Other/Resources/Translations/messages.ar.xlf",
+          "de": "Other/Resources/Translations/messages.de.xlf",
+          "de-AT": "Other/Resources/Translations/messages.de-AT.xlf",
+          "de-CH": "Other/Resources/Translations/messages.de-CH.xlf",
+          "el": "Other/Resources/Translations/messages.el.xlf",
+          "en-GB": "Other/Resources/Translations/messages.en-GB.xlf",
+          "es": "Other/Resources/Translations/messages.es.xlf",
+          "es-MX": "Other/Resources/Translations/messages.es-MX.xlf",
+          "fr": "Other/Resources/Translations/messages.fr.xlf",
+          "pt": "Other/Resources/Translations/messages.pt.xlf",
+          "ru": "Other/Resources/Translations/messages.ru.xlf",
+          "zh": "Other/Resources/Translations/messages.zh.xlf"
+        }
+      },
       "architect": {
         "build": {
           "defaultConfiguration": "Development",
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular/build:application",
           "configurations": {
-            "Production": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
+            "Productive": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
             },
             "QualityCheck": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
               "outputHashing": "all"
             },
             "Development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "options": {
-            "outputPath": "Other/Artifacts/BuildResult_Website",
+            "outputPath": "Other/Artifacts/BuildResult_WebApplication",
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -95,23 +74,28 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fontsource/roboto/300.css",
+              "node_modules/@fontsource/roboto/400.css",
+              "node_modules/@fontsource/roboto/500.css",
+              "node_modules/@fontsource/material-icons/index.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "src/main.ts"
           }
         },
         "serve": {
           "defaultConfiguration": "Development",
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "Production": {
-              "browserTarget": "AngularCodeUnit:build:Production"
+            "Productive": {
+              "buildTarget": "AngularCodeUnit:build:Productive"
             },
             "QualityCheck": {
-              "browserTarget": "AngularCodeUnit:build:QualityCheck"
+              "buildTarget": "AngularCodeUnit:build:QualityCheck"
             },
             "Development": {
-              "browserTarget": "AngularCodeUnit:build:Development"
+              "buildTarget": "AngularCodeUnit:build:Development"
             }
           },
           "options": {
@@ -119,35 +103,37 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "builder": "@angular/build:extract-i18n",
           "options": {
-            "browserTarget": "AngularCodeUnit:build"
+            "buildTarget": "AngularCodeUnit:build",
+            "outputPath": "Other/Resources/Translations",
+            "format": "xlf2",
+            "outFile": "messages.xlf"
           }
         },
         "test": {
           "defaultConfiguration": "Development",
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "configurations": {
-            "Production": {},
-            "QualityCheck": {},
-            "Development": {}
+            "Productive": {
+              "buildTarget": "AngularCodeUnit:build:Productive"
+            },
+            "QualityCheck": {
+              "buildTarget": "AngularCodeUnit:build:QualityCheck"
+            },
+            "Development": {
+              "buildTarget": "AngularCodeUnit:build:Development"
+            }
           },
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "runner": "vitest",
+            "runnerConfig": "vitest-base.config.ts",
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "karmaConfig": "karma.conf.js"
+            "coverage": true,
+            "coverageReporters": [
+              "cobertura",
+              "text-summary"
+            ]
           }
         },
         "lint": {

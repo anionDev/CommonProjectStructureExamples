@@ -1,7 +1,7 @@
-﻿using CCOT.DataCollectorClient.Core;
+using DotNetWebAPIClientCodeUnit.Core;
 using GRYLibrary.Core.APIServer.Settings.Configuration;
 using GRYLibrary.Core.APIServer.Utilities;
-using GRYLibrary.Core.GenericAPIClient;
+using GRYLibrary.Core.APIClient;
 using GRYLibrary.Core.Misc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,7 +14,7 @@ namespace DotNetWebAPIClientCodeUnit.Tests.Testcases.Integration
     public class EndToEndTests
     {
         [TestMethod]
-        [TestProperty(nameof(TestKind), nameof(TestKind.EndToEndTest))]
+        [TestProperty(nameof(GRYLibrary.Core.Misc.TestKind), nameof(GRYLibrary.Core.Misc.TestKind.EndToEndTest))]
         public void AddTest()
         {
             // arrange

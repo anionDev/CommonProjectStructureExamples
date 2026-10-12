@@ -1,8 +1,8 @@
 version: '3.2'
 
 services:
-  webappcontainercodeunit:
-    image: webappcontainercodeunit:0.0.1
-    container_name: 'webappcontainercodeunit'
+  combinedbackendfrontendcodeunit:
+    image: combinedbackendfrontendcodeunit:0.0.1
+    container_name: 'combinedbackendfrontendcodeunit'
     ports:
       - "80:80"

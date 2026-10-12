@@ -1,13 +1,10 @@
-import sys
-from pathlib import Path
-from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.TFCPS.Maven.TFCPS_CodeUnitSpecific_Maven import TFCPS_CodeUnitSpecific_Maven_Functions,TFCPS_CodeUnitSpecific_Maven_CLI
 
-def standardized_tasks_generatereference_for_maven_project(t:TasksForCommonProjectStructure,script_file:str,verbosity:int,commandline_arguments:list[str]):
-    pass#TODO
 
 def generate_reference():
-    t = TasksForCommonProjectStructure()
-    standardized_tasks_generatereference_for_maven_project(t,str(Path(__file__).absolute()), 1, sys.argv)
+    tf:TFCPS_CodeUnitSpecific_Maven_Functions=TFCPS_CodeUnitSpecific_Maven_CLI.parse(__file__)
+    # docfx can not extract a class-reference from java-sourcecode, so only the articles of the reference-content are generated.
+    tf.generate_reference()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,3 @@
-# WebAppContainerCodeUnit reference
+# CombinedBackendFrontendCodeUnit reference
 
 TODO

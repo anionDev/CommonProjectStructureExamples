@@ -10,5 +10,5 @@ Resources/Constants/CodeUnitVersion.*
 Resources/Constants/CodeUnitMajorVersion.*
 Resources/Constants/CommitDate.*
 Resources/Constants/CommitId.*
-Resources/WebAPIContainerCodeUnitC.sarif
-Resources/WebAPIContainerCodeUnitCTests.sarif
+Resources/Constants/CurrentTimestamp.*
+Resources/CodeAnalysisResult/*.sarif

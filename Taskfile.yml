@@ -1,0 +1,63 @@
+version: '3'
+
+tasks:
+
+  BaseBuildAllCodeunits:
+    desc: "Base: Build all codeunits"
+    silent: true
+    dir: "."
+    cmds:
+      - "scbuildcodeunits {{.CLI_ARGS}}"
+    aliases:
+      - basebuildallcodeunits
+      - bb
+
+  LocaltestserviceMariadbStart:
+    desc: "LocalTestService: MariaDB start"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/MariaDBDatabase"
+    cmds:
+      - "python Start.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicemariadbstart
+      - ldmu
+
+  LocaltestserviceMariadbStop:
+    desc: "LocalTestService: MariaDB stop"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/MariaDBDatabase"
+    cmds:
+      - "python Stop.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicemariadbstop
+      - ldmd
+
+  LocaltestservicePostgresqlStart:
+    desc: "LocalTestService: PostgreSQL start"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/PostgreSQLDatabase"
+    cmds:
+      - "python Start.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicepostgresqlstart
+      - ldpu
+
+  LocaltestservicePostgresqlStop:
+    desc: "LocalTestService: PostgreSQL stop"
+    silent: true
+    dir: "./Other/Resources/LocalTestServices/PostgreSQLDatabase"
+    cmds:
+      - "python Stop.py {{.CLI_ARGS}}"
+    aliases:
+      - localtestservicepostgresqlstop
+      - ldpd
+
+  UpdateVisualRegressionBaselines:
+    desc: "Update: Visual-regression-baselines"
+    silent: true
+    dir: "./Other/Scripts"
+    cmds:
+      - "python UpdateVisualRegressionBaselines.py {{.CLI_ARGS}}"
+    aliases:
+      - updatevisualregressionbaselines
+      - uvrb

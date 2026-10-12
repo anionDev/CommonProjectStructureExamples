@@ -1,0 +1,18 @@
+[package]
+name = "rust_code_unit"
+version = "1.2.0"
+edition = "2021"
+description = "RustCodeUnit is a demonstration-codeunit for a rust-project."
+publish = false
+
+# The library contains the functions which are not bound to the commandline-interface, so that they are testable
+# without running the application. The binary only contains the entry-point and uses the library.
+[lib]
+name = "rust_code_unit"
+path = "src/lib.rs"
+
+[[bin]]
+name = "RustCodeUnit"
+path = "src/main.rs"
+
+[dependencies]

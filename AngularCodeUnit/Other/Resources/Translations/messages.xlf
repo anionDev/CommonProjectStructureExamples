@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
+  <file id="ngi18n" original="ng.template">
+    <unit id="app.description">
+      <notes>
+        <note category="location">src/app/app.component.html:5,6</note>
+      </notes>
+      <segment>
+        <source>This is the demonstration-codeunit for an angular-web-application.</source>
+      </segment>
+    </unit>
+    <unit id="user-settings.title">
+      <notes>
+        <note category="location">src/app/modules/user-settings/user-settings.component.html:3,4</note>
+      </notes>
+      <segment>
+        <source>Settings</source>
+      </segment>
+    </unit>
+    <unit id="user-settings.color-scheme">
+      <notes>
+        <note category="location">src/app/modules/user-settings/user-settings.component.html:7,8</note>
+      </notes>
+      <segment>
+        <source>Color scheme</source>
+      </segment>
+    </unit>
+  </file>
+</xliff>

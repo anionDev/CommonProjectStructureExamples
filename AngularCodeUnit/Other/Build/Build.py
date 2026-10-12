@@ -1,12 +1,10 @@
-import os
-import sys
-from pathlib import Path
-from ScriptCollection.TasksForCommonProjectStructure import TasksForCommonProjectStructure
+from ScriptCollection.TFCPS.NodeJS.TFCPS_CodeUnitSpecific_NodeJS import TFCPS_CodeUnitSpecific_NodeJS_Functions,TFCPS_CodeUnitSpecific_NodeJS_CLI
 
 
 def build():
-    TasksForCommonProjectStructure().standardized_tasks_build_for_angular_codeunit(
-        str(Path(__file__).absolute()), "QualityCheck",  1, sys.argv)
+    tf:TFCPS_CodeUnitSpecific_NodeJS_Functions=TFCPS_CodeUnitSpecific_NodeJS_CLI.parse(__file__)
+    tf.build()
+    tf.add_culture_chooser(tf.get_product_name(),tf.get_available_cultures_for_angular_app())
 
 
 if __name__ == "__main__":

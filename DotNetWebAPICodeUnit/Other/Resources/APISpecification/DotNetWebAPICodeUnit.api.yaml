@@ -1,0 +1,258 @@
+components:
+  schemas:
+    Customer:
+      additionalProperties: false
+      description: Example-businesstype of this codeunit. A real product has one type
+        per business-object here.
+      properties:
+        contactEmailAddress:
+          nullable: true
+          type: string
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
+info:
+  contact:
+    name: Contact
+    url: https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/Contact
+  description: DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.
+  license:
+    name: License
+    url: https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/License
+  termsOfService: https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/TermsOfService
+  title: DotNetWebAPICodeUnit v1.2.0 API documentation
+  version: v1.2.0
+openapi: 3.0.4
+paths:
+  /API/Other/Maintenance/AvailabilityCheck:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/CurrentVersion:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/HealthCheck:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/InitializationState:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/Metrics:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Maintenance/ShowAllEndpoints:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - MaintenanceRoutes
+  /API/Other/Resources/Information/Contact:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - CommonRoutes
+  /API/Other/Resources/Information/License:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - CommonRoutes
+  /API/Other/Resources/Information/TermsOfService:
+    get:
+      responses:
+        '200':
+          description: OK
+      tags:
+      - CommonRoutes
+  /API/v1/CustomerController/CreateCustomer:
+    post:
+      parameters:
+      - description: The name of the customer.
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: The email-address under which the customer is contacted.
+        in: query
+        name: contactEmailAddress
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+            text/json:
+              schema:
+                format: int32
+                type: integer
+            text/plain:
+              schema:
+                format: int32
+                type: integer
+          description: OK
+      summary: Creates a new customer.
+      tags:
+      - Customer
+  /API/v1/CustomerController/GetAllCustomers:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Customer'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Customer'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Customer'
+                type: array
+          description: OK
+      summary: Returns all customers.
+      tags:
+      - Customer
+  /API/v1/CustomerController/GetCustomer/{customerId}:
+    get:
+      parameters:
+      - description: The id of the customer.
+        in: path
+        name: customerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          description: OK
+      summary: Returns the customer with the given id.
+      tags:
+      - Customer
+  /API/v1/CustomerController/RemoveCustomer/{customerId}:
+    delete:
+      parameters:
+      - description: The id of the customer.
+        in: path
+        name: customerId
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        '200':
+          description: OK
+      summary: Removes the customer with the given id.
+      tags:
+      - Customer
+  /API/v1/CustomerController/UpdateCustomer:
+    put:
+      requestBody:
+        content:
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        description: The customer with the new values.
+      responses:
+        '200':
+          description: OK
+      summary: Applies the given values to the customer which has the given id.
+      tags:
+      - Customer
+  /API/v1/ExampleController/Calculator/{function}:
+    get:
+      description: "parameter1 and parameter2 can be integer-values or decimal-values.\n\
+        \            If there are decimal-places then the decimal-places must be separated\
+        \ by a dot."
+      parameters:
+      - in: path
+        name: function
+        required: true
+        schema:
+          type: string
+      - description: Summand 1
+        in: query
+        name: parameter1
+        schema:
+          format: double
+          type: number
+      - description: Summand 2
+        in: query
+        name: parameter2
+        schema:
+          format: double
+          type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                format: double
+                type: number
+            text/json:
+              schema:
+                format: double
+                type: number
+            text/plain:
+              schema:
+                format: double
+                type: number
+          description: OK
+      summary: Adds 2 values.
+      tags:
+      - Example
+tags:
+- name: CommonRoutes
+- name: Customer
+- name: Example
+- name: MaintenanceRoutes

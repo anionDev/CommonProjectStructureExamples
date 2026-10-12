@@ -1,0 +1,110 @@
+@startuml CodeUnits-Overview
+skinparam defaultFontName "DejaVu Sans"
+title CodeUnits of CommonProjectStructureExamples
+
+[CPPLibrary]
+note as CPPLibraryNote
+  CPPLibrary is a demonstration-codeunit for a c++-library, built via TFCPS_CodeUnitSpecific_CPP.
+end note
+CPPLibrary .. CPPLibraryNote
+
+[DartLibraryCodeUnit]
+note as DartLibraryCodeUnitNote
+  The DartLibraryCodeUnit is a demonstration-codeunit for a Dart-library.
+end note
+DartLibraryCodeUnit .. DartLibraryCodeUnitNote
+
+[DotNetConsoleCodeUnit]
+note as DotNetConsoleCodeUnitNote
+  DotNetConsoleCodeUnit is a demonstration-codeunit for a .NET-console-application.
+end note
+DotNetConsoleCodeUnit .. DotNetConsoleCodeUnitNote
+
+[DotNetLibraryCodeUnit]
+note as DotNetLibraryCodeUnitNote
+  DotNetLibraryCodeUnit is a demonstration-codeunit for a .NET-library.
+end note
+DotNetLibraryCodeUnit .. DotNetLibraryCodeUnitNote
+
+[FlutterCodeUnit]
+note as FlutterCodeUnitNote
+  The FlutterCodeUnit is a demonstration-codeunit for a Flutter-application (Material-Design, linux and web build-targets).
+end note
+FlutterCodeUnit .. FlutterCodeUnitNote
+
+[GoCodeUnit]
+note as GoCodeUnitNote
+  GoCodeUnit is a demonstration-codeunit for a go-project.
+end note
+GoCodeUnit .. GoCodeUnitNote
+
+[MavenCodeUnit]
+note as MavenCodeUnitNote
+  MavenCodeUnit is a demonstration-codeunit for a maven-project.
+end note
+MavenCodeUnit .. MavenCodeUnitNote
+
+[PythonCodeUnit]
+note as PythonCodeUnitNote
+  PythonCodeUnit is a demonstration-codeunit for a python-package.
+end note
+PythonCodeUnit .. PythonCodeUnitNote
+
+[RustCodeUnit]
+note as RustCodeUnitNote
+  RustCodeUnit is a demonstration-codeunit for a rust-project.
+end note
+RustCodeUnit .. RustCodeUnitNote
+
+[CExecutable]
+note as CExecutableNote
+  CExecutable is a demonstration-codeunit for a c-executable which uses the library of the dependent codeunit CPPLibrary, built via TFCPS_CodeUnitSpecific_CPP.
+end note
+CExecutable .. CExecutableNote
+
+[DotNetWebAPICodeUnit]
+note as DotNetWebAPICodeUnitNote
+  DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.
+end note
+DotNetWebAPICodeUnit .. DotNetWebAPICodeUnitNote
+
+[AngularCodeUnit]
+note as AngularCodeUnitNote
+  AngularCodeUnit is a demonstration-codeunit for an Angular-web-application.
+end note
+AngularCodeUnit .. AngularCodeUnitNote
+
+[DotNetWebAPIClientCodeUnit]
+note as DotNetWebAPIClientCodeUnitNote
+  DotNetWebAPIClientCodeUnit is a C#-client for DotNetWebAPICodeUnit.
+end note
+DotNetWebAPIClientCodeUnit .. DotNetWebAPIClientCodeUnitNote
+
+[WebAPIContainerCodeUnit]
+note as WebAPIContainerCodeUnitNote
+  WebAPIContainerCodeUnit is a containerized variant of DotNetWebAPICodeUnit.
+end note
+WebAPIContainerCodeUnit .. WebAPIContainerCodeUnitNote
+
+[CombinedBackendFrontendCodeUnit]
+note as CombinedBackendFrontendCodeUnitNote
+  CombinedBackendFrontendCodeUnit is a demonstration-codeunit which works as reverse-proxy for a backend-server-application and a frontend-web-application.
+end note
+CombinedBackendFrontendCodeUnit .. CombinedBackendFrontendCodeUnitNote
+
+[WebAppContainerCodeUnit]
+note as WebAppContainerCodeUnitNote
+  WebAppContainerCodeUnit is a containerized variant of AngularCodeUnit.
+end note
+WebAppContainerCodeUnit .. WebAppContainerCodeUnitNote
+
+CExecutable --> CPPLibrary
+DotNetWebAPICodeUnit --> DotNetLibraryCodeUnit
+AngularCodeUnit --> DotNetWebAPICodeUnit
+DotNetWebAPIClientCodeUnit --> DotNetWebAPICodeUnit
+WebAPIContainerCodeUnit --> DotNetWebAPICodeUnit
+CombinedBackendFrontendCodeUnit --> AngularCodeUnit
+CombinedBackendFrontendCodeUnit --> DotNetWebAPICodeUnit
+WebAppContainerCodeUnit --> AngularCodeUnit
+
+@enduml

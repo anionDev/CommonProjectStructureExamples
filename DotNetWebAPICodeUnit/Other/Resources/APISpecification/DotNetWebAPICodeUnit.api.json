@@ -1,0 +1,416 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "DotNetWebAPICodeUnit v1.2.0 API documentation",
+    "description": "DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.",
+    "termsOfService": "https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/TermsOfService",
+    "contact": {
+      "name": "Contact",
+      "url": "https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/Contact"
+    },
+    "license": {
+      "name": "License",
+      "url": "https://dotnetwebapicodeunit.test.local:443/API/Other/Resources/Information/License"
+    },
+    "version": "v1.2.0"
+  },
+  "paths": {
+    "/API/Other/Resources/Information/TermsOfService": {
+      "get": {
+        "tags": [
+          "CommonRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Resources/Information/Contact": {
+      "get": {
+        "tags": [
+          "CommonRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Resources/Information/License": {
+      "get": {
+        "tags": [
+          "CommonRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v1/CustomerController/GetAllCustomers": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Returns all customers.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Customer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/CustomerController/GetCustomer/{customerId}": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Returns the customer with the given id.",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "The id of the customer.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/CustomerController/CreateCustomer": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Creates a new customer.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name of the customer.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contactEmailAddress",
+            "in": "query",
+            "description": "The email-address under which the customer is contacted.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/v1/CustomerController/UpdateCustomer": {
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Applies the given values to the customer which has the given id.",
+        "requestBody": {
+          "description": "The customer with the new values.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v1/CustomerController/RemoveCustomer/{customerId}": {
+      "delete": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Removes the customer with the given id.",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "The id of the customer.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/v1/ExampleController/Calculator/{function}": {
+      "get": {
+        "tags": [
+          "Example"
+        ],
+        "summary": "Adds 2 values.",
+        "description": "parameter1 and parameter2 can be integer-values or decimal-values.\n            If there are decimal-places then the decimal-places must be separated by a dot.",
+        "parameters": [
+          {
+            "name": "function",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "parameter1",
+            "in": "query",
+            "description": "Summand 1",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "parameter2",
+            "in": "query",
+            "description": "Summand 2",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/AvailabilityCheck": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/InitializationState": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/CurrentVersion": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/ShowAllEndpoints": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/HealthCheck": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/API/Other/Maintenance/Metrics": {
+      "get": {
+        "tags": [
+          "MaintenanceRoutes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactEmailAddress": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Example-businesstype of this codeunit. A real product has one type per business-object here."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "CommonRoutes"
+    },
+    {
+      "name": "Customer"
+    },
+    {
+      "name": "Example"
+    },
+    {
+      "name": "MaintenanceRoutes"
+    }
+  ]
+}

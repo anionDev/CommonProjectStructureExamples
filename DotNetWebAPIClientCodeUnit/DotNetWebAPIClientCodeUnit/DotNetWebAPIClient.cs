@@ -1,8 +1,8 @@
-using GRYLibrary.Core.GenericAPIClient;
+using GRYLibrary.Core.APIClient;
 using GRYLibrary.Core.Misc;
 using GUtilities = GRYLibrary.Core.Misc.Utilities;
 
-namespace CCOT.DataCollectorClient.Core
+namespace DotNetWebAPIClientCodeUnit.Core
 {
     public sealed class DotNetWebAPIClient : IDotNetWebAPIClient
     {
