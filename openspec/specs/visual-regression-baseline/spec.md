@@ -38,18 +38,17 @@ one per theme.
 ### Requirement: A baseline-image's filename begins with its theme-mode
 
 The filename of every visual-regression-baseline-image SHALL begin with the theme-mode it was rendered in, written
-as the prefix `light-` or `dark-`, followed by the rest of the name which describes what the image shows. The
-filename SHALL use the dash (`-`) as its only separator. The resulting form is `<theme-mode>-<name>`, for example
-`light-settings-page` or `dark-login-form`.
+as the prefix `light_` or `dark_`, followed by the rest of the name which describes what the image shows. The
+resulting form is `<theme-mode>_<name>`, for example `light_settings_page` or `dark_login_form`.
 
 #### Scenario: A baseline-image is created
 
 - **WHEN** a baseline-image is created
-- **THEN** its filename begins with `light-` or `dark-` according to the theme it was rendered in, followed by the
-  rest of the name, using the dash as its only separator
+- **THEN** its filename begins with `light_` or `dark_` according to the theme it was rendered in, followed by the
+  rest of the name
 
 #### Scenario: A baseline-image's filename is missing the theme-mode prefix
 
-- **WHEN** a baseline-image's filename does not begin with a `light-` or `dark-` theme-mode prefix
+- **WHEN** a baseline-image's filename does not begin with a `light_` or `dark_` theme-mode prefix
 - **THEN** this is a defect, resolved by renaming the baseline-image (and the name the test refers to it by) to the
-  form `<theme-mode>-<name>`
+  form `<theme-mode>_<name>`
