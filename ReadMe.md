@@ -83,7 +83,7 @@ See [Contributing.md](./Contributing.md) for information about that.
 
 ## Repository-structure
 
-This product uses the [CommonProjectStructure](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/RepositoryStructure/CommonProjectStructure/CommonProjectStructure.md) as repository-structure in the version `3.0.0`, which is the version its codeunits declare in their `codeunit.xml`.
+This product uses the [CommonProjectStructure](https://projects.aniondev.de/PublicProjects/Common/ProjectTemplates/-/blob/main/Conventions/RepositoryStructure/CommonProjectStructure/CommonProjectStructure.md) as repository-structure in the version `3.0.4`, which is the version its codeunits declare in their `codeunit.xml`.
 
 ## Build
 

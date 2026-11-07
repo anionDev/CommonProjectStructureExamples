@@ -110,7 +110,7 @@ namespace DotNetWebAPICodeUnit.Core
                 };
                 apiServerConfiguration.ConfigureWebApplication = (functionalInformationForWebApplication) =>
                 {
-                    IMetricsService metricsService = functionalInformationForWebApplication.WebApplication.Services.GetService<IMetricsService>();
+                    IMetricsService metricsService = functionalInformationForWebApplication.WebApplication.Services.GetRequiredService<IMetricsService>();
                     functionalInformationForWebApplication.PreRun = () =>
                     {
                         metricsService.StartAsync();

@@ -28,6 +28,7 @@ Global
 		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.Development|Any CPU.ActiveCfg = Development|Any CPU
 		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.Development|Any CPU.Build.0 = Development|Any CPU
 		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.Productive|Any CPU.ActiveCfg = Productive|Any CPU
+		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.Productive|Any CPU.Build.0 = Productive|Any CPU
 		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.QualityCheck|Any CPU.ActiveCfg = QualityCheck|Any CPU
 		{46F9F1F0-E41B-4C0F-BFDE-74DFE31EEA21}.QualityCheck|Any CPU.Build.0 = QualityCheck|Any CPU
 	EndGlobalSection

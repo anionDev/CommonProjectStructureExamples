@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/anionDev/CommonProjectStructureExamples.git</RepositoryUrl>
     <RootNamespace>DotNetWebAPIClientCodeUnit.Tests</RootNamespace>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <Configurations>Development;QualityCheck;Productive</Configurations>
     <IsTestProject>true</IsTestProject>
     <LangVersion>11.0</LangVersion>
@@ -64,7 +64,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="GRYLibrary" Version="[2.1.7]" />
+    <PackageReference Include="GRYLibrary" Version="[2.1.9]" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="[2.3.10]" />
     <PackageReference Include="Microsoft.CodeCoverage" Version="[18.5.1]" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[10.0.10]" />

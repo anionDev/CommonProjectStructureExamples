@@ -10,9 +10,9 @@
       },
       "GRYLibrary": {
         "type": "Direct",
-        "requested": "[2.1.7, 2.1.7]",
-        "resolved": "2.1.7",
-        "contentHash": "mhuSK48DSjLx01s/nCYSxzAxTSAH0hEPRgNFbo0/BIHbQdwNefg/Ho2oue+mh1mIHtW8x8b7qI77jUHqzJ1V8g=="
+        "requested": "[2.1.9, 2.1.9]",
+        "resolved": "2.1.9",
+        "contentHash": "neqbbHM5NfLnt55gvKyseIAWY0ZAWHiunFnOLdXyRtnl1/usTdK+/z8GAHeryI7I8Q9/7emCudyS+lPcHv8q/g=="
       },
       "Microsoft.AspNetCore.Http": {
         "type": "Direct",
@@ -379,7 +379,7 @@
         "type": "Project",
         "dependencies": {
           "CommandLineParser": "[2.9.1, 2.9.1]",
-          "GRYLibrary": "[2.1.7, 2.1.7]",
+          "GRYLibrary": "[2.1.9, 2.1.9]",
           "Microsoft.CSharp": "[4.7.0, 4.7.0]",
           "Microsoft.Extensions.Logging.Abstractions": "[10.0.10, 10.0.10]"
         }

@@ -27,8 +27,15 @@ namespace DotNetWebAPICodeUnit.Tests.Testcases.Controller
 
             // assert
             Assert.IsTrue(actualResult is OkObjectResult);
-            decimal actualResultValue = (decimal)(actualResult as OkObjectResult).Value;
-            Assert.AreEqual(expectedResultValue, actualResultValue);
+            OkObjectResult okObjectResult = (OkObjectResult)actualResult;
+            if (okObjectResult.Value is decimal actualResultValue)
+            {
+                Assert.AreEqual(expectedResultValue, actualResultValue);
+            }
+            else
+            {
+                Assert.Fail("The result-value of the controller is not a decimal.");
+            }
         }
     }
 }

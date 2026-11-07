@@ -11,6 +11,8 @@ ADD Other/Resources/DependentCodeUnits/DotNetWebAPICodeUnit/BuildResult_DotNet_w
 ADD Other/Resources/DependentCodeUnits/AngularCodeUnit/BuildResult_WebApplication /Workspace/Frontend/Application
 COPY CombinedBackendFrontendCodeUnit/nginx.configuration /etc/nginx
 COPY CombinedBackendFrontendCodeUnit/EntryPoint.sh /Workspace/Other/EntryPoint
-#TODO set healthcheck
+COPY CombinedBackendFrontendCodeUnit/HealthCheck.sh /Workspace/Other/EntryPoint
+RUN chmod +x /Workspace/Other/EntryPoint/HealthCheck.sh
+HEALTHCHECK --interval=30s --timeout=20s --start-period=2m CMD /Workspace/Other/EntryPoint/HealthCheck.sh
 WORKDIR /usr/src/app
 ENTRYPOINT ["/Workspace/Other/EntryPoint/EntryPoint.sh"]
