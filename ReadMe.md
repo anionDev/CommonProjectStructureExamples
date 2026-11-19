@@ -21,6 +21,8 @@ Each codeunit of this repository is one such example. The examples are minimal o
 | `WebAppContainerCodeUnit` | a containerized variant of `AngularCodeUnit` |
 | `PythonCodeUnit` | a python-package |
 | `MavenCodeUnit` | a maven-project |
+| `SpringAPI` | a Spring-Boot-web-API-application (java, built with maven) |
+| `SpringAPIContainer` | a containerized variant of `SpringAPI` which uses `eclipse-temurin` as java-runtime |
 | `GoCodeUnit` | a go-project |
 | `RustCodeUnit` | a rust-project |
 | `DartLibraryCodeUnit` | a Dart-library |
@@ -30,6 +32,8 @@ Each codeunit of this repository is one such example. The examples are minimal o
 `DotNetWebAPIClientCodeUnit` is the example for the case that one codeunit uses another one of the same repository: it declares `DotNetWebAPICodeUnit` in its `dependentcodeunits` and reaches it exclusively through `Other/Resources/DependentCodeUnits`.
 
 `MavenCodeUnit`, `GoCodeUnit` and `RustCodeUnit` are commandline-applications which print a greeting. They put their testcases into the project itself and not into a sibling-project `<codeunit>Tests` like the .NET-codeunits do, because that is the layout maven, go and cargo define; the respective `ReadMe.md` of the codeunit states that.
+
+`SpringAPI` provides the same example-endpoint as `DotNetWebAPICodeUnit` (`ExampleController`), implemented in java with Spring Boot. `SpringAPIContainer` packages it into an OCI-image, like `WebAPIContainerCodeUnit` does it for `DotNetWebAPICodeUnit`. Its base-image is declared through the entry `Java` of `.ScriptCollection/OCIImages/ImageDefinition.csv`.
 
 ## Development-state
 

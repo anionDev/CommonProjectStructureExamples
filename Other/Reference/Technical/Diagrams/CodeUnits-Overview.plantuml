@@ -56,6 +56,12 @@ note as RustCodeUnitNote
 end note
 RustCodeUnit .. RustCodeUnitNote
 
+[SpringAPI]
+note as SpringAPINote
+  SpringAPI is a demonstration-codeunit for a Spring-Boot-web-API-application.
+end note
+SpringAPI .. SpringAPINote
+
 [CExecutable]
 note as CExecutableNote
   CExecutable is a demonstration-codeunit for a c-executable which uses the library of the dependent codeunit CPPLibrary, built via TFCPS_CodeUnitSpecific_CPP.
@@ -67,6 +73,12 @@ note as DotNetWebAPICodeUnitNote
   DotNetWebAPICodeUnit is a demonstration-codeunit for a .NET-web-API-application.
 end note
 DotNetWebAPICodeUnit .. DotNetWebAPICodeUnitNote
+
+[SpringAPIContainer]
+note as SpringAPIContainerNote
+  SpringAPIContainer is a containerized variant of SpringAPI.
+end note
+SpringAPIContainer .. SpringAPIContainerNote
 
 [AngularCodeUnit]
 note as AngularCodeUnitNote
@@ -100,6 +112,7 @@ WebAppContainerCodeUnit .. WebAppContainerCodeUnitNote
 
 CExecutable --> CPPLibrary
 DotNetWebAPICodeUnit --> DotNetLibraryCodeUnit
+SpringAPIContainer --> SpringAPI
 AngularCodeUnit --> DotNetWebAPICodeUnit
 DotNetWebAPIClientCodeUnit --> DotNetWebAPICodeUnit
 WebAPIContainerCodeUnit --> DotNetWebAPICodeUnit

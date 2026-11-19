@@ -1,0 +1,14 @@
+from pathlib import Path
+from ScriptCollection.ScriptCollectionCore import ScriptCollectionCore
+from ScriptCollection.TFCPS.TFCPS_Tools_General import TFCPS_Tools_General
+
+
+def run_example():
+    sc=ScriptCollectionCore()
+    t=TFCPS_Tools_General(sc)
+    t.start_dockerfile_example(str(Path(__file__).absolute()), True, False, None)
+    # HINT now open your browser and open http://127.0.0.1:80/API/v1/ExampleController/Calculator/Add?parameter1=2&parameter2=3.5
+
+
+if __name__ == "__main__":
+    run_example()

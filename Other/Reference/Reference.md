@@ -30,6 +30,8 @@
 | feat-24 | unavailable | Example for a TypeScript-backend (`TypeScriptBackendCodeUnit`) is planned but does not exist yet.         |
 | feat-25 | unavailable | Example for a Vue.js-application (`VueJSCodeUnit`) is planned but does not exist yet.                     |
 | feat-26 | unavailable | Example for web-components (`WebComponentsCodeUnit`) is planned but does not exist yet.                   |
+| feat-27 | available   | Example of a Spring-Boot-web-API-application (`SpringAPI`).                                               |
+| feat-28 | available   | Example of a containerized Spring-Boot-web-API-application using eclipse-temurin (`SpringAPIContainer`).  |
 
 ## Findings
 

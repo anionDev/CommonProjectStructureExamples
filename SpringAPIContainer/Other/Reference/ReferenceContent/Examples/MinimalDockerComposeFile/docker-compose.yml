@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+
+  springapicontainer:
+    image: springapicontainer:1.3.0
+    container_name: 'springapicontainer'
+    volumes:
+      - "./Volumes/Configuration:/Workspace/Configuration"
+      - "./Volumes/Data:/Workspace/Data"
+      - "./Volumes/Logs:/Workspace/Logs"
+    ports:
+      - "80:8080"
